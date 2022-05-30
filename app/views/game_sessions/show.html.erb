@@ -1,2 +1,34 @@
-<h1>GameSessions#show</h1>
-<p>Find me in app/views/game_sessions/show.html.erb</p>
+<div style="width:auto; text-align:center;"><%= flash[:notice] if flash[:notice] %></div>
+
+<div class="container homepage d-flex">
+      <div class="lyrics">
+        <%= @htmlredact.html_safe %>
+      </div>
+
+
+    <div class="propals d-flex">
+      <div class="listprop">
+          <ol reversed id="colcol">
+            <% Guess.where(game_session: @game_session).reverse_each do |guess| %>
+            <li>
+              <%=guess.word %> : <%= guess.frequency %>
+            </li>
+            <% end %>
+          </ol>
+        </div>
+
+        <div class="formulaire">
+            <%= form_tag game_session_path(@game_session), method: :get, class: "d-flex"  do  %>
+              <%= text_field_tag :query,
+                  "",
+                  class: "form-control",
+                  autofocus: true,
+                  autocomplete: "off"
+                %>
+              <%= submit_tag "Valider", class: "btn btn-primary" %>
+              <% end %>
+        </div>
+
+<%= @title %>
+    </div>
+</div>

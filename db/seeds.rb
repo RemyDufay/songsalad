@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+puts "Creation du joueur"
+@joueur = Guest.create!()
+
+puts "Creation de la song"
+lyrics = File.read("app/assets/paroles.txt")
+@belle = Song.create!(lyrics: lyrics, author: "Notre-Dame", title: "Belle")
+
+puts "Creation du game mode"
+@solo = Game.create!(name: "Chanson du jour")
+
+
+puts "Creation de la game_song"
+@song1 = GameSong.create!(game: @solo, song: @belle)
+
+puts "Creation de la game_session"
+
+@session = GameSession.create!(guest: @joueur, game: @solo)
+
+
+puts "DONE"
