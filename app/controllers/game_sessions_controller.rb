@@ -41,11 +41,14 @@ class GameSessionsController < ApplicationController
     # Condition de victoire : si le texte ne censure plus le titre, c'est gagné.
     if @htmlredact.include? @title
       flash[:notice] = "✨Bravo !✨"
+      redirect_to victory_game_session_path(@game_session)
     end
   end
 
-  def all
-    @all = game_session.all.where(guest_id)
+  def victory
+    @game_session = GameSession.find(params[:id])
+    @player = @game_session.guest
+
   end
 
 
