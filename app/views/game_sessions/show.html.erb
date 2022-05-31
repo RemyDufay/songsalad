@@ -2,11 +2,11 @@
 
 <div class="container homepage d-flex">
       <div class="lyrics">
-        <%= @htmlredact.html_safe %>
+        <%= @lyrics %>
       </div>
 
 
-    <div class="propals d-flex">
+ <! --   <div class="propals d-flex">
       <div class="listprop">
           <ol reversed id="colcol">
             <% Guess.where(game_session: @game_session).reverse_each do |guess| %>
@@ -28,5 +28,5 @@
               <%= submit_tag "Valider", class: "btn btn-primary" %>
               <% end %>
         </div>
-    </div>
+    </div>-->
 </div>
