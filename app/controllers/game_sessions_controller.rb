@@ -8,7 +8,10 @@ class GameSessionsController < ApplicationController
   end
 
   def show
+
     @game_session = GameSession.find(params[:id])
+    @game_song = @game_session.game.game_songs[0]
+    @game_session_songs = GameSessionSong.new(game_session: @game_session, game_song: @game_song )
     @lyrics = @game_session.game_session_songs[0].song.lyrics
 
     # Récupération des paroles
