@@ -2,9 +2,12 @@ require 'nokogiri'
 require 'open-uri'
 
 class GameSessionsController < ApplicationController
-
   def create
-    @game_session = GameSession.new(game_session_params)
+    @game_session = GameSession.new
+    @game_session.guest_id = 1
+    @game_session.game_id = 1
+    @game_session.save
+    redirect_to game_session_path(@game_session)
   end
 
   def show
@@ -25,7 +28,7 @@ class GameSessionsController < ApplicationController
     @arrayofwords = $htmlyrics.split(/([a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).map!(&:downcase).reject!(&:empty?)
 
     # A chaque chargement de la page, on génére les paroles censurées :
-    @htmlredact = htmlredact()
+    @htmlredact = htmlredact
 
     # On vérifie si il ya un mot soumis par le formulaire
     # Si oui on crée un Guess avec, et on redirect vers le show pour "nettoyer" l'url du param
@@ -33,7 +36,7 @@ class GameSessionsController < ApplicationController
     # Ce qui éviterait une redirection inutile.
     if params[:query].present?
       word = params[:query].downcase.strip
-      frequency  = @arrayofwords.count(word)
+      frequency = @arrayofwords.count(word)
       Guess.create!(game_session: @game_session, word: word, frequency: frequency)
       redirect_to game_session_path(@game_session)
     end
@@ -48,13 +51,12 @@ class GameSessionsController < ApplicationController
     @all = game_session.all.where(guest_id)
   end
 
+  private
 
-private
-
-# Récupere le fichier html et, pour chaque div, lance la censure
-# C'est Nokogiri qui fait le job de visiter chaque div.
-# Pourquoi ne pas itérer et renvoyer du texte ? Parce qu'on veut garder
-# les balises html pour la mise en forme !
+  # Récupere le fichier html et, pour chaque div, lance la censure
+  # C'est Nokogiri qui fait le job de visiter chaque div.
+  # Pourquoi ne pas itérer et renvoyer du texte ? Parce qu'on veut garder
+  # les balises html pour la mise en forme !
   def htmlredact
     htmlredacted = @html.css("div").each do |node|
       node.content = stringredact(node.content)
@@ -62,10 +64,10 @@ private
     return htmlredacted.to_html
   end
 
-# Divise une string en mots/ponctuaction/espaces et applique redact() sur chaque élément non proposé par l'utilisateur
-# C'est le moteur du jeu : Celui qui décide ce qui est caché ou non.
-# La regex permet de séparer mots, ponctuation, etc.. et garde les mots
-# à cédille, comme "aujourd'hui", en entiers
+  # Divise une string en mots/ponctuaction/espaces et applique redact() sur chaque élément non proposé par l'utilisateur
+  # C'est le moteur du jeu : Celui qui décide ce qui est caché ou non.
+  # La regex permet de séparer mots, ponctuation, etc.. et garde les mots
+  # à cédille, comme "aujourd'hui", en entiers
   def stringredact(string)
     redacted = string.split(/(\w{3,}'\w{3,}|[a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).reject!(&:empty?).map do |word|
       if Guess.where(game_session: @game_session).where(word: word.downcase).empty?
@@ -77,17 +79,16 @@ private
     redacted.join('')
   end
 
-# Remplace chaque lettre d'un mot par un bloc. Uniquement si il s'agit d'alphanumérique
+  # Remplace chaque lettre d'un mot par un bloc. Uniquement si il s'agit d'alphanumérique
   def redact(word)
     redacted = ""
-      word.each_char do |char|
-        (char =~ /[[:alpha:]]/) ?  redacted += "█" :  redacted += char
-      end
+    word.each_char do |char|
+      (char =~ /[[:alpha:]]/) ? redacted += "█" : redacted += char
+    end
     return redacted
   end
 
   def game_session_params
     params.require(:game_session).permit(:guest_id, :game_id, :victory?)
   end
-
 end

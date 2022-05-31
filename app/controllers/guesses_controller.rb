@@ -11,5 +11,4 @@ class GuessesController < ApplicationController
   def guess_params
     params.require(:guess).permit(:word, :frequency)
   end
-
 end
