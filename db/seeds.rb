@@ -6,6 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+puts "Seed reset"
+
+Guess.destroy_all
+GameSession.destroy_all
+GameSong.destroy_all
+Game.destroy_all
+Guest.destroy_all
+Song.destroy_all
+
 puts "Creation du joueur"
 @joueur = Guest.create!
 
