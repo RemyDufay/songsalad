@@ -11,7 +11,7 @@ class GameSessionsController < ApplicationController
     @game_session = GameSession.find(params[:id])
 
     # Récupération des paroles
-    htmlyrics = @game_session.songs[0].lyrics
+    $htmlyrics = @game_session.songs[0].lyrics
 
     # Transformation des paroles en module Nokogiri, qui permettra par la suite
     # de naviguer dans les balises html et censurer les mots (sans perdre le balisage)
@@ -22,7 +22,7 @@ class GameSessionsController < ApplicationController
 
     # Création d'un array avec tous les mots de la chanson, qui permet ensuite de
     # lancer un .count et récupérer la fréquence d'un mot dans la chanson
-    @arrayofwords = htmlyrics.split(/([a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).map!(&:downcase).reject!(&:empty?)
+    @arrayofwords = $htmlyrics.split(/([a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).map!(&:downcase).reject!(&:empty?)
 
     # A chaque chargement de la page, on génére les paroles censurées :
     @htmlredact = htmlredact()
