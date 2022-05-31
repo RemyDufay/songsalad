@@ -1,9 +1,11 @@
 class Song < ApplicationRecord
+  include ActionView::Helpers::TextHelper
+
   has_many :game_songs
   after_create :build_splitted_lyrics
   after_create :build_lyrics_index
 
-SPLITTING_REGEXP = /(\w{3,}'\w{3,}|[a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/
+SPLITTING_REGEXP = /(\w{3,}'\w{3,}|\\n|[a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/
 
 def build_splitted_lyrics
   self.splitted_lyrics = self.lyrics.split(SPLITTING_REGEXP).reject(&:empty?)

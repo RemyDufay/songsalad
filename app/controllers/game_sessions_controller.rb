@@ -4,9 +4,9 @@ require 'open-uri'
 class GameSessionsController < ApplicationController
   def create
     @game_session = GameSession.new
-    @game_session.guest_id = 1
-    @game_session.game_id = 1
-    @game_session.save
+    @game_session.guest = Guest.last
+    @game_session.game = Game.last
+    @game_session.save!
     redirect_to game_session_path(@game_session)
   end
 
@@ -14,8 +14,27 @@ class GameSessionsController < ApplicationController
 
     @game_session = GameSession.find(params[:id])
     @game_song = @game_session.game.game_songs[0]
-    @game_session_songs = GameSessionSong.new(game_session: @game_session, game_song: @game_song )
-    @lyrics = @game_session.game_session_songs[0].song.lyrics
+    @game_session_songs = GameSessionSong.create!(game_session: @game_session, game_song: @game_song )
+    @lyrics = @game_song.song.splitted_lyrics
+
+    @lyrics.map! do |word|
+          if @game_session_songs.guessed_lyrics_index[word][:guessed]
+            word
+          elsif word == "\n"
+            "<br>"
+          else
+            redact(word)
+    end
+
+    if params[:query].present?
+    word = params[:query].downcase.strip
+    frequency  = @arrayofwords.count(word)
+    Guess.create!(game_session: @game_session, word: word, frequency: frequency)
+    redirect_to game_session_path(@game_session)
+    end
+
+
+
 
     # Récupération des paroles
     #$htmlyrics = @game_session.songs[0].lyrics
