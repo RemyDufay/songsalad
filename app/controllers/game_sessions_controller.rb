@@ -32,17 +32,13 @@ class GameSessionsController < ApplicationController
     #@arrayofwords = $htmlyrics.split(/([a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).map!(&:downcase).reject!(&:empty?)
 
     # A chaque chargement de la page, on génére les paroles censurées :
-<<<<<<< HEAD
+
     #@htmlredact = htmlredact()
-=======
-    @htmlredact = htmlredact
->>>>>>> main
 
     # On vérifie si il ya un mot soumis par le formulaire
     # Si oui on crée un Guess avec, et on redirect vers le show pour "nettoyer" l'url du param
     # Peut sans doute etre amélioré en ne mettant pas le résultat du form dans l'url ?
     # Ce qui éviterait une redirection inutile.
-<<<<<<< HEAD
     #if params[:query].present?
     #  word = params[:query].downcase.strip
     #  frequency  = @arrayofwords.count(word)
@@ -57,20 +53,6 @@ class GameSessionsController < ApplicationController
 
 
 
-=======
-    if params[:query].present?
-      word = params[:query].downcase.strip
-      frequency = @arrayofwords.count(word)
-      Guess.create!(game_session: @game_session, word: word, frequency: frequency)
-      redirect_to game_session_path(@game_session)
-    end
-
-    # Condition de victoire : si le texte ne censure plus le titre, c'est gagné.
-    if @htmlredact.include? @title
-      flash[:notice] = "✨Bravo !✨"
-      redirect_to victory_game_session_path(@game_session)
-    end
->>>>>>> main
   end
 
   def victory
@@ -81,21 +63,12 @@ class GameSessionsController < ApplicationController
 
   private
 
-<<<<<<< HEAD
 # Récupere le fichier html et, pour chaque div, lance la censure
 # C'est Nokogiri qui fait le job de visiter chaque div.
 # Pourquoi ne pas itérer et renvoyer du texte ? Parce qu'on veut garder
 # les balises html pour la mise en forme !
   def htmlredact(html)
     htmlredacted = html.css("div").each do |node|
-=======
-  # Récupere le fichier html et, pour chaque div, lance la censure
-  # C'est Nokogiri qui fait le job de visiter chaque div.
-  # Pourquoi ne pas itérer et renvoyer du texte ? Parce qu'on veut garder
-  # les balises html pour la mise en forme !
-  def htmlredact
-    htmlredacted = @html.css("div").each do |node|
->>>>>>> main
       node.content = stringredact(node.content)
     end
     return htmlredacted.to_html
