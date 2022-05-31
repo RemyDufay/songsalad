@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_31_132940) do
+ActiveRecord::Schema.define(version: 2022_05_31_172803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 2022_05_31_132940) do
   end
 
   create_table "guesses", force: :cascade do |t|
-    t.bigint "game_session_id", null: false
     t.string "word"
     t.integer "frequency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_session_id"], name: "index_guesses_on_game_session_id"
+    t.bigint "game_session_song_id"
+    t.index ["game_session_song_id"], name: "index_guesses_on_game_session_song_id"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -95,5 +95,5 @@ ActiveRecord::Schema.define(version: 2022_05_31_132940) do
   add_foreign_key "game_sessions", "guests"
   add_foreign_key "game_songs", "games"
   add_foreign_key "game_songs", "songs"
-  add_foreign_key "guesses", "game_sessions"
+  add_foreign_key "guesses", "game_session_songs"
 end

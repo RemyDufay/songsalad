@@ -1,5 +1,4 @@
 class Song < ApplicationRecord
-  include ActionView::Helpers::TextHelper
 
   has_many :game_songs
   after_create :build_splitted_lyrics
