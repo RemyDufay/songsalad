@@ -55,7 +55,7 @@ jour1 =  File.read("app/assets/lyrics/jour.txt")
 
 
 papaoutel =  File.read("app/assets/lyrics/papaoutai.txt")
-@papaouta = Song.create!(lyrics: papaoutel, author: "Stromae",title: "Papaoutai", genre:'moderne', year: 2013)
+@papaouta = Song.create!(lyrics: papaoutel, author: "Stromae",title: "Papaoutai", genre:'electro', year: 2013)
 
 
 douvlel =  File.read("app/assets/lyrics/doubleje.txt")
@@ -76,7 +76,7 @@ caravanel =  File.read("app/assets/lyrics/caravane.txt")
 
 
 pholosophiel =  File.read("app/assets/lyrics/maphilosophie.txt")
-@philosophie = Song.create!(lyrics: pholosophiel, author: "Amel Bent",title: " Ma Philosophie", genre:'rap', year: 2004)
+@philosophie = Song.create!(lyrics: pholosophiel, author: "Amel Bent",title: " Ma Philosophie", genre:'populaire', year: 2004)
 
 parcequonvientdeloin =  File.read("app/assets/lyrics/parcequonvientdeloin.txt")
 @parcequonvientde = Song.create!(lyrics: parcequonvientdeloin, author: "Corneille",title: "Parce qu'on vient de loin", genre:'moderne', year:   2002)
@@ -86,6 +86,54 @@ parcequonvientdeloin =  File.read("app/assets/lyrics/parcequonvientdeloin.txt")
 quelqunmadil =  File.read("app/assets/lyrics/quelqunmadit.txt")
 @quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "Quelq’un m’a dit", genre:'moderne', year:  2002)
 
+
+tameilleureamii =  File.read("app/assets/lyrics/meilleureamie.txt")
+@tameilleurami = Song.create!(lyrics: tameilleureamii, author: "Lorie",title: "je serai ta meilleure amie", genre:'pop', year: 2001)
+
+
+lotital =  File.read("app/assets/lyrics/lolita.txt")
+@lolita = Song.create!(lyrics: lotital, author: "Alysée",title: "lolita", genre:'pop', year: 2000)
+
+
+mousse =  File.read("app/assets/lyrics/petitbonhomme.txt")
+@petibonhommenmousse = Song.create!(lyrics: mousse, author: "Patrick Sebastien", title: "Le petit bonhomme en mousse", genre:'populaire', year: 1999)
+
+
+alumerlefeu =  File.read("app/assets/lyrics/allumerlefeu.txt")
+@allumerlefe = Song.create!(lyrics: alumerlefeu, author: "Johnny", title: "Allumer le feu", genre:'rock', year: 1998)
+
+tribudedana =  File.read("app/assets/lyrics/dana.txt")
+@latrubudedana = Song.create!(lyrics: tribudedana, author: "Manau", title: "la trubu de Dana", genre: 'folk', year: 1998)
+
+
+tomberlachemise =  File.read("app/assets/lyrics/chemise.txt")
+@tomblachemise = Song.create!(lyrics: tomberlachemise, author: "Zebda", title: "Tomber la chemise ", genre: 'populaire', year: 1998)
+
+
+hymne =  File.read("app/assets/lyrics/campagne.txt")
+@hymdenocampag = Song.create!(lyrics: hymne, author: "Tryo", title: " Hymne de nos campagnes", genre: 'folk', year:  1998)
+
+jtemenneauvent =  File.read("app/assets/lyrics/vent.txt")
+@vienjtemenauven = Song.create!(lyrics: jtemenneauvent, author: "Louise Attaque",title: "Allez viens j’t'emmène au vent", genre: 'folk', year: 1997)
+
+hommepres =  File.read("app/assets/lyrics/hommepressé.txt")
+@hommepresse = Song.create!(lyrics: hommepres, author: "Noir Désir",title:"Homme Pressé", genre: 'rock', year: 1996)
+
+
+miaa =  File.read("app/assets/lyrics/mia.txt")
+@mia = Song.create!(lyrics: miaa, author: "IAM",title: "Je danse le mia", genre: 'rap', year: 1993)
+
+foule =  File.read("app/assets/lyrics/foulesentimentale.txt")
+@sentimentale = Song.create!(lyrics: foule, author: "Souchon",title: "Foule sentimentale", genre: 'moderne', year: 1993)
+
+hissezhaut =  File.read("app/assets/lyrics/santiano.txt")
+@santiano = Song.create!(lyrics: hissezhaut, author: "Aufray",title: "Santiano", genre: 'folk', year: 1990)
+
+
+
+
+dal =  File.read("app/assets/lyrics/__.txt")
+@da = Song.create!(lyrics: --, author: "--",title: "--", genre: '__', year: --)
 
 
 
