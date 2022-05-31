@@ -13,7 +13,7 @@ puts "Creation du joueur"
 
 puts "Creation de la song"
 lyrics = File.read("app/assets/paroles.txt")
-@belle = Song.create!(lyrics: lyrics, author: "Notre-Dame", title: "Belle")
+@belle = Song.create!(lyrics: lyrics, author: "Céline Dion", title: "Pour que tu m'aimes encore")
 
 puts "Creation du game mode"
 @solo = Game.create!(name: "Chanson du jour")
