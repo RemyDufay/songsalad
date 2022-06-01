@@ -1,7 +1,4 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<div><%= link_to "Solo",  game_game_sessions_path(:game_id => @solo), method: :post %></div>
-<div><%= link_to "Playlist (5 chansons)",  game_game_sessions_path(:game_id => @playlist), method: :post %></div>
+
 <%# warper %>
 <div class="container">
 
@@ -14,8 +11,8 @@
 <%# h6 & BUTTONS%>
 <div class="container text-center mt-5">
   <h6 class="mt-5">Choisissez votre mode de jeu</h6>
-  <%= link_to "1 CHANSON", solo_path, class: "btn d-block btn-primary btn-lg mb-5" %>
-  <%= link_to "5 CHANSONs", playlist_path, class: "btn d-block btn-primary btn-lg mb-5" %>
+  <%= link_to "1 CHANSON", game_game_sessions_path(:game_id => @solo), method: :post, class: "btn d-block btn-primary btn-lg mb-5" %>
+  <%= link_to "5 CHANSONs", game_game_sessions_path(:game_id => @playlist), method: :post, class: "btn d-block btn-primary btn-lg mb-5" %>
 </div>
 
 
