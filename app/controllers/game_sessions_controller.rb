@@ -22,26 +22,6 @@ class GameSessionsController < ApplicationController
     redirect_to game_game_session_path( game_id: game.id, id: game_session.id )
   end
 
-  # def playlist
-  #   game = Game.find_by(name: "Playlist")
-  #   if guest_present?
-  #     guest = current_guest
-  #   else
-  #     guest = Guest.create
-  #     session[:guest_id] = guest.id
-  #   end
-
-  #   if GameSession.find_by(guest: guest, game: game).nil?
-  #   game_session = GameSession.new
-  #   game_session.guest = guest
-  #   game_session.game = game
-  #   game_session.save!
-  #   else
-  #   game_session = GameSession.find_by(guest: guest, game: game)
-  #   end
-  #   redirect_to game_session_path(game_session)
-  # end
-
   def show
     @game_session = GameSession.find(params[:id])
 
