@@ -26,12 +26,28 @@ class GameSessionsController < ApplicationController
 
     # Init de la partie
     @game_session = GameSession.find(params[:id])
-    @game_song = @game_session.game.game_songs[0]
+    @game_songs = @game_session.game.game_songs
 
-    if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?
-      @game_session_song = GameSessionSong.create!(game_session: @game_session, game_song: @game_song)
+    # Creation des SessionSongs si elles n'existent pas
+    if GameSessionSong.find_by(game_session: @game_session).nil?
+      @game_songs.each do |game_song|
+        GameSessionSong.create!(game_session: @game_session, game_song: game_song)
+      end
+      @game_session_song = GameSessionSong.where(game_session: @game_session).first
+      @game_session_song.status = "ongoing"
+      @game_session_song.save
+    end
+
+    # Verif si il y a une chanson ongoing ou non. Si non, passage à la prochaine. Si pas de prochaine, victoire
+    if GameSessionSong.where(game_session: @game_session, status: "ongoing").exists?
+      @game_session_song = GameSessionSong.find_by(game_session: @game_session, status: "ongoing")
+    elsif GameSessionSong.where(game_session: @game_session, status: nil ).exists?
+      @game_session_song = GameSessionSong.where(game_session: @game_session, status: nil ).first
+      @game_session_song.status = "ongoing"
+      @game_session_song.save
     else
-      @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
+      redirect_to victory_game_game_session_path(game_id: params[:game_id], id: params[:id])
+      raise
     end
 
     # Render des paroles
@@ -68,8 +84,11 @@ class GameSessionsController < ApplicationController
 
     # Vérification des conditions de victoire
     if @lyricsrender.join.include? @game_session_song.game_song.song.title
-      redirect_to victory_game_game_session_path(@game_session)
+      @game_session_song.status = "done"
+      @game_session_song.save
+      redirect_to game_game_session_path( game_id: params[:game_id], id: params[:id] )
     end
+
   end
 
   def victory
