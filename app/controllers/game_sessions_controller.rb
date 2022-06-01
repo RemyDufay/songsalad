@@ -3,7 +3,7 @@ require 'open-uri'
 
 class GameSessionsController < ApplicationController
   def solo
-    game = Game.find_by(name: "Chanson du jour")
+    game = Game.find(params[:game_id])
     if guest_present?
       guest = current_guest
     else
@@ -22,29 +22,29 @@ class GameSessionsController < ApplicationController
     redirect_to game_session_path(game_session)
   end
 
-  def playlist
-    game = Game.find_by(name: "Playlist")
-    if guest_present?
-      guest = current_guest
-    else
-      guest = Guest.create
-      session[:guest_id] = guest.id
-    end
+  # def playlist
+  #   game = Game.find_by(name: "Playlist")
+  #   if guest_present?
+  #     guest = current_guest
+  #   else
+  #     guest = Guest.create
+  #     session[:guest_id] = guest.id
+  #   end
 
-    if GameSession.find_by(guest: guest, game: game).nil?
-    game_session = GameSession.new
-    game_session.guest = guest
-    game_session.game = game
-    game_session.save!
-    else
-    game_session = GameSession.find_by(guest: guest, game: game)
-    end
-    redirect_to game_session_path(game_session)
-  end
+  #   if GameSession.find_by(guest: guest, game: game).nil?
+  #   game_session = GameSession.new
+  #   game_session.guest = guest
+  #   game_session.game = game
+  #   game_session.save!
+  #   else
+  #   game_session = GameSession.find_by(guest: guest, game: game)
+  #   end
+  #   redirect_to game_session_path(game_session)
+  # end
 
   def show
     @game_session = GameSession.find(params[:id])
-    
+
     @game_song = @game_session.game.game_songs[0]
 
     if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?

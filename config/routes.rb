@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
 
-
+ressources :games, only: [] do
   resources :game_sessions, only: [:create, :show] do
     resources :game_session_songs, only: [:create] do
       resources :guesses, only: [:create]
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :victory # score ici
     end
   end
-
+end
 
   resources :guests, only: [] do
 
