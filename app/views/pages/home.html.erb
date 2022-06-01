@@ -1,7 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Solo", game_sessions_create_path %>
-<%= simple_form_for(@game_session) do |f| %>
-  <%= f.hidden_field :game %>
-  <%= f.submit "Playlist Mode", class: "btn btn-default btn-primary" %>
-<% end %>
+<%# warper %>
+<div class="container">
+
+<%# Logo & H1 %>
+<div class="container text-center mb-5">
+  <img class="img-fluid mb-5" src="/assets/logo-smile.png" alt="song salad logo smile" width="270" height="270">
+  <h1 class="mt-5 mb-5">Trouvez un slogan sympa</h1>
+</div>
+
+<%# h6 & BUTTON%>
+<div class="container text-center mt-5">
+  <h6 class="mt-5">Choisissez votre mode de jeu</h6>
+  <%= link_to "Solo", game_sessions_create_path, class: "btn d-block btn-primary btn-lg mb-5" %>
+  <%= simple_form_for(@game_session) do |f| %>
+    <%= f.hidden_field :game %>
+    <%= f.submit "Playlist Mode", class: "btn d-block btn-primary w-100 btn-lg mb-5" %>
+  <% end %>
+</div>
+
+  <%# small button %>
+  <div class="container text-center fixed-bottom">
+    <%= link_to rules_path, class: "btn btn-warning mb-4" do %>
+      <i class="fa-light fa-book-sparkles"></i>
+    <% end %>
+
+    <%= link_to "Stats", game_sessions_create_path, class: "btn btn-warning mb-4" %>
+
+      <%= link_to faq_path, class: "btn btn-warning mb-4" do %>
+      <i class="fa-light fa-book-sparkles"></i>
+    <% end %>
+  </div>
+</div>
