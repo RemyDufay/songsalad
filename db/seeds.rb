@@ -14,11 +14,8 @@ GameSessionSong.destroy_all
 GameSession.destroy_all
 GameSong.destroy_all
 Game.destroy_all
-Guest.destroy_all
+# Guest.destroy_all
 Song.destroy_all
-
-puts "Creation du joueur"
-@joueur = Guest.create!
 
 puts "Creation de la song"
 lyrics = File.read("app/assets/paroles.txt")
@@ -209,14 +206,10 @@ cegenla =  File.read("app/assets/lyrics/cesgensla.txt")
 @cesgensla= Song.create!(lyrics: cegenla, author: "Brel",title: "Ces gens là", genre:'classique', year: 1965)
 
 
-
 puts "Creation du game mode"
 @solo = Game.create!(name: "Chanson du jour")
 
 puts "Creation de la game_song"
 @song1 = GameSong.create!(game: @solo, song: @belle)
 
-puts "Creation de la game_session"
-
-# @session = GameSession.create!(guest: @joueur, game: @solo)
 puts "DONE"
