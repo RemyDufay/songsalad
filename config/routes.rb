@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :game_sessions, only: [:create, :show] do
-    
+
     resources :game_session_songs, only: [:create] do
       resources :guesses, only: [:create]
     end

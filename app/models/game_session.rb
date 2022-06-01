@@ -4,5 +4,4 @@ class GameSession < ApplicationRecord
   has_many :game_session_songs
   has_many :game_songs, through: :game
   has_many :songs, through: :game_songs
-
 end
