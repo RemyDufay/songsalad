@@ -144,7 +144,7 @@ encore =  File.read("app/assets/lyrics/encoreetencore.txt")
 
 
 mistralgagnant =  File.read("app/assets/lyrics/lemistralgagnant.txt")
-@mistralgagnat = Song.create!(lyrics: mistralgagnant, author: "Renaud",title: "Le mistral gagnant", genre: 'chanson française', year: 1985)
+@mistralgagnant = Song.create!(lyrics: mistralgagnant, author: "Renaud",title: "Le mistral gagnant", genre: 'chanson française', year: 1985)
 
 
 lessos =  File.read("app/assets/lyrics/sos.txt")
@@ -166,7 +166,7 @@ vie =  File.read("app/assets/lyrics/lavienemapprendrien.txt")
 @lavienemapprendrien = Song.create!(lyrics: vie, author: "Balavoine",title: "La vie ne m’apprend rien", genre: 'chanson française', year: 1980)
 
 amourir =  File.read("app/assets/lyrics/jelaimeamourir.txt")
-@jelaimemourir = Song.create!(lyrics: amourir, author: "Cabrel",title: "Je l aime a mourir", genre: 'chanson française', year: 1979)
+@jelaimemourir = Song.create!(lyrics: amourir, author: "Cabrel",title: "Je l'aime à mourir", genre: 'chanson française', year: 1979)
 
 alexandra =  File.read("app/assets/lyrics/alexandriealexandra.txt")
 @alexandrie= Song.create!(lyrics: alexandra, author: "Claude François",title: "Alexandrie  Alexandra", genre: 'pop', year: 1977)
@@ -177,8 +177,8 @@ lesud =  File.read("app/assets/lyrics/sud.txt")
 paroles =  File.read("app/assets/lyrics/parolesparoles.txt")
 @parole = Song.create!(lyrics: paroles, author: "Dalida",title: "Paroles paroles", genre: 'classique', year: 1973)
 
-safrancisco =  File.read("app/assets/lyrics/sanfrancisco.txt")
-@sanfrancisco = Song.create!(lyrics: safrancisco, author: "Maxime le Forestier",title: "San Francisco", genre: 'folk', year: 1972)
+sanfrancisco =  File.read("app/assets/lyrics/sanfrancisco.txt")
+@sanfrancisco = Song.create!(lyrics: sanfrancisco, author: "Maxime le Forestier",title: "San Francisco", genre: 'folk', year: 1972)
 
 hermine =  File.read("app/assets/lyrics/lablanchehermine.txt")
 @blanchehermine= Song.create!(lyrics: hermine, author: "Gilles Servat",title: "La blanche Hermine", genre: 'folk', year: 1971)
@@ -206,10 +206,17 @@ cegenla =  File.read("app/assets/lyrics/cesgensla.txt")
 @cesgensla= Song.create!(lyrics: cegenla, author: "Brel",title: "Ces gens là", genre:'classique', year: 1965)
 
 
-puts "Creation du game mode"
+puts "Creation des game mode"
 @solo = Game.create!(name: "Chanson du jour")
+@playlist = Game.create!(name: "Playlist")
 
 puts "Creation de la game_song"
 @song1 = GameSong.create!(game: @solo, song: @belle)
+@song2 = GameSong.create!(game: @playlist, song: @jelaimemourir)
+@song3 = GameSong.create!(game: @playlist, song: @mistralgagnant)
+@song4 = GameSong.create!(game: @playlist, song: @toutoublier)
+@song5 = GameSong.create!(game: @playlist, song: @dernieredanse)
+@song6 = GameSong.create!(game: @playlist, song: @sanfrancisco)
+
 
 puts "DONE"

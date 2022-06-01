@@ -32,6 +32,6 @@
 Nombre d'essais : <%= Guess.where(game_session_song: @game_session_song).count %>
 </div>
 
-
+<div class="Debug"> <%= @game_session_song.game_song.song.title %> </div>
 
 </div>

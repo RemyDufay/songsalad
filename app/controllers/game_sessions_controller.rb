@@ -2,7 +2,8 @@ require 'nokogiri'
 require 'open-uri'
 
 class GameSessionsController < ApplicationController
-  def create
+  def solo
+    game = Game.find_by(name: "Chanson du jour")
     if guest_present?
       guest = current_guest
     else
@@ -10,15 +11,40 @@ class GameSessionsController < ApplicationController
       session[:guest_id] = guest.id
     end
 
-    @game_session = GameSession.new
-    @game_session.guest = guest
-    @game_session.game = Game.last
-    @game_session.save!
-    redirect_to game_session_path(@game_session)
+    if GameSession.find_by(guest: guest, game: game).nil?
+    game_session = GameSession.new
+    game_session.guest = guest
+    game_session.game = game
+    game_session.save!
+    else
+    game_session = GameSession.find_by(guest: guest, game: game)
+    end
+    redirect_to game_session_path(game_session)
+  end
+
+  def playlist
+    game = Game.find_by(name: "Playlist")
+    if guest_present?
+      guest = current_guest
+    else
+      guest = Guest.create
+      session[:guest_id] = guest.id
+    end
+
+    if GameSession.find_by(guest: guest, game: game).nil?
+    game_session = GameSession.new
+    game_session.guest = guest
+    game_session.game = game
+    game_session.save!
+    else
+    game_session = GameSession.find_by(guest: guest, game: game)
+    end
+    redirect_to game_session_path(game_session)
   end
 
   def show
     @game_session = GameSession.find(params[:id])
+    
     @game_song = @game_session.game.game_songs[0]
 
     if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?
@@ -63,7 +89,7 @@ class GameSessionsController < ApplicationController
 
   def victory
     @game_session = GameSession.find(params[:id])
-    @player = @game_session.guest
+    @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
   end
 
   private
