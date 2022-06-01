@@ -23,8 +23,9 @@ class GameSessionsController < ApplicationController
   end
 
   def show
-    @game_session = GameSession.find(params[:id])
 
+    # Init de la partie
+    @game_session = GameSession.find(params[:id])
     @game_song = @game_session.game.game_songs[0]
 
     if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?
@@ -32,6 +33,8 @@ class GameSessionsController < ApplicationController
     else
       @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
     end
+
+    # Render des paroles
 
     @lyricsrender = @game_session_song.game_song.song.splitted_lyrics
 
@@ -45,6 +48,7 @@ class GameSessionsController < ApplicationController
       end
     end
 
+    # Prise d'input, création des guesses et refresh des paroles
     if params[:query].present?
       word = params[:query].downcase.strip
       frequency = 0
@@ -62,6 +66,7 @@ class GameSessionsController < ApplicationController
       redirect_to game_game_session_path( game_id: params[:game_id], id: params[:id] )
     end
 
+    # Vérification des conditions de victoire
     if @lyricsrender.join.include? @game_session_song.game_song.song.title
       redirect_to victory_game_game_session_path(@game_session)
     end
