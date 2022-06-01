@@ -16,7 +16,7 @@
       </ol>
 
         <div class="formulaire">
-            <%= form_tag game_session_path(@game_session), method: :get, class: "d-flex"  do  %>
+            <%= form_tag game_game_session_path( game_id: params[:game_id], id: params[:id] ), method: :get, class: "d-flex"  do  %>
               <%= text_field_tag :query,
                   "",
                   class: "form-control",

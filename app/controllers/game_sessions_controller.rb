@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class GameSessionsController < ApplicationController
-  def solo
+  def create
     game = Game.find(params[:game_id])
     if guest_present?
       guest = current_guest
@@ -19,7 +19,7 @@ class GameSessionsController < ApplicationController
     else
     game_session = GameSession.find_by(guest: guest, game: game)
     end
-    redirect_to game_session_path(game_session)
+    redirect_to game_game_session_path( game_id: game.id, id: game_session.id )
   end
 
   # def playlist
@@ -79,11 +79,11 @@ class GameSessionsController < ApplicationController
         Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
       end
 
-      redirect_to game_session_path(@game_session)
+      redirect_to game_game_session_path( game_id: params[:game_id], id: params[:id] )
     end
 
     if @lyricsrender.join.include? @game_session_song.game_song.song.title
-      redirect_to victory_game_session_path(@game_session)
+      redirect_to victory_game_game_session_path(@game_session)
     end
   end
 
