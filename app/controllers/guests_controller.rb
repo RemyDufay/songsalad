@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
-  def destroy
-    @guests = GameSession.find(params[:id])
+  def reset
+    @guests = Guest.find(params[:id])
     @guests.destroy
 
     redirect_to stats_guest_path

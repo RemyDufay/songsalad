@@ -3,10 +3,17 @@ require 'open-uri'
 
 class GameSessionsController < ApplicationController
   def create
-    @game_session = GameSession.new
-    @game_session.guest_id = 1
-    @game_session.game_id = 1
-    @game_session.save
+    # @game_session = GameSession.new
+
+    # Create un vrai guest
+    @current_guest = Guest.find_by(params[:session])
+    # caler le guest.id dans la session
+    @session = guest_id
+    # @game_session.guest_id = 1
+
+
+    # @game_session.game_id = 1
+    @session.save
     redirect_to game_session_path(@game_session)
   end
 
@@ -51,7 +58,6 @@ class GameSessionsController < ApplicationController
   def victory
     @game_session = GameSession.find(params[:id])
     @player = @game_session.guest
-
   end
 
   private

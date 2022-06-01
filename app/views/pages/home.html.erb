@@ -5,3 +5,5 @@
   <%= f.hidden_field :game %>
   <%= f.submit "Playlist Mode", class: "btn btn-default btn-primary" %>
 <% end %>
+<br>
+<%= link_to "Stats", stats_guest_path(session (:id)) %>
