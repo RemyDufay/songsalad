@@ -44,15 +44,16 @@ class GameSessionsController < ApplicationController
       @game_session_song.save
       end
 
-      if Guess.where(game_session_song: @game_session_song, word: word).nil?
+      if Guess.where(game_session_song: @game_session_song, word: word).empty?
       Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
       end
 
       redirect_to game_session_path(@game_session)
-
     end
 
-
+    if @lyricsrender.join.include? @game_session_song.game_song.song.title
+      redirect_to victory_game_session_path(@game_session)
+    end
 end
 
 

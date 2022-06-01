@@ -9,11 +9,11 @@
  <div class="propals d-flex">
 
       <div class="listprop">
-      <ol>
-       <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
-      <li> <%= guess.word %> : <%= guess.frequency %> </li>
-        <% end %>
-        </ol>
+      <ul>
+        <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
+        <li> <%= guess.word %> : <%= guess.frequency %> </li>
+          <% end %>
+      </ol>
 
         <div class="formulaire">
             <%= form_tag game_session_path(@game_session), method: :get, class: "d-flex"  do  %>
@@ -28,8 +28,8 @@
         </div>
     </div>
 
-<div class= "Debug">
-
+<div class= "triescount">
+Nombre d'essais : <%= Guess.where(game_session_song: @game_session_song).count %>
 </div>
 
 
