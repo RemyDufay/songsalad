@@ -2,15 +2,18 @@
 
 <div class="container homepage d-flex">
       <div class="lyrics">
-        <%= @lyrics.join.html_safe %>
+        <%= @lyricsrender.join.html_safe %>
       </div>
 
 
  <div class="propals d-flex">
-      <div class="listprop">
 
-          </ol>
-        </div>
+      <div class="listprop">
+      <ol>
+       <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
+      <li> <%= guess.word %> : <%= guess.frequency %> </li>
+        <% end %>
+        </ol>
 
         <div class="formulaire">
             <%= form_tag game_session_path(@game_session), method: :get, class: "d-flex"  do  %>
@@ -24,4 +27,11 @@
               <% end %>
         </div>
     </div>
+
+<div class= "Debug">
+
+</div>
+
+
+
 </div>

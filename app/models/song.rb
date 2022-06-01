@@ -13,12 +13,12 @@ end
 
 def build_lyrics_index
   self.lyrics_index = self.splitted_lyrics.each_with_index.reduce({}) do |lyrics_index, (word, index)|
-    lyrics_index[word] ||= {
+    lyrics_index[word.downcase] ||= {
       positions: [],
       count:     0
     }
-    lyrics_index[word][:positions] << index + 1
-    lyrics_index[word][:count] += 1
+    lyrics_index[word.downcase][:positions] << index + 1
+    lyrics_index[word.downcase][:count] += 1
     lyrics_index
   end
   self.save

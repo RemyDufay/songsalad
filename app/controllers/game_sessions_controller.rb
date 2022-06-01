@@ -12,28 +12,46 @@ class GameSessionsController < ApplicationController
   end
 
   def show
-
     @game_session = GameSession.find(params[:id])
     @game_song = @game_session.game.game_songs[0]
-    @game_session_songs = GameSessionSong.create!(game_session: @game_session, game_song: @game_song )
-    @lyrics = @game_song.song.splitted_lyrics
 
-    @lyrics.map! do |word|
-          if @game_session_songs.guessed_lyrics_index[word][:guessed]
-            word
-          elsif word == "\n"
-            "<br>"
-          else
-            redact(word)
+    if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?
+      @game_session_song = GameSessionSong.create!(game_session: @game_session, game_song: @game_song)
+    else
+      @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
+    end
+
+    @lyricsrender = @game_session_song.game_song.song.splitted_lyrics
+
+
+    @lyricsrender.map! do |word|
+        if word == "\n"
+          "<br>"
+        elsif @game_session_song.guessed_lyrics_index[word.downcase]["guessed"]
+        word
+         else
+           redact(word)
       end
     end
 
     if params[:query].present?
       word = params[:query].downcase.strip
       frequency  = 0
-      Guess.create!(game_session_song: @game_session_songs, word: word, frequency: frequency)
+
+      if !@game_session_song.guessed_lyrics_index[word].nil?
+      @game_session_song.guessed_lyrics_index[word]["guessed"] = true
+      frequency =  @game_session_song.guessed_lyrics_index[word]["count"]
+      @game_session_song.save
+      end
+
+      if Guess.where(game_session_song: @game_session_song, word: word).nil?
+      Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
+      end
+
       redirect_to game_session_path(@game_session)
+
     end
+
 
 end
 

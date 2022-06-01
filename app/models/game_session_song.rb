@@ -8,10 +8,10 @@ class GameSessionSong < ApplicationRecord
 def build_guessed_lyrics_index
 
   self.guessed_lyrics_index = self.game_song.song.lyrics_index.each do |k, v|
-    if k =~ /[[\W]]/
-      v[:guessed] = true
-    else
+    if k =~ /[[A-zÀ-ú-œ]]/
       v[:guessed] = false
+    else
+      v[:guessed] = true
     end
   end
   self.save
