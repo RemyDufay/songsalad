@@ -2,8 +2,8 @@ require 'nokogiri'
 require 'open-uri'
 
 class GameSessionsController < ApplicationController
-  def solo
-    game = Game.find_by(name: "Chanson du jour")
+  def create
+    game = Game.find(params[:game_id])
     if guest_present?
       guest = current_guest
     else
@@ -19,32 +19,12 @@ class GameSessionsController < ApplicationController
     else
     game_session = GameSession.find_by(guest: guest, game: game)
     end
-    redirect_to game_session_path(game_session)
-  end
-
-  def playlist
-    game = Game.find_by(name: "Playlist")
-    if guest_present?
-      guest = current_guest
-    else
-      guest = Guest.create
-      session[:guest_id] = guest.id
-    end
-
-    if GameSession.find_by(guest: guest, game: game).nil?
-    game_session = GameSession.new
-    game_session.guest = guest
-    game_session.game = game
-    game_session.save!
-    else
-    game_session = GameSession.find_by(guest: guest, game: game)
-    end
-    redirect_to game_session_path(game_session)
+    redirect_to game_game_session_path( game_id: game.id, id: game_session.id )
   end
 
   def show
     @game_session = GameSession.find(params[:id])
-    
+
     @game_song = @game_session.game.game_songs[0]
 
     if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?
@@ -79,11 +59,11 @@ class GameSessionsController < ApplicationController
         Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
       end
 
-      redirect_to game_session_path(@game_session)
+      redirect_to game_game_session_path( game_id: params[:game_id], id: params[:id] )
     end
 
     if @lyricsrender.join.include? @game_session_song.game_song.song.title
-      redirect_to victory_game_session_path(@game_session)
+      redirect_to victory_game_game_session_path(@game_session)
     end
   end
 
