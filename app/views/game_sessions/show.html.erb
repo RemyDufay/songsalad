@@ -1,5 +1,5 @@
 <div style="width:auto; text-align:center;"><%= flash[:notice] if flash[:notice] %></div>
-  <% if user_signed_in? %> <%= current_user.id %>
+
 <div class="container homepage d-flex">
       <div class="lyrics">
         <%= @lyricsrender.join.html_safe %>
