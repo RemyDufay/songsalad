@@ -2,20 +2,18 @@
   <% if user_signed_in? %> <%= current_user.id %>
 <div class="container homepage d-flex">
       <div class="lyrics">
-        <%= @htmlredact.html_safe %>
+        <%= @lyricsrender.join.html_safe %>
       </div>
 
 
-    <div class="propals d-flex">
+ <div class="propals d-flex">
+
       <div class="listprop">
-          <ol reversed id="colcol">
-            <% Guess.where(game_session: @game_session).reverse_each do |guess| %>
-            <li>
-              <%=guess.word %> : <%= guess.frequency %>
-            </li>
-            <% end %>
-          </ol>
-        </div>
+      <ul>
+        <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
+        <li> <%= guess.word %> : <%= guess.frequency %> </li>
+          <% end %>
+      </ol>
 
         <div class="formulaire">
             <%= form_tag game_session_path(@game_session), method: :get, class: "d-flex"  do  %>
@@ -29,4 +27,11 @@
               <% end %>
         </div>
     </div>
+
+<div class= "triescount">
+Nombre d'essais : <%= Guess.where(game_session_song: @game_session_song).count %>
+</div>
+
+
+
 </div>

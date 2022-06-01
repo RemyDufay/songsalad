@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class GameSessionsController < ApplicationController
+
   def create
     # @game_session = GameSession.new
 
@@ -14,46 +15,58 @@ class GameSessionsController < ApplicationController
 
     # @game_session.game_id = 1
     @session.save
+    @game_session = GameSession.new
+    @game_session.guest = Guest.last
+    @game_session.game = Game.last
+    @game_session.save!
     redirect_to game_session_path(@game_session)
   end
 
   def show
     @game_session = GameSession.find(params[:id])
+    @game_song = @game_session.game.game_songs[0]
 
-    # Récupération des paroles
-    $htmlyrics = @game_session.songs[0].lyrics
+    if GameSessionSong.find_by(game_session: @game_session, game_song: @game_song).nil?
+      @game_session_song = GameSessionSong.create!(game_session: @game_session, game_song: @game_song)
+    else
+      @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
+    end
 
-    # Transformation des paroles en module Nokogiri, qui permettra par la suite
-    # de naviguer dans les balises html et censurer les mots (sans perdre le balisage)
-    @html = Nokogiri::HTML.fragment($htmlyrics)
+    @lyricsrender = @game_session_song.game_song.song.splitted_lyrics
 
-    # On stocke le titre (la premier balise div) dans un coin pour vérifier la condition de victoire
-    @title = @game_session.songs[0].title
 
-    # Création d'un array avec tous les mots de la chanson, qui permet ensuite de
-    # lancer un .count et récupérer la fréquence d'un mot dans la chanson
-    @arrayofwords = $htmlyrics.split(/([a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).map!(&:downcase).reject!(&:empty?)
+    @lyricsrender.map! do |word|
+        if word == "\n"
+          "<br>"
+        elsif @game_session_song.guessed_lyrics_index[word.downcase]["guessed"]
+        word
+         else
+           redact(word)
+      end
+    end
 
-    # A chaque chargement de la page, on génére les paroles censurées :
-    @htmlredact = htmlredact
-
-    # On vérifie si il ya un mot soumis par le formulaire
-    # Si oui on crée un Guess avec, et on redirect vers le show pour "nettoyer" l'url du param
-    # Peut sans doute etre amélioré en ne mettant pas le résultat du form dans l'url ?
-    # Ce qui éviterait une redirection inutile.
     if params[:query].present?
       word = params[:query].downcase.strip
-      frequency = @arrayofwords.count(word)
-      Guess.create!(game_session: @game_session, word: word, frequency: frequency)
+      frequency  = 0
+
+      if !@game_session_song.guessed_lyrics_index[word].nil?
+      @game_session_song.guessed_lyrics_index[word]["guessed"] = true
+      frequency =  @game_session_song.guessed_lyrics_index[word]["count"]
+      @game_session_song.save
+      end
+
+      if Guess.where(game_session_song: @game_session_song, word: word).empty?
+      Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
+      end
+
       redirect_to game_session_path(@game_session)
     end
 
-    # Condition de victoire : si le texte ne censure plus le titre, c'est gagné.
-    if @htmlredact.include? @title
-      flash[:notice] = "✨Bravo !✨"
+    if @lyricsrender.join.include? @game_session_song.game_song.song.title
       redirect_to victory_game_session_path(@game_session)
     end
-  end
+end
+
 
   def victory
     @game_session = GameSession.find(params[:id])
@@ -62,33 +75,6 @@ class GameSessionsController < ApplicationController
 
   private
 
-  # Récupere le fichier html et, pour chaque div, lance la censure
-  # C'est Nokogiri qui fait le job de visiter chaque div.
-  # Pourquoi ne pas itérer et renvoyer du texte ? Parce qu'on veut garder
-  # les balises html pour la mise en forme !
-  def htmlredact
-    htmlredacted = @html.css("div").each do |node|
-      node.content = stringredact(node.content)
-    end
-    return htmlredacted.to_html
-  end
-
-  # Divise une string en mots/ponctuaction/espaces et applique redact() sur chaque élément non proposé par l'utilisateur
-  # C'est le moteur du jeu : Celui qui décide ce qui est caché ou non.
-  # La regex permet de séparer mots, ponctuation, etc.. et garde les mots
-  # à cédille, comme "aujourd'hui", en entiers
-  def stringredact(string)
-    redacted = string.split(/(\w{3,}'\w{3,}|[a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/).reject!(&:empty?).map do |word|
-      if Guess.where(game_session: @game_session).where(word: word.downcase).empty?
-        redact(word)
-      else
-        word
-      end
-    end
-    redacted.join('')
-  end
-
-  # Remplace chaque lettre d'un mot par un bloc. Uniquement si il s'agit d'alphanumérique
   def redact(word)
     redacted = ""
     word.each_char do |char|
@@ -97,7 +83,9 @@ class GameSessionsController < ApplicationController
     return redacted
   end
 
+
   def game_session_params
     params.require(:game_session).permit(:guest_id, :game_id, :victory?)
   end
+
 end

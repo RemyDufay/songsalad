@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_143314) do
+ActiveRecord::Schema.define(version: 2022_05_31_172803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "game_session_songs", force: :cascade do |t|
+    t.bigint "game_session_id", null: false
+    t.bigint "game_song_id", null: false
+    t.jsonb "guessed_lyrics_index", default: {}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_session_id"], name: "index_game_session_songs_on_game_session_id"
+    t.index ["game_song_id"], name: "index_game_session_songs_on_game_song_id"
+  end
 
   create_table "game_sessions", force: :cascade do |t|
     t.bigint "guest_id", null: false
@@ -42,12 +52,12 @@ ActiveRecord::Schema.define(version: 2022_05_30_143314) do
   end
 
   create_table "guesses", force: :cascade do |t|
-    t.bigint "game_session_id", null: false
     t.string "word"
     t.integer "frequency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_session_id"], name: "index_guesses_on_game_session_id"
+    t.bigint "game_session_song_id"
+    t.index ["game_session_song_id"], name: "index_guesses_on_game_session_song_id"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -63,6 +73,8 @@ ActiveRecord::Schema.define(version: 2022_05_30_143314) do
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "splitted_lyrics", default: []
+    t.jsonb "lyrics_index", default: {}
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,9 +89,11 @@ ActiveRecord::Schema.define(version: 2022_05_30_143314) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "game_session_songs", "game_sessions"
+  add_foreign_key "game_session_songs", "game_songs"
   add_foreign_key "game_sessions", "games"
   add_foreign_key "game_sessions", "guests"
   add_foreign_key "game_songs", "games"
   add_foreign_key "game_songs", "songs"
-  add_foreign_key "guesses", "game_sessions"
+  add_foreign_key "guesses", "game_session_songs"
 end
