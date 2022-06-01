@@ -1,6 +1,11 @@
 Bravo !
-Vous avez trouvé la chanson en <%= @game_session.guesses.count %> coups.
+Vous avez trouvé la chanson en <%= Guess.where(game_session_song: @game_session_song).count %> coups.
 
 Vous avez fait <%= @player.game_sessions.count %> parties.
 
-Il s'agissait de <%= @game_session.songs[0].title %> par <%= @game_session.songs[0].author %>
+<% @game_session.game_session_songs.each do |song|%>
+Il s'agissait de <%= song.game_song.song.title %> par <%= song.game_song.song.author %>
+<% end %>
+
+
+

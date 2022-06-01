@@ -10,6 +10,7 @@
 puts "Seed reset"
 
 Guess.destroy_all
+GameSessionSong.destroy_all
 GameSession.destroy_all
 GameSong.destroy_all
 Game.destroy_all
