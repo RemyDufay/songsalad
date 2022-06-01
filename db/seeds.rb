@@ -16,7 +16,7 @@ lyrics = File.read("app/assets/paroles.txt")
 @belle = Song.create!(lyrics: lyrics, author: "Céline Dion", title: "Pour que tu m'aimes encore")
 
 dernieredansel =  File.read("app/assets/lyrics/dernieredanse.txt")
-@dernieredanse = Song.create!(lyrics: dernieredansel, author: "Kyo", title: "Dernière danse", genre: 'pop', year: 2003)
+@dernieredanse = Song.create!(lyrics: dernieredansel, author: "Kyo", title: "Dernière danse", genre: 'rock', year: 2003)
 
 letempsestbonl =  File.read("app/assets/lyrics/letempsestbon.txt")
 @letempsestbon = Song.create!(lyrics: letempsestbonl, author: "A bon entendeur", genre:'electro', year: 2019)
@@ -79,12 +79,12 @@ pholosophiel =  File.read("app/assets/lyrics/maphilosophie.txt")
 @philosophie = Song.create!(lyrics: pholosophiel, author: "Amel Bent",title: " Ma Philosophie", genre:'populaire', year: 2004)
 
 parcequonvientdeloin =  File.read("app/assets/lyrics/parcequonvientdeloin.txt")
-@parcequonvientde = Song.create!(lyrics: parcequonvientdeloin, author: "Corneille",title: "Parce qu'on vient de loin", genre:'moderne', year:   2002)
+@parcequonvientde = Song.create!(lyrics: parcequonvientdeloin, author: "Corneille",title: "Parce qu'on vient de loin", genre:'moderne', year: 2002)
 
 
 
 quelqunmadil =  File.read("app/assets/lyrics/quelqunmadit.txt")
-@quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "Quelq’un m’a dit", genre:'moderne', year:  2002)
+@quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "Quelq’un m’a dit", genre:'moderne', year: 2002)
 
 
 tameilleureamii =  File.read("app/assets/lyrics/meilleureamie.txt")
@@ -130,10 +130,74 @@ hissezhaut =  File.read("app/assets/lyrics/santiano.txt")
 @santiano = Song.create!(lyrics: hissezhaut, author: "Aufray",title: "Santiano", genre: 'folk', year: 1990)
 
 
+joe =  File.read("app/assets/lyrics/joeletaxi.txt")
+@joeletaxi = Song.create!(lyrics: joe, author: "Vanessa Paradis", title: "Joe le taxi", genre: 'varitété', year: 1988)
+
+encore =  File.read("app/assets/lyrics/encoreetencore.txt")
+@enecoreencore = Song.create!(lyrics: encore, author: "Francis Cabrel",title: "Encore et encore", genre: 'variété', year: 1985)
 
 
-dal =  File.read("app/assets/lyrics/__.txt")
-@da = Song.create!(lyrics: --, author: "--",title: "--", genre: '__', year: --)
+mistralgagnant =  File.read("app/assets/lyrics/lemistralgagnant.txt")
+@mistralgagnat = Song.create!(lyrics: mistralgagnant, author: "Renaud",title: "Le mistral gagnant", genre: 'chanson française', year: 1985)
+
+
+lessos =  File.read("app/assets/lyrics/sos.txt")
+@sos = Song.create!(lyrics: lessos, author: "Balavoine",title: "sos", genre: 'chanson française', year: 1985)
+
+envolmoi =  File.read("app/assets/lyrics/envolemoi.txt")
+@envolemoi = Song.create!(lyrics: envolmoi, author: "Goldman",title: "Envole moi", genre: 'chanson française', year: 1984)
+
+marcia =  File.read("app/assets/lyrics/marciabaila.txt")
+@marciabaila = Song.create!(lyrics: marcia, author: "Rita Mitsouko",title: "Marcia Baila", genre: 'pop', year: 1984)
+
+conemara =  File.read("app/assets/lyrics/connemara.txt")
+@connemara = Song.create!(lyrics: conemara, author: "Sardou",title: "Lac Du Connemara", genre: 'folk', year: 1981)
+
+resist =  File.read("app/assets/lyrics/resiste.txt")
+@resiste = Song.create!(lyrics: resist, author: "France Gall",title: "Résiste", genre: 'comédie musicale', year: 1981)
+
+vie =  File.read("app/assets/lyrics/lavienemapprendrien.txt")
+@lavienemapprendrien = Song.create!(lyrics: vie, author: "Balavoine",title: "La vie ne m’apprend rien", genre: 'chanson française', year: 1980)
+
+amourir =  File.read("app/assets/lyrics/jelaimeamourir.txt")
+@jelaimemourir = Song.create!(lyrics: amourir, author: "Cabrel",title: "Je l aime a mourir", genre: 'chanson française', year: 1979)
+
+alexandra =  File.read("app/assets/lyrics/alexandriealexandra.txt")
+@alexandrie= Song.create!(lyrics: alexandra, author: "Claude François",title: "Alexandrie  Alexandra", genre: 'pop', year: 1977)
+
+lesud =  File.read("app/assets/lyrics/sud.txt")
+@sud = Song.create!(lyrics: lesud, author: "Ferrer",title: "Le sud", genre: 'folk', year: 1975)
+
+paroles =  File.read("app/assets/lyrics/parolesparoles.txt")
+@parole = Song.create!(lyrics: paroles, author: "Dalida",title: "Paroles paroles", genre: 'classique', year: 1973)
+
+safrancisco =  File.read("app/assets/lyrics/sanfrancisco.txt")
+@sanfrancisco = Song.create!(lyrics: safrancisco, author: "Maxime le Forestier",title: "San Francisco", genre: 'folk', year: 1972)
+
+hermine =  File.read("app/assets/lyrics/lablanchehermine.txt")
+@blanchehermine= Song.create!(lyrics: hermine, author: "Gilles Servat",title: "La blanche Hermine", genre: 'folk', year: 1971)
+
+
+javanais =  File.read("app/assets/lyrics/javanaise.txt")
+@javanaise = Song.create!(lyrics: javanais , author: "Gainsbourg",title: "La Javanaise", genre:'classique', year: 1968)
+
+
+bonnie =  File.read("app/assets/lyrics/bonnieandclyde.txt")
+@clyde = Song.create!(lyrics: bonnie, author: "Gainsbourg", title: "Bonnie and Clyde", genre:'classique', year: 1968)
+
+
+commedabitude =  File.read("app/assets/lyrics/commedabitude.txt")
+@commedabit = Song.create!(lyrics: commedabitude , author: "Claude François",title: "Comme d’habitude", genre:'classique', year: 1967)
+
+
+boèm =  File.read("app/assets/lyrics/boheme.txt")
+@labohem = Song.create!(lyrics: boèm , author: "Aznavour",title: "La Bohème", genre:'classique', year: 1966)
+
+nononon =  File.read("app/assets/lyrics/poupe.txt")
+@non = Song.create!(lyrics: nononon, author: "Jean Michel Pollnaref",title: "La poupée qui fait non", genre:'classique', year: 1966)
+
+cegenla =  File.read("app/assets/lyrics/cesgensla.txt")
+@cesgensla= Song.create!(lyrics: cegenla, author: "Brel",title: "Ces gens là", genre:'classique', year: 1965)
 
 
 
