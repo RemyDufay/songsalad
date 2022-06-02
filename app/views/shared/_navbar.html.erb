@@ -1,7 +1,6 @@
 <div class="container text-center">
 <%# Logo return home %>
-    <%= link_to root_path, class: "navbar-brand image-fluid" do %>
+    <%= link_to root_path, class: "logo-nvb d-flex justify-content-center align-item-center" do %>
       <%= image_tag "song salad title navbar.png" %>
     <% end %>
-      <p> Mode: <%= @game_session.nil? ? "/" : @game_session.game.name </p> <p>Cookie : <%= session[:guest_id]%></p> %>
 </div>
