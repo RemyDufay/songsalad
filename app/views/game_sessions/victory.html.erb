@@ -1,5 +1,7 @@
 Bravo !
 
+<%= image_tag("victoire.png", width: 270, height: 270, :class => "img-fluid mb-5") %>
+
 C'était votre <%= current_guest.game_sessions.count %>eme parties.
 
 <% @game_session.game_session_songs.each do |song|%>
