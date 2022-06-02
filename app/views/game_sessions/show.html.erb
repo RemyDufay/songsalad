@@ -1,37 +1,35 @@
-<div style="width:auto; text-align:center;"><%= flash[:notice] if flash[:notice] %></div>
+<div id="show-game" data-controller="guess-chart">
+  <div>
+    <div class="lyrics px-4">
+      <%= @lyricsrender.join.html_safe %>
+    </div>
+  </div>
 
-<div class="container homepage d-flex">
-      <div class="lyrics">
-        <%= @lyricsrender.join.html_safe %>
-      </div>
+  <div class="d-none listprop d-flex flex-grow-1" data-guess-chart-target="content">
+    <ul>
+      <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
+      <li> <%= guess.word %> : <%= guess.frequency %> </li>
+      <% end %>
+    </ul>
+  </div>
 
+  <div class="propals d-flex ">
 
- <div class="propals d-flex">
-
-      <div class="listprop">
-      <ul>
-        <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
-        <li> <%= guess.word %> : <%= guess.frequency %> </li>
-          <% end %>
-      </ol>
-
-        <div class="formulaire">
-            <%= form_tag game_game_session_path( game_id: params[:game_id], id: params[:id] ), method: :get, class: "d-flex"  do  %>
-              <%= text_field_tag :query,
-                  "",
-                  class: "form-control",
-                  autofocus: true,
-                  autocomplete: "off"
-                %>
-              <%= submit_tag "Valider", class: "btn btn-primary" %>
-              <% end %>
-        </div>
+    <div class= "triescount d-flex align-items-center">
+      <button class="btn btn-warning btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
+        <i class="fas fa-sort"></i>
+        <%# <%= Guess.where(game_session_song: @game_session_song).count %>
+      </button>
     </div>
 
-<div class= "triescount">
-Nombre d'essais : <%= Guess.where(game_session_song: @game_session_song).count %>
-</div>
-
-<div class="Debug"> <%= @game_session_song.game_song.song.title %> </div>
-
+    <%= form_tag game_game_session_path( game_id: params[:game_id], id: params[:id] ), method: :get, class: "d-flex flex-grow-1"  do  %>
+      <%= text_field_tag :query,
+        "",
+        class: "form-control",
+        autofocus: true,
+        autocomplete: "off"
+      %>
+      <%= submit_tag "Valider", class: "btn btn-primary btn-validate-prop" %>
+    <% end %>
+  </div>
 </div>
