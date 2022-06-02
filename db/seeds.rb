@@ -14,7 +14,6 @@ GameSessionSong.destroy_all
 GameSession.destroy_all
 GameSong.destroy_all
 Game.destroy_all
-# Guest.destroy_all
 Song.destroy_all
 
 
@@ -82,14 +81,14 @@ roidumondel =  File.read("app/assets/lyrics/lesroisdumonde.txt")
 @roidumonde =  Song.create!(lyrics: roidumondel, author: "Romeo et Juliette",title: "Les Rois du monde", genre:'comédie musicale', year: 2007)
 
 confessionnocturnel =  File.read("app/assets/lyrics/confessionnocturne.txt")
-@confessionnocturne = Song.create!(lyrics: confessionnocturnel, author: "Diams Vitaa",title: "Confession nocturne", genre:'rap', year: 2006)
+@confessionnocturne = Song.create!(lyrics: confessionnocturnel, author: "Diams Vitaa", title: "Confession nocturne", genre:'rap', year: 2006)
 
 caravanel =  File.read("app/assets/lyrics/caravane.txt")
 @caravane = Song.create!(lyrics: caravanel, author: "Raphael",title: "Caravane", genre:'moderne', year: 2005)
 
 
 pholosophiel =  File.read("app/assets/lyrics/maphilosophie.txt")
-@philosophie = Song.create!(lyrics: pholosophiel, author: "Amel Bent",title: " Ma Philosophie", genre:'populaire', year: 2004)
+@philosophie = Song.create!(lyrics: pholosophiel, author: "Amel Bent",title: "Ma Philosophie", genre:'populaire', year: 2004)
 
 parcequonvientdeloin =  File.read("app/assets/lyrics/parcequonvientdeloin.txt")
 @parcequonvientde = Song.create!(lyrics: parcequonvientdeloin, author: "Corneille",title: "Parce qu'on vient de loin", genre:'moderne', year: 2002)
@@ -97,7 +96,7 @@ parcequonvientdeloin =  File.read("app/assets/lyrics/parcequonvientdeloin.txt")
 
 
 quelqunmadil =  File.read("app/assets/lyrics/quelqunmadit.txt")
-@quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "Quelq’un m’a dit", genre:'moderne', year: 2002)
+@quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "Quelqu’un m’a dit", genre:'moderne', year: 2002)
 
 
 tameilleureamii =  File.read("app/assets/lyrics/meilleureamie.txt")
@@ -156,16 +155,16 @@ mistralgagnant =  File.read("app/assets/lyrics/lemistralgagnant.txt")
 
 
 lessos =  File.read("app/assets/lyrics/sos.txt")
-@sos = Song.create!(lyrics: lessos, author: "Daniel Balavoine",title: "sos", genre: 'chanson française', year: 1985)
+@sos = Song.create!(lyrics: lessos, author: "Daniel Balavoine",title: "Tous les cris les SOS", genre: 'chanson française', year: 1985)
 
 envolmoi =  File.read("app/assets/lyrics/envolemoi.txt")
-@envolemoi = Song.create!(lyrics: envolmoi, author: "Jean Jacques Goldman",title: "Envole moi", genre: 'chanson française', year: 1984)
+@envolemoi = Song.create!(lyrics: envolmoi, author: "Jean Jacques Goldman",title: "Envole-moi", genre: 'chanson française', year: 1984)
 
 marcia =  File.read("app/assets/lyrics/marciabaila.txt")
 @marciabaila = Song.create!(lyrics: marcia, author: "Rita Mitsouko",title: "Marcia Baila", genre: 'pop', year: 1984)
 
 conemara =  File.read("app/assets/lyrics/connemara.txt")
-@connemara = Song.create!(lyrics: conemara, author: "Michel Sardou",title: "Lac Du Connemara", genre: 'folk', year: 1981)
+@connemara = Song.create!(lyrics: conemara, author: "Michel Sardou",title: "Les Lacs Du Connemara", genre: 'folk', year: 1981)
 
 resist =  File.read("app/assets/lyrics/resiste.txt")
 @resiste = Song.create!(lyrics: resist, author: "France Gall",title: "Résiste", genre: 'comédie musicale', year: 1981)
@@ -174,7 +173,7 @@ vie =  File.read("app/assets/lyrics/lavienemapprendrien.txt")
 @lavienemapprendrien = Song.create!(lyrics: vie, author: "Daniel Balavoine",title: "La vie ne m’apprend rien", genre: 'chanson française', year: 1980)
 
 amourir =  File.read("app/assets/lyrics/jelaimeamourir.txt")
-@jelaimemourir = Song.create!(lyrics: amourir, author: "Francis Cabrel",title: "Je l aime a mourir", genre: 'chanson française', year: 1979)
+@jelaimemourir = Song.create!(lyrics: amourir, author: "Francis Cabrel",title: "Je l'aime a mourir", genre: 'chanson française', year: 1979)
 
 alexandra =  File.read("app/assets/lyrics/alexandriealexandra.txt")
 @alexandrie= Song.create!(lyrics: alexandra, author: "Claude François",title: "Alexandrie  Alexandra", genre: 'pop', year: 1977)
@@ -189,7 +188,7 @@ safrancisco =  File.read("app/assets/lyrics/sanfrancisco.txt")
 @sanfrancisco = Song.create!(lyrics: safrancisco, author: "Maxime le Forestier",title: "San Francisco", genre: 'folk', year: 1972)
 
 hermine =  File.read("app/assets/lyrics/lablanchehermine.txt")
-@blanchehermine= Song.create!(lyrics: hermine, author: "Gilles Servat",title: "La blanche Hermine", genre: 'folk', year: 1971)
+@blanchehermine= Song.create!(lyrics: hermine, author: "Gilles Servat", title: "La blanche Hermine", genre: 'folk', year: 1971)
 
 
 javanais =  File.read("app/assets/lyrics/javanaise.txt")
@@ -221,8 +220,8 @@ puts "Creation du game mode"
 
 puts "Creation de la game_song"
 @song1 = GameSong.create!(game: @solo, song: @belle)
-@song2 = GameSong.create!(game: @playlist, song: @jelaimemourir)
-@song3 = GameSong.create!(game: @playlist, song: @mistralgagnant)
+@song2 = GameSong.create!(game: @playlist, song: @quelqunmadit)
+@song3 = GameSong.create!(game: @playlist, song: @sentimentale)
 
 
 
