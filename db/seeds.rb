@@ -151,7 +151,8 @@ encore =  File.read("app/assets/lyrics/encoreetencore.txt")
 
 
 mistralgagnant =  File.read("app/assets/lyrics/lemistralgagnant.txt")
-@mistralgagnat = Song.create!(lyrics: mistralgagnant, author: "Renaud",title: "Le mistral gagnant", genre: 'chanson française', year: 1985)
+@mistralgagnant = Song.create!(lyrics: mistralgagnant, author: "Renaud",title: "Mistral Gagnant", genre: 'chanson française', year: 1985)
+
 
 
 lessos =  File.read("app/assets/lyrics/sos.txt")
@@ -216,14 +217,13 @@ cegenla =  File.read("app/assets/lyrics/cesgensla.txt")
 
 puts "Creation du game mode"
 @solo = Game.create!(name: "Chanson du jour")
-
+@playlist = Game.create!(name: "Playlist")
 
 puts "Creation de la game_song"
 @song1 = GameSong.create!(game: @solo, song: @belle)
+@song2 = GameSong.create!(game: @playlist, song: @jelaimemourir)
+@song3 = GameSong.create!(game: @playlist, song: @mistralgagnant)
 
-puts "Creation de la game_session"
-
-@session = GameSession.create!(guest: @joueur, game: @solo)
 
 
 puts "DONE"
