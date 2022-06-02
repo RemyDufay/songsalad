@@ -7,10 +7,21 @@
 }
 
 .btn-warning {
- 
+
   box-shadow: 3px 3px #CCCCCC;
   display: grid;
   place-content: center;
   width: 2rem;
   height: 2rem;
+}
+
+
+
+@media (min-width: 800px) {
+
+  .btn {
+    max-width: 40vw;
+    margin: auto;
+  }
+
 }

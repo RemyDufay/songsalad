@@ -1,23 +1,21 @@
-<div class="container text-center mb-5">
-  <div>Bravo !</div>
+<div class="container container-victory d-flex text-center" style="flex-direction: column" >
+  <h1>Bravo !</h1>
 
   <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid mb-3") %></div>
 
-  <div class="container-bubble" >
-    <% @game_session.game_session_songs.each do |song|%>
-      <%= song.game_song.song.title %> <br>
-      <%= song.game_song.song.author %> <br>
-      (<%= Guess.where(game_session_song: song).count %> coups )
-    <% end %>
-  </div>
+  <% @game_session.game_session_songs.each do |song|%>
+    <div class="bubble" style="width: 50vw" >
+        <h3><%= song.game_song.song.title %></h3> <br>
+        <h4><%= song.game_song.song.author %></h4><br>
+        (<%= Guess.where(game_session_song: song).count %> coups )
+    </div>
+  <% end %>
 
   <div>
     <%= link_to "Rejouer", root_path, class: "btn d-block btn-primary btn-lg mb-5" %>
   </div>
 
 <div class="input-group" data-controller="clipboard" data-clipboard-feedback-text-value="Copied!">
-  <input class="form-control" data-clipboard-target="input" class="d-none" type="text" value="https://www.lewagon.com/" readonly>
-  <div class="input-group-append">
     <button id="copy-button" class="btn btn-outline-primary" data-action="click->clipboard#copy">Copy to Clipboard</button>
   </div>
 </div>
