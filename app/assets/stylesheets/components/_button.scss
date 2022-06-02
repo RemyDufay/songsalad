@@ -1,3 +1,16 @@
-.btn-red {
+.btn {
+  border-radius: 5px;
+}
 
+.btn-primary {
+  box-shadow: 5px 5px #CCCCCC;
+}
+
+.btn-warning {
+ 
+  box-shadow: 3px 3px #CCCCCC;
+  display: grid;
+  place-content: center;
+  width: 2rem;
+  height: 2rem;
 }

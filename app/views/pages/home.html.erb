@@ -9,28 +9,27 @@
 </div>
 
 <%# h6 & BUTTONS%>
-<div class="container text-center mt-5">
+<div class="mode-de-jeu container text-center mt-5">
   <h6 class="mt-5">Choisissez votre mode de jeu</h6>
   <%= link_to "1 CHANSON", game_game_sessions_path(:game_id => @solo), method: :post, class: "btn d-block btn-primary btn-lg mb-5" %>
   <%= link_to "5 CHANSONs", game_game_sessions_path(:game_id => @playlist), method: :post, class: "btn d-block btn-primary btn-lg mb-5" %>
 </div>
 
-
   <%# small button %>
-  <div class="container text-center fixed-bottom">
+  <div class="small-btn-home d-flex justify-content-center">
 
-    <%= link_to rules_path, class: "btn btn-warning mb-4 text-center" do %>
-      <i class="fas fa-book-spells"></i>
+    <%= link_to rules_path, class: "btn btn-warning text-center" do %>
+      <i class="fas fa-book-open fa-1x"></i>
     <% end %>
 
     <% if guest_present? %>
-      <%= link_to stats_guest_path(current_guest), class: "btn btn-warning mb-4" do %>
-      <i class="fas fa-book-spells"></i>
+      <%= link_to stats_guest_path(current_guest), class: "btn btn-warning mx-5" do %>
+        <i class="fas fa-chart-bar fa-1x"></i>
       <% end %>
     <% end %>
 
-      <%= link_to faq_path, class: "btn btn-warning mb-4" do %>
-        <i class="fas fa-book-spells"></i>
-      <% end %>
+    <%= link_to faq_path, class: "btn btn-warning" do %>
+      <i class="fas fa-question-circle fa-1x"></i>
+    <% end %>
   </div>
 </div>
