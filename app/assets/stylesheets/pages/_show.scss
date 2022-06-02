@@ -1,0 +1,118 @@
+.show{
+  text-align: center;
+  list-style-position: inside;
+  height: 100vh;
+  width: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2vw;
+
+  }
+
+  ul { list-style:none; margin-left:0; padding-left:0; }
+
+  // #colcol{
+  // padding-left: 5px;
+  // padding-top: 10px;
+  // }
+
+  .propals{
+    max-height: 40vh;
+    border-top-left-radius: 5px;
+    position: sticky;
+    bottom: 0;
+    height: 2.5rem;
+
+    .btn-show-prop {
+      width: 5rem;
+      height: 100%;
+      border-radius: 0;
+      border-top-left-radius: 5px;
+    }
+
+    .btn-validate-prop {
+      width: 5rem;
+      height: 100%;
+      border-radius: 0;
+      border-top-right-radius: 5px;
+    }
+  }
+
+  .listprop {
+    padding-top: 2%;
+    background-color: $green;
+    overflow: scroll;
+    overflow-x: hidden;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 4px;
+    font-size: 1.2em;
+    max-height: 5rem;
+    position: sticky;
+    bottom: 0;
+
+    li {
+    border-top: solid;
+    border-width: 1px;
+    }
+  }
+
+  .lyrics {
+    overflow: scroll;
+    overflow-x: hidden;
+    line-height: 35px;
+    font-size: 1.5em;
+    background-color: $beige;
+    color: white;
+    padding: 10px;
+    max-height: 90vh;
+    border-radius: 20px;
+    min-width: 30%;
+    max-width: 100%;
+  }
+
+  .formulaire {
+    border-radius: 8px;
+  }
+
+
+  @media (min-width: 800px) {
+    #show-game {
+      display: flex;
+    }
+
+    .show{
+      gap: 0;
+      // max-height: 100vh;
+      }
+
+    .lyrics {
+      // max-height: 80vh;
+      margin: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      max-width: 100%;
+    }
+
+    .listprop {
+      margin: 0;
+      padding: 0;
+    }
+
+    .formulaire {
+      margin-top: 0px;
+      width: 100%;
+    }
+
+    .propals {
+      max-height: 10vh;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 6vh;
+      position: sticky;
+      bottom: 0;
+    }
+  }
