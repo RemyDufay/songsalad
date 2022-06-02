@@ -25,7 +25,7 @@ dernieredansel =  File.read("app/assets/lyrics/dernieredanse.txt")
 @dernieredanse = Song.create!(lyrics: dernieredansel, author: "Kyo", title: "Dernière danse", genre: 'rock', year: 2003)
 
 letempsestbonl =  File.read("app/assets/lyrics/letempsestbon.txt")
-@letempsestbon = Song.create!(lyrics: letempsestbonl, author: "A bon entendeur", genre:'electro', year: 2019)
+@letempsestbon = Song.create!(lyrics: letempsestbonl, author: "A bon entendeur", title: "Le temps est bon", genre:'electro', year: 2019)
 
 toutoublierl = File.read("app/assets/lyrics/toutoublier.txt")
 @toutoublier = Song.create!(lyrics: toutoublierl, author: "Angele",  title:"Tout oublier", genre: 'pop', year: 2018)
@@ -90,7 +90,7 @@ parcequonvientdeloin =  File.read("app/assets/lyrics/parcequonvientdeloin.txt")
 
 
 quelqunmadil =  File.read("app/assets/lyrics/quelqunmadit.txt")
-@quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "Quelq’un m’a dit", genre:'moderne', year: 2002)
+@quelqunmadit = Song.create!(lyrics: quelqunmadil, author: "Carla Bruni",title: "quelqu'un m'a dit", genre:'moderne', year: 2002)
 
 
 tameilleureamii =  File.read("app/assets/lyrics/meilleureamie.txt")
@@ -109,7 +109,7 @@ alumerlefeu =  File.read("app/assets/lyrics/allumerlefeu.txt")
 @allumerlefe = Song.create!(lyrics: alumerlefeu, author: "Johnny", title: "Allumer le feu", genre:'rock', year: 1998)
 
 tribudedana =  File.read("app/assets/lyrics/dana.txt")
-@latrubudedana = Song.create!(lyrics: tribudedana, author: "Manau", title: "la trubu de Dana", genre: 'folk', year: 1998)
+@latrubudedana = Song.create!(lyrics: tribudedana, author: "Manau", title: "La tribu de Dana", genre: 'folk', year: 1998)
 
 
 tomberlachemise =  File.read("app/assets/lyrics/chemise.txt")
@@ -148,7 +148,7 @@ mistralgagnant =  File.read("app/assets/lyrics/lemistralgagnant.txt")
 
 
 lessos =  File.read("app/assets/lyrics/sos.txt")
-@sos = Song.create!(lyrics: lessos, author: "Balavoine",title: "sos", genre: 'chanson française', year: 1985)
+@sos = Song.create!(lyrics: lessos, author: "Balavoine",title: "Tous les cris les sos", genre: 'chanson française', year: 1985)
 
 envolmoi =  File.read("app/assets/lyrics/envolemoi.txt")
 @envolemoi = Song.create!(lyrics: envolmoi, author: "Goldman",title: "Envole moi", genre: 'chanson française', year: 1984)
@@ -163,7 +163,7 @@ resist =  File.read("app/assets/lyrics/resiste.txt")
 @resiste = Song.create!(lyrics: resist, author: "France Gall",title: "Résiste", genre: 'comédie musicale', year: 1981)
 
 vie =  File.read("app/assets/lyrics/lavienemapprendrien.txt")
-@lavienemapprendrien = Song.create!(lyrics: vie, author: "Balavoine",title: "La vie ne m’apprend rien", genre: 'chanson française', year: 1980)
+@lavienemapprendrien = Song.create!(lyrics: vie, author: "Balavoine",title: "La vie ne m'apprend rien", genre: 'chanson française', year: 1980)
 
 amourir =  File.read("app/assets/lyrics/jelaimeamourir.txt")
 @jelaimemourir = Song.create!(lyrics: amourir, author: "Cabrel",title: "Je l'aime à mourir", genre: 'chanson française', year: 1979)
