@@ -47,24 +47,9 @@ class GameSessionsController < ApplicationController
       @game_session_song.save
     else
       redirect_to victory_game_game_session_path(game_id: params[:game_id], id: params[:id])
-      raise
     end
 
-    # Render des paroles
-
-    @lyricsrender = @game_session_song.game_song.song.splitted_lyrics
-
-    @lyricsrender.map! do |word|
-      if word == "\n"
-        "<br>"
-      elsif @game_session_song.guessed_lyrics_index[word.downcase]["guessed"]
-        word
-      else
-        redact(word)
-      end
-    end
-
-    # Prise d'input, création des guesses et refresh des paroles
+    # Prise d'input, création des guesses
     if params[:query].present?
       word = params[:query].downcase.strip
       frequency = 0
@@ -78,9 +63,19 @@ class GameSessionsController < ApplicationController
       if Guess.where(game_session_song: @game_session_song, word: word).empty?
         Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
       end
-
-      redirect_to game_game_session_path( game_id: params[:game_id], id: params[:id] )
     end
+
+    # Render des paroles censurées, en fonction des guess existantes
+
+    @lyricsrender = @game_session_song.game_song.song.splitted_lyrics.map! do |word|
+        if word == "\n"
+          "<br>"
+        elsif @game_session_song.guessed_lyrics_index[word.downcase]["guessed"]
+          word
+        else
+          redact(word)
+        end
+     end
 
     # Vérification des conditions de victoire
     if @lyricsrender.join.include? @game_session_song.game_song.song.title
