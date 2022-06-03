@@ -219,9 +219,10 @@ puts "Creation du game mode"
 @playlist = Game.create!(name: "Playlist")
 
 puts "Creation de la game_song"
-@song1 = GameSong.create!(game: @solo, song: @belle)
+@song1 = GameSong.create!(game: @solo, song: @javanaise)
 @song2 = GameSong.create!(game: @playlist, song: @quelqunmadit)
 @song3 = GameSong.create!(game: @playlist, song: @sentimentale)
+@song4 = GameSong.create!(game: @playlist, song: @sanfrancisco)
 
 
 
