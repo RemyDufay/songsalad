@@ -6,11 +6,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2vw;
+  // gap: 2vw;
 
   }
-
-  ul { list-style:none; margin-left:0; padding-left:0; }
 
   // #colcol{
   // padding-left: 5px;
@@ -49,14 +47,30 @@
     padding-right: 5px;
     border-radius: 4px;
     font-size: 1.2em;
-    max-height: 5rem;
+    // max-height: 25vh;
     position: sticky;
     bottom: 0;
+
 
     li {
     border-top: solid;
     border-width: 1px;
     }
+  }
+
+  .max-height-5 {
+    max-height: 5vh;
+  }
+  .max-height-25 {
+    max-height: 25vh;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column-reverse;
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
   }
 
   .lyrics {
@@ -71,6 +85,7 @@
     border-radius: 20px;
     min-width: 30%;
     max-width: 100%;
+    z-index: -1;
   }
 
   .formulaire {
@@ -107,7 +122,7 @@
     }
 
     .propals {
-      max-height: 10vh;
+      max-height: 40vh;
       margin: 0;
       padding: 0;
       width: 100%;
