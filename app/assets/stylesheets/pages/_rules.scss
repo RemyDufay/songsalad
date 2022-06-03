@@ -5,8 +5,14 @@
   margin-bottom: 4%;
   border-radius: 15px;
 }
+.regles {
+  justify-content: flex-start;
+  padding: 0 2rem;
+}
 
-.regles{
-justify-content: flex-start;
-
+@media (min-width: 800px) {
+  .regles {
+    justify-content: flex-start;
+    padding: 0 10rem;
+  }
 }
