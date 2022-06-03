@@ -79,13 +79,18 @@
     line-height: 35px;
     font-size: 1.5em;
     background-color: $beige;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px;
     max-height: 90vh;
     border-radius: 20px;
     min-width: 30%;
     max-width: 100%;
     z-index: -1;
+
+    span{
+    color: rgba(0, 0, 0, 0.368);
+    }
+
   }
 
   .formulaire {

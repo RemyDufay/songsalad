@@ -55,7 +55,7 @@ class GameSessionsController < ApplicationController
     word.each_char do |char|
       (char =~ /[[:alpha:]]/) ? redacted += "█" : redacted += char
     end
-    return redacted
+    return redacted = "<span>#{redacted}</span>"
   end
 
   def game_session_params
