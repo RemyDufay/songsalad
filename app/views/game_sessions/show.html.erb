@@ -5,36 +5,41 @@
     </div>
   </div>
 
-  <div class="listprop d-flex max-height-5" data-guess-chart-target="content">
-    <div class="guess-count">
-      <%# <%= Guess.where(game_session_song: @game_session_song).count %>
+  <div class="propals">
+
+    <div class="listprop d-flex max-height-5 p-1" data-guess-chart-target="content">
+      <div class="guess-count w-25 d-flex justify-content-center align-items-center">
+        <%= Guess.where(game_session_song: @game_session_song).count %>
+      </div>
+      <div class="guess-list d-flex flex-grow-1">
+        <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
+          <div class="d-inline-flex bg-body-color bubble-guess">
+            <div class=" w-100"><%= guess.word %></div>
+            <div class=" mx-2"><%= guess.frequency %></div>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <ul>
-      <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
-        <div class="d-inline-flex bg-body-color">
-          <div class="bubble-guess"><%= guess.word %></div>
-          <div class="bubble-guess"><%= guess.frequency %></div>
-        </div>
+
+    <div class=" d-flex ">
+
+      <div class= "triescount d-flex align-items-center">
+        <button class="btn btn-warning btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
+          <i class="fas fa-sort"></i>
+        </button>
+      </div>
+
+      <%= form_tag game_game_session_path( game_id: params[:game_id], id: params[:id] ), method: :get, class: "d-flex flex-grow-1"  do  %>
+        <%= text_field_tag :query,
+          "",
+          class: "form-control",
+          autofocus: true,
+          autocomplete: "off"
+        %>
+        <%= submit_tag "Valider", class: "btn btn-primary btn-validate-prop" %>
       <% end %>
-    </ul>
-  </div>
-
-  <div class="propals d-flex ">
-
-    <div class= "triescount d-flex align-items-center">
-      <button class="btn btn-warning btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
-        <i class="fas fa-sort"></i>
-      </button>
     </div>
 
-    <%= form_tag game_game_session_path( game_id: params[:game_id], id: params[:id] ), method: :get, class: "d-flex flex-grow-1"  do  %>
-      <%= text_field_tag :query,
-        "",
-        class: "form-control",
-        autofocus: true,
-        autocomplete: "off"
-      %>
-      <%= submit_tag "Valider", class: "btn btn-primary btn-validate-prop" %>
-    <% end %>
   </div>
+
 </div>
