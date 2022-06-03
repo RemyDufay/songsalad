@@ -44,6 +44,8 @@ class GameSessionsController < ApplicationController
   def victory
     @game_session = GameSession.find(params[:id])
     @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
+    @guesses_count = @game_session.game_session_songs[0].guesses.count
+    @countdown = (Date.tomorrow.in_time_zone.change(hour: 0) - Time.now.in_time_zone)
   end
 
   private
