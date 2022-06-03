@@ -1,5 +1,8 @@
 .container {
-  background: transparent;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: #FBEED7;
 }
 
 .logo-nvb img {
