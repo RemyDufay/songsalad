@@ -1,5 +1,5 @@
 <div class="container container-victory d-flex text-center" style="flex-direction: column" >
-  <h1>Bravo !</h1>
+  <h1 class="mode-de-jeu">Bravo !</h1>
 
   <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid mb-3") %></div>
 
@@ -12,11 +12,11 @@
   <% end %>
 
   <div>
-    <%= link_to "Nouvelle partie", root_path, class: "btn d-block btn-primary btn-lg mb-5" %>
+    <%= link_to "Nouvelle partie", root_path, class: "btn d-block btn-primary btn-lg mb-5 mode-de-jeu" %>
   </div>
 
   <div data-controller="clipboard" data-clipboard-feedback-text-value="Copié dans le presse-papier !" data-clipboard-copied-value="J'ai trouvé la chanson du jour en <%= @guesses_count  %> coups ! 🥗 songsalad.com 🥗 ">
-    <button class="btn btn-primary" data-action="click->clipboard#copy">Partager mon résultat</button>
+    <button class="btn btn-primary mode-de-jeu" data-action="click->clipboard#copy">Partager mon résultat</button>
   </div>
 
 
