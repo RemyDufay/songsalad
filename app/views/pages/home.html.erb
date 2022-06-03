@@ -11,8 +11,8 @@
 <%# h6 & BUTTONS%>
 <div class="mode-de-jeu container text-center mt-5">
   <h4 class="mt-3 mb-4 choix">Choisissez votre mode de jeu</h4>
-  <%= link_to "CHANSON DU JOUR", game_game_sessions_path(:game_id => @solo), method: :post, class: "btn d-block btn-primary btn-lg mb-4" %>
-  <%= link_to "PLAYLIST DU JOUR (x3)", game_game_sessions_path(:game_id => @playlist), method: :post, class: "btn d-block btn-primary btn-lg mb-5" %>
+  <%= button_to "CHANSON DU JOUR", game_game_sessions_path(:game_id => @solo), method: :post, class: "btn d-block btn-primary btn-lg mb-4" %>
+  <%= button_to "PLAYLIST DU JOUR (x3)", game_game_sessions_path(:game_id => @playlist), method: :post, class: "btn d-block btn-primary btn-lg mb-5" %>
 </div>
 
   <%# small button %>
