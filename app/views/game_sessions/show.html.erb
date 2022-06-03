@@ -5,10 +5,16 @@
     </div>
   </div>
 
-  <div class="d-none listprop d-flex flex-grow-1" data-guess-chart-target="content">
+  <div class="listprop d-flex max-height-5" data-guess-chart-target="content">
+    <div class="guess-count">
+      <%# <%= Guess.where(game_session_song: @game_session_song).count %>
+    </div>
     <ul>
       <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
-      <li> <%= guess.word %> : <%= guess.frequency %> </li>
+        <div class="d-inline-flex bg-body-color">
+          <div class="bubble-guess"><%= guess.word %></div>
+          <div class="bubble-guess"><%= guess.frequency %></div>
+        </div>
       <% end %>
     </ul>
   </div>
@@ -18,7 +24,6 @@
     <div class= "triescount d-flex align-items-center">
       <button class="btn btn-warning btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
         <i class="fas fa-sort"></i>
-        <%# <%= Guess.where(game_session_song: @game_session_song).count %>
       </button>
     </div>
 

@@ -1,10 +1,11 @@
 
 .pagequestion{
 justify-content: flex-start;
+z-index: -1;
 
 }
 
-.bubble{
+.bubble-static{
   background-color: #A7D0CD;
   margin: auto;
   padding: 4%;
@@ -13,3 +14,18 @@ justify-content: flex-start;
 
 
 }
+
+h1 {
+  text-align:center;
+}
+
+.title {
+  text-align:center;
+}
+@media (min-width: 800px) {
+
+  .title {
+    text-align:left;
+  }
+
+  }
