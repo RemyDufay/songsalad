@@ -20,7 +20,7 @@
     border-top-left-radius: 5px;
     position: sticky;
     bottom: 0;
-    height: 2.5rem;
+    height: 6 rem;
 
     .btn-show-prop {
       width: 5rem;
@@ -39,9 +39,7 @@
 
   .listprop {
     padding-top: 2%;
-    background-color: $green;
-    overflow: scroll;
-    overflow-x: hidden;
+    background-color: #FBEED7;
     color: white;
     padding-left: 5px;
     padding-right: 5px;
@@ -50,27 +48,20 @@
     // max-height: 25vh;
     position: sticky;
     bottom: 0;
-
-
-    li {
-    border-top: solid;
-    border-width: 1px;
-    }
   }
+
+  .guess-list {
+    flex-direction: column-reverse;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
 
   .max-height-5 {
     max-height: 5vh;
   }
   .max-height-25 {
     max-height: 25vh;
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column-reverse;
-    list-style:none;
-    margin-left:0;
-    padding-left:0;
   }
 
   .lyrics {
@@ -95,6 +86,12 @@
 
   .formulaire {
     border-radius: 8px;
+  }
+
+  .guess-count {
+    border-radius: 10px;
+    background-color: $green;
+    margin-right: 0.5rem;
   }
 
 
