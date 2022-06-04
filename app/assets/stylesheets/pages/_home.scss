@@ -1,8 +1,26 @@
 // Specific CSS for your home-page
 body {
   background-color: #FBEED7;
+}
+
+
+.home {
+
+display: flex;
+flex-direction: column;
+justify-content: space-around ;
+height: 100vh;
+align-items: center;
+
+  .logo {
+    padding-top: 10vh;
+  }
+
 
 }
+
+
+
 .choix{
   font-family: 'chelsea-market-open';
 }
@@ -10,11 +28,12 @@ body {
 
 .mode-de-jeu {
 
-  margin-top: 40%;
   font-family: 'sketchnote-square'
-
 }
 
 .small-btn-home {
-  margin-top: 5rem !important;
+  width: 40vh;
+  display: flex;
+  justify-content: space-around ;
+  margin-bottom: 10px;
 }
