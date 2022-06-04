@@ -1,18 +1,61 @@
-<h1 class="mode-de-jeu">Vos statistiques</h1>
+<div class="container stats">
+  <h1>Vos statistiques</h1>
 
-<div class="container align-center d-flex">
+  <%# carroussel %>
+  <section class="carousel w-75" aria-label="Gallery">
+    <ol class="carousel__viewport">
+      <li id="carousel__slide1"
+          tabindex="0"
+          class="carousel__slide d-flex flex-column text-center">
+          <div class="mt-3 choix">PARTIES</div>
+          <div class="mt-5 stat-number choix">5</div>
+        <div class="carousel__snapper">
+          <a href="#carousel__slide4"
+            class="carousel__prev">Go to last slide</a>
+          <a href="#carousel__slide2"
+            class="carousel__next">Go to next slide</a>
+        </div>
+      </li>
+      <li id="carousel__slide2"
+          tabindex="0"
+          class="carousel__slide d-flex flex-column text-center">
+          <div class="mt-3 choix">VICTOIRES</div>
+          <div class="mt-5 stat-number choix">5</div>
+        <div class="carousel__snapper"></div>
+        <a href="#carousel__slide1"
+          class="carousel__prev">Go to previous slide</a>
+        <a href="#carousel__slide3"
+          class="carousel__next">Go to next slide</a>
+      </li>
+      <li id="carousel__slide3"
+          tabindex="0"
+          class="carousel__slide d-flex flex-column text-center">
+          <div class="mt-3 choix">MEILLEURE SERIE</div>
+          <div class="mt-5 stat-number choix">5</div>
+        <div class="carousel__snapper"></div>
+        <a href="#carousel__slide2"
+          class="carousel__prev">Go to previous slide</a>
+        <a href="#carousel__slide4"
+          class="carousel__next">Go to next slide</a>
+      </li>
+      <li id="carousel__slide4"
+          tabindex="0"
+          class="carousel__slide d-flex flex-column text-center">
+          <div class="mt-3 choix">MOYENNE D'ESSAI PAR PARTIE</div>
+          <div class="mt-5 stat-number choix">5</div>
+        <div class="carousel__snapper"></div>
+        <a href="#carousel__slide3"
+          class="carousel__prev">Go to previous slide</a>
+        <a href="#carousel__slide1"
+          class="carousel__next">Go to first slide</a>
+      </li>
+    </ol>
+    <aside class="carousel__navigation">
+    </aside>
+  </section>
 
-<div class="bubble mode-de-jeu">
-Vous avez joué 6 parties
-<br>
-Votre moyenne de coups : 20
-
-
-
-</div>
-
-
-
-
-
+  <%# Logo %>
+  <div class="container text-center">
+    <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
+  </div>
 </div>
