@@ -1,13 +1,27 @@
-<div class="bod container align-center d-flex flex-column">
+<div class="container align-center d-flex flex-column">
   <h1 class="mt-5 mb-5">Vos statistiques</h1>
 
   <%# carroussel %>
-  <div data-controller="carousel" class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
+  <div id="carouselExampleControls" class="carousel slide mt-5 mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="bubble-stat"></div>
+      </div>
+      <div class="carousel-item">
+        <div class="bubble-stat"></div>
+      </div>
+      <div class="carousel-item">
+        <div class="bubble-stat"></div>
+      </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 
 

@@ -3,7 +3,7 @@ class GameSessionSong < ApplicationRecord
   belongs_to :game_song
   has_many :guesses
   after_create :build_guessed_lyrics_index
-
+  after_create :build_guessed_splitted_lyrics
 
 def build_guessed_lyrics_index
 
@@ -17,6 +17,32 @@ def build_guessed_lyrics_index
   self.save
 end
 
+
+def build_guessed_splitted_lyrics
+
+  self.guessed_splitted_lyrics = self.game_song.song.splitted_lyrics.map do |word|
+    if word == "\n"
+      "<br>"
+    elsif word =~ /[[A-zÀ-ú-œ]]/
+      redact(word)
+    else
+      word
+    end
+  end
+  self.save
+end
+
+
+private
+
+
+def redact(word)
+  redacted = ""
+  word.each_char do |char|
+    (char =~ /[[:alpha:]]/) ? redacted += "█" : redacted += char
+  end
+  return redacted = "<span>#{redacted}</span>"
+end
 
 
 
