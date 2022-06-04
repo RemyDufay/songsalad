@@ -75,21 +75,21 @@ ol, li {
 
 .carousel {
   position: relative;
-  padding-top: 75%;
-  filter: drop-shadow(0 0 10px #0003);
+  // padding-top: 75%;
+  // filter: drop-shadow(0 0 10px #0003);
   perspective: 100px;
 }
 
 .carousel__viewport {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
   display: flex;
   overflow-x: scroll;
   counter-reset: item;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-snap-type: x mandatory;
 }
 
