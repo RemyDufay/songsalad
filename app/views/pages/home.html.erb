@@ -1,10 +1,10 @@
 
 <%# warper %>
-<div class="container">
+<div class="container home">
 
 
 <%# Logo %>
-<div class="container text-center mb-1 mt-5">
+<div class="container text-center logo">
   <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
 </div>
 
@@ -16,14 +16,14 @@
 </div>
 
   <%# small button %>
-  <div class="small-btn-home d-flex justify-content-center">
+  <div class="small-btn-home">
 
     <%= link_to rules_path, class: "btn btn-warning text-center" do %>
       <i class="fas fa-book-open fa-1x"></i>
     <% end %>
 
     <% if guest_present? %>
-      <%= link_to stats_guest_path(current_guest), class: "btn btn-warning mx-5" do %>
+      <%= link_to stats_guest_path(current_guest), class: "btn btn-warning" do %>
         <i class="fas fa-chart-bar fa-1x"></i>
       <% end %>
     <% end %>
