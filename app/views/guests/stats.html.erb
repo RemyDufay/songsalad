@@ -1,18 +1,18 @@
-<h1 class="mode-de-jeu">Vos statistiques</h1>
+<div class="bod container align-center d-flex flex-column">
+  <h1 class="mt-5 mb-5">Vos statistiques</h1>
 
-<div class="container align-center d-flex">
-
-<div class="bubble mode-de-jeu">
-Vous avez joué 6 parties
-<br>
-Votre moyenne de coups : 20
-
-
-
-</div>
-
+  <%# carroussel %>
+  <div data-controller="carousel" class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+    </div>
+  </div>
 
 
-
-
+  <%# Logo %>
+  <div class="container text-center mb-1 mt-4">
+    <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
+  </div>
 </div>
