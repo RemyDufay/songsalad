@@ -7,9 +7,9 @@
 
   <div class="propals">
   <% veggie = ["tomato.png", "salad.png"] %>
-    <div class="listprop d-flex max-height-5 p-1" data-guess-chart-target="content">
+    <div class="listprop d-flex p-1" data-guess-chart-target="content">
       <div class="guess-list d-flex flex-grow-1" data-guess-chart-target="window">
-        <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
+        <%  Guess.where(game_session_song: @game_session_song).reverse_each do |guess| %>
           <div class="d-inline-flex bg-body-color bubble-guess">
             <div class="w-50 m-1"><%= image_tag("#{veggie.first}", width: 30, height: 30, :class => "img-fluid mb-1") %></div>
             <div class="w-50"><%= guess.word %></div>
