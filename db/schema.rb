@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_210324) do
+ActiveRecord::Schema.define(version: 2022_06_04_111323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_06_01_210324) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.jsonb "guessed_splitted_lyrics", default: []
     t.index ["game_session_id"], name: "index_game_session_songs_on_game_session_id"
     t.index ["game_song_id"], name: "index_game_session_songs_on_game_song_id"
   end

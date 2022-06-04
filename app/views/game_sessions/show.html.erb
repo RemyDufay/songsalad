@@ -1,7 +1,7 @@
 <div id="show-game" data-controller="guess-chart">
   <div>
     <div class="lyrics px-4">
-      <%= @lyricsrender.join.html_safe %>
+      <%= @game_session_song.guessed_splitted_lyrics.join.html_safe %>
     </div>
   </div>
 
@@ -27,7 +27,7 @@
         </button>
       </div>
 
-      <%= form_tag game_game_session_path( game_id: params[:game_id], id: params[:id] ), method: :get, class: "d-flex flex-grow-1"  do  %>
+      <%= form_tag game_game_session_path(@game, @game_session), method: :get, class: "d-flex flex-grow-1"  do  %>
         <%= text_field_tag :query,
           "",
           class: "form-control",
@@ -36,6 +36,7 @@
         %>
         <%= submit_tag "Valider", class: "btn btn-primary btn-validate-prop" %>
       <% end %>
+
     </div>
 
   </div>
