@@ -22,9 +22,12 @@ class GameSessionsController < ApplicationController
 
   def show
     # Init des variables de la partie
-    @game_session = GameSession.find(params[:id])
-    @game_songs = @game_session.game.game_songs
     @SPLITTING_REGEXP = /(\w{3,}'\w{3,}|\\n|[a-zA-Z\u00C0-\u00FF]+|\s|\W|\w\W\w)/
+    @game_session = GameSession.find(params[:id])
+    @game = @game_session.game
+    @game_songs = @game_session.game.game_songs
+
+
 
     # Si c'est la premiere fois que le joueur joue, on crée les chansons de la session
     create_game_session_songs
@@ -35,7 +38,7 @@ class GameSessionsController < ApplicationController
     if @game_session_song.nil?
       redirect_to victory_game_game_session_path(game_id: params[:game_id], id: params[:id]) and return
     end
-
+    @title = @game_session_song.game_song.song.title.downcase.split(/\W/)
 
     # Prise d'input, création des guesses, maj de l'index des guess de la song
     verify_user_word_input
@@ -45,6 +48,7 @@ class GameSessionsController < ApplicationController
 
     # Vérification des conditions de victoire de la chanson et passage de la chanson en "done" si c'est le cas
     check_song_victory
+
   end
 
   def victory
@@ -82,24 +86,23 @@ class GameSessionsController < ApplicationController
     end
   end
 
-  def verify_user_word_input
 
    # Si il y a une query dans l'url
    # On split la query et on met l'array dans une variable
    # Pour chaque mot de l aquery, on update l'index, on y récupére la fréquence du mot
    # Via les position dans l'index, on révéle tous les mots censurés à ces positions
    # On crée les guesses, utile pour générer la liste de propositions.
+  def verify_user_word_input
 
     if params[:query].present?
       words = params[:query].downcase.split(@SPLITTING_REGEXP).reject(&:blank?)
       frequency = 0
-
       words.each do |word|
         if @game_session_song.guessed_lyrics_index.has_key?(word)
           @game_session_song.guessed_lyrics_index[word]["guessed"] = true
           frequency = @game_session_song.guessed_lyrics_index[word]["count"]
           @game_session_song.guessed_lyrics_index[word]["positions"].each do |position|
-            @game_session_song.guessed_splitted_lyrics[position-1] = @game_session_song.game_song.song.splitted_lyrics[position-1]
+            @game_session_song.guessed_splitted_lyrics[position-1] = "<span id='#{word}'>#{@game_session_song.game_song.song.splitted_lyrics[position-1]}</span>"
           end
           @game_session_song.save
         end
@@ -108,17 +111,16 @@ class GameSessionsController < ApplicationController
           Guess.create!(game_session_song: @game_session_song, word: word, frequency: frequency)
         end
       end
-
+      redirect_to game_game_session_path(game_id: params[:game_id], id: params[:id], anchor: "#{words[0]}") and return
     end
   end
 
-  # Si les paroles censurées ont le titre visible : on amene sur l'écran de victoire
+  # Si les guesses contiennent les mots du titre : on marque la song comme done.
 
   def check_song_victory
-    if @lyricsrender.join.include? @game_session_song.game_song.song.title
+    if (@title - (Guess.where(game_session_song: @game_session_song, word: @title).map{|x| x[:word]})).empty?
       @game_session_song.status = "done"
       @game_session_song.save
-      redirect_to game_game_session_path(game_id: params[:game_id], id: params[:id])
     end
   end
 
