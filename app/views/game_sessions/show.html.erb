@@ -6,16 +6,14 @@
   </div>
 
   <div class="propals">
-
+  <% veggie = ["tomato.png", "salad.png"] %>
     <div class="listprop d-flex max-height-5 p-1" data-guess-chart-target="content">
-      <div class="guess-count w-25 d-flex justify-content-center align-items-center">
-        <%= Guess.where(game_session_song: @game_session_song).count %>
-      </div>
-      <div class="guess-list d-flex flex-grow-1">
+      <div class="guess-list d-flex flex-grow-1" data-guess-chart-target="window">
         <%  Guess.where(game_session_song: @game_session_song).each do |guess| %>
           <div class="d-inline-flex bg-body-color bubble-guess">
-            <div class=" w-100"><%= guess.word %></div>
-            <div class=" mx-2"><%= guess.frequency %></div>
+            <div class="w-50 m-1"><%= image_tag("#{veggie.first}", width: 30, height: 30, :class => "img-fluid mb-1") %></div>
+            <div class="w-50"><%= guess.word %></div>
+            <div class="frequency mx-2"><%= guess.frequency %>x</div>
           </div>
         <% end %>
       </div>
@@ -24,8 +22,8 @@
     <div class=" d-flex ">
 
       <div class= "triescount d-flex align-items-center">
-        <button class="btn btn-warning btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
-          <i class="fas fa-sort"></i>
+        <button class="btn btn-success btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
+          <%= Guess.where(game_session_song: @game_session_song).count %>
         </button>
       </div>
 
