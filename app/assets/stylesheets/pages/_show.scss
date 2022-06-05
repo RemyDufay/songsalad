@@ -78,18 +78,24 @@
     min-width: 30%;
     max-width: 100%;
     z-index: -1;
-    scroll-behavior: smooth !important;
-
 
 
     span{
     color: rgba(0, 0, 0, 0.368);
     }
 
-    span[id] {
-    color: rgb(0, 0, 0);
-    scroll-margin-top: 10em;
+    .new {
+      transition: all 1s;
+      color: rgb(189, 57, 4);
+      font-weight: bolder;
+      display: inline-block;
     }
+
+    .old {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+    }
+
   }
 
   .formulaire {
