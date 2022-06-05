@@ -18,5 +18,16 @@
 .bubble-stat-green {
   background-color: $green;
   padding: 50%;
+}
 
+.bubble-victory{
+  background-color: $green;
+  margin: auto;
+  padding: 4%;
+  margin-bottom: 4%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around ;
+  align-items: center;
 }

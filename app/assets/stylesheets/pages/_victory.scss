@@ -1,4 +1,41 @@
 .container-victory  {
-  z-index: -1;
-  padding-top: 10vh;
+  // z-index: -1;
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around ;
+  // height: 92vh;
+  align-items: center;
+  width: 100vw;
+}
+
+.btn-victory {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.victoire-logo {
+  margin-top: 7vh;
+  margin-bottom: 3vh;
+}
+
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slot {
+  // position: relative;
+  perspective: 1000px;
+}
+.slot div {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
 }
