@@ -1,6 +1,6 @@
 const containerSlot = document.querySelector(".slot");
 const btnConfettis = document.querySelector(".btn-confettis");
-const vegetables = ["✨", "✨", "✨", "✨"];
+const stars = ["✨", "✨", "✨", "✨"];
 
 window.onload =(fiesta);
 
@@ -10,7 +10,7 @@ function fiesta() {
 
   for (let i = 0; i < 50; i++) {
     const confetti = document.createElement("div");
-    confetti.innerText = vegetables[Math.floor(Math.random() * vegetables.length)];
+    confetti.innerText = stars[Math.floor(Math.random() * stars.length)];
     containerSlot.appendChild(confetti);
   }
 

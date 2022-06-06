@@ -24,6 +24,4 @@ def build_lyrics_index
   self.save
 end
 
-
-
 end

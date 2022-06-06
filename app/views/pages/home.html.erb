@@ -2,7 +2,7 @@
 <div class="container home">
 
 <%# Logo %>
-<div class="container text-center logo">
+<div class="container text-center logo animate__animated animate__bounceInDown">
   <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
 </div>
 
@@ -14,7 +14,7 @@
 </div>
 
   <%# small button %>
-  <div class="small-btn-home animate__animated animate__bounceInRight">
+  <div class="small-btn-home animate__animated animate__bounceInLeft">
 
     <%= link_to rules_path, class: "btn btn-warning text-center" do %>
       <i class="fas fa-book-open fa-1x"></i>

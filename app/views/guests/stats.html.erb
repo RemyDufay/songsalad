@@ -1,9 +1,9 @@
 <div class="container stats">
-  <h1>Vos statistiques</h1>
+  <h1 class="animate__animated animate__bounceInDown">Vos statistiques</h1>
 
   <%# carroussel %>
 
-  <div id="carouselExampleInterval" class="carousel slide w-75" data-bs-ride="carousel">
+  <div id="carouselExampleInterval" class="carousel slide w-75 animate__animated animate__rubberBand" data-bs-ride="carousel">
     <div class="carousel-inner">
       <%# Slide %>
       <div class="carousel-item active text-center bubble-stat-green" data-bs-interval="20000">
@@ -45,7 +45,7 @@
   </div>
 
   <%# Logo %>
-  <div class="container text-center">
+  <div class="container text-center animate__animated animate__bounceInUp">
     <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
   </div>
 </div>
