@@ -1,5 +1,7 @@
+
 <% if @game_session_song.status == "done"  %>
-  <%=link_to 'Bravo !! Passe à la suite ⇨ ', game_game_session_path(game, game_session), class: 'btn btn-primary btn-validate-prop choix d-flex flex-grow-1' %>
+   
+  <%=link_to 'Bravo !! Passe à la suite ⇨ ', game_game_session_path(game, game_session), class: 'btn btn-primary btn-validate-prop choix d-flex flex-grow-1', data: { submit_guess_target: "form"}  %>
 <% else %>
   <%= simple_form_for([game, game_session, game_session_song, guess ], html: { class: 'd-flex flex-grow-1'}, data: { submit_guess_target: "form", action: "submit->submit-guess#send" }) do |f| %>
     <%= f.input_field :word, label: false, as: :string, class: "form-control", data: {submit_guess_target: "input"}, autofocus: true, autocomplete: "off" %>

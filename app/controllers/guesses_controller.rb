@@ -6,6 +6,7 @@ class GuessesController < ApplicationController
     @game_session_song = GameSessionSong.find(params[:game_session_song_id])
     @game_session      = @game_session_song.game_session
     @game              = @game_session.game
+    @title = @game_session_song.game_song.song.title.downcase.split(/\W/)
 
     words = guess_params[:word].downcase.split(@regexp).reject(&:blank?)
 
@@ -17,6 +18,8 @@ class GuessesController < ApplicationController
         guess.save!
       end
     end
+
+    check_song_victory
 
     @guesses_ordered_by_latest = @game_session_song.
       guesses.
@@ -33,4 +36,13 @@ class GuessesController < ApplicationController
   def guess_params
     params.require(:guess).permit(:word)
   end
+
+  def check_song_victory
+    if (@title - (Guess.where(game_session_song: @game_session_song, word: @title).map{|x| x[:word]})).empty?
+      @game_session_song.status = "done"
+      @game_session_song.save
+    end
+  end
+
+
 end

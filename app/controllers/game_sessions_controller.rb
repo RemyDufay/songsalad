@@ -47,7 +47,7 @@ class GameSessionsController < ApplicationController
       order(created_at: :desc)
 
     # Vérification des conditions de victoire de la chanson et passage de la chanson en "done" si c'est le cas
-    check_song_victory
+
 
 
 
@@ -91,12 +91,6 @@ class GameSessionsController < ApplicationController
 
   # Si les guesses contiennent les mots du titre : on marque la song comme done.
 
-  def check_song_victory
-    if (@title - (Guess.where(game_session_song: @game_session_song, word: @title).map{|x| x[:word]})).empty?
-      @game_session_song.status = "done"
-      @game_session_song.save
-      # redirect_to game_game_session_path(@game, @game_session)
-    end
-  end
+
 
 end

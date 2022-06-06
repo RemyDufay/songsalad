@@ -18,8 +18,10 @@ export default class extends Controller {
         this.listTarget.outerHTML  = data.list_html
         this.countTarget.outerHTML = data.count_html
         this.lyricsTarget.outerHTML = data.lyrics_html
+        this.formTarget.outerHTML = data.form_html
         this.formTarget.reset()
-
+        this.inputTarget.focus()
+        
         // this.formTarget.outerHTML = data.formHTML
       })
   }
