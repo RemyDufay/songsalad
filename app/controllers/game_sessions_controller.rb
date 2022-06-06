@@ -42,8 +42,14 @@ class GameSessionsController < ApplicationController
     # On stock les paroles censurées/trouvées dans une variable
     @lyricsrender = @game_session_song.guessed_splitted_lyrics
 
+    @guesses_ordered_by_latest = @game_session_song.
+      guesses.
+      order(created_at: :desc)
+
     # Vérification des conditions de victoire de la chanson et passage de la chanson en "done" si c'est le cas
     check_song_victory
+
+
 
   end
 
