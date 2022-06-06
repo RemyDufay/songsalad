@@ -89,7 +89,7 @@ class GameSessionsController < ApplicationController
     if (@title - (Guess.where(game_session_song: @game_session_song, word: @title).map{|x| x[:word]})).empty?
       @game_session_song.status = "done"
       @game_session_song.save
-      redirect_to game_game_session_path(@game, @game_session)
+      # redirect_to game_game_session_path(@game, @game_session)
     end
   end
 
