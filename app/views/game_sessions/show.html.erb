@@ -1,68 +1,27 @@
+<div id="show-game" data-controller="guess-chart submit-guess">
 
-<div id="show-game" data-controller="guess-chart" data-controller="insert-in-list">
   <div class="lyrics-container">
-    <div class="lyrics px-4" data-controller="color" data-insert-in-list-target="items" >
-      <% if @game_session_song.status == "done"  %>
-        <% @game_session_song.game_song.song.splitted_lyrics.each do |word|%>
-          <% if word == "\n" %>
-            <%= "<br>".html_safe %>
-          <% elsif word =~ /[[A-zÀ-ú-œ]]+/ %>
-            <%= "<span data-color-target='guessed' class='word new animate__animated animate__swing'>#{word}</span>".html_safe  %>
-          <% else %>
-            <%= "<span class='word'>#{word}</span>".html_safe %>
-          <% end %>
-        <% end %>
 
-      <% else %>
-
-        <%  @game_session_song.guessed_splitted_lyrics.each do |word|%>
-          <% if word == "\n" %>
-            <%= "<br>".html_safe %>
-          <% elsif word =~ /[[A-zÀ-ú-œ]]+/ %>
-            <%= "<span data-color-target='guessed' class='word new animate__animated animate__swing'>#{word}</span>".html_safe  %>
-          <% else %>
-            <%= "<span class='word'>#{word}</span>".html_safe %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="propals">
-    <div class="listprop d-flex p-1" data-guess-chart-target="content">
-      <div class="guess-list d-flex flex-grow-1">
-        <%  Guess.where(game_session_song: @game_session_song).reverse_each do |guess| %>
-          <div class="d-inline-flex bg-body-color bubble-guess">
-            <div class="w-50"><%= image_tag("tomato.png", width: 30, height: 30, :class => "img-fluid mb-1 mt-1") %></div>
-            <div class="w-50"><%= guess.word %></div>
-            <div class="frequency mx-2"><%= guess.frequency %>x</div>
-          </div>
-        <% end %>
-      </div>
+    <%= render 'game_sessions/lyrics', song: @game_session_song %>
     </div>
 
-    <div class="d-flex ">
 
-      <div class= "triescount d-flex align-items-center">
-        <button class="btn btn-success btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
-          <%= Guess.where(game_session_song: @game_session_song).count %>
-        </button>
-      </div>
+      <div class="propals">
+        <%= render 'game_sessions/guesses', guesses: @guesses_ordered_by_latest %>
 
-      <% if @game_session_song.status == "done"  %>
-        <%=link_to 'Bravo !! Passe à la suite ⇨ ', game_game_session_path(@game, @game_session), class: 'btn btn-primary btn-validate-prop choix d-flex flex-grow-1' %>
-      <% else %>
-        <%= simple_form_for([@game, @game_session, @game_session_song, @guess ], remote: true, html: { class: 'd-flex flex-grow-1', data: { insert_in_list_target: "form" }}) do |f| %>
-        <%= f.input_field :word, label: false, as: :string, class: "form-control", autofocus: true, autocomplete: "off" %>
-        <%= f.button :submit, class: 'btn btn-primary btn-validate-prop', value: "Valider"  %>
-        <% end %>
-      <% end %>
+        <div class=" d-flex ">
+          <%= render 'game_sessions/guesses_count', guesses_count: @guesses_ordered_by_latest.count %>
+
+
+        <%= render 'guesses/form', game: @game, game_session: @game_session, game_session_song: @game_session_song, guess: @guess %>
+
+        </div>
 
     </div>
-
-  </div>
 
 </div>
+
+
 <script>
   ScrollReveal().reveal('.word', { interval: 0.5, container: '.lyrics' } );
 </script>

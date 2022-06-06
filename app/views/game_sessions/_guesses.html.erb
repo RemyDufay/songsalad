@@ -1,0 +1,13 @@
+<div class="listprop d-flex p-1" data-guess-chart-target="content"  data-submit-guess-target="list">
+  <div class="guess-list d-flex flex-grow-1" data-guess-chart-target="window">
+    <%  guesses.each do |guess| %>
+      <div class="d-inline-flex bg-body-color bubble-guess">
+        <div class="w-50 m-1"><%= image_tag("tomato.png", width: 30, height: 30, :class => "img-fluid mb-1 mt-1") %></div>
+        <div class="w-50"><%= guess.word %></div>
+        <div class="frequency mx-2"><%= guess.frequency %>x</div>
+      </div>
+
+      <%#= render 'game_sessions/guess', guess: guess %>
+    <% end %>
+  </div>
+</div>
