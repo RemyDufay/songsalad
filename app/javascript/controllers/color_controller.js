@@ -14,18 +14,18 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "guessed" ]
 
-  connect() {
-    var hash = (document.URL.split('#').length > 1) ? document.URL.split('#')[1] : null;
-    var hash = decodeURIComponent(hash)
+  // connect() {
+  //   var hash = (document.URL.split('#').length > 1) ? document.URL.split('#')[1] : null;
+  //   var hash = decodeURIComponent(hash)
 
-    this.guessedTargets.forEach( (elem) => {
-      if (elem.textContent.toLowerCase() != hash) {
-      elem.classList.remove("animate__animated")
-      elem.classList.remove("animate__swing")
-      elem.classList.remove("new")
-      elem.classList.add("old")
-      }
-    } )
+  //   this.guessedTargets.forEach( (elem) => {
+  //     if (elem.textContent.toLowerCase() != hash) {
+  //     elem.classList.remove("animate__animated")
+  //     elem.classList.remove("animate__swing")
+  //     elem.classList.remove("new")
+  //     elem.classList.add("old")
+  //     }
+  //   } )
 
-  }
+  // }
 }
