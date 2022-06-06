@@ -1,5 +1,5 @@
 
-<div class="lyrics px-4" data-controller="color" data-insert-in-list-target="items" data-submit-guess-target="lyrics" >
+<div class="lyrics px-4" data-insert-in-list-target="items" data-submit-guess-target="lyrics" >
       <% if @game_session_song.status == "done"  %>
           <% @game_session_song.game_song.song.splitted_lyrics.each do |word|%>
             <% if word == "\n" %>
@@ -15,9 +15,9 @@
             <% if word == "\n" %>
               <%= "<br>".html_safe %>
             <% elsif !@game_session_song.guesses.empty? && word.downcase == @game_session_song.guesses.last.word  %>
-              <%= "<span data-color-target='guessed' class='word new animate__animated animate__swing'>#{word}</span>".html_safe  %>
+              <%= "<span  class='word new animate__animated animate__swing'>#{word}</span>".html_safe  %>
             <% elsif word =~ /[[A-zÀ-ú-œ]]+/ %>
-              <%= "<span data-color-target='guessed' class='word old'>#{word}</span>".html_safe  %>
+              <%= "<span class='word old'>#{word}</span>".html_safe  %>
             <% else %>
               <%= "<span class='word'>#{word}</span>".html_safe %>
             <% end %>
