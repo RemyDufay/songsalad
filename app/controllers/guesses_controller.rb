@@ -29,7 +29,7 @@ class GuessesController < ApplicationController
     if @game_session_song.guessed_lyrics_index.has_key?(word)
       @game_session_song.guessed_lyrics_index[word]["guessed"] = true
       @game_session_song.guessed_lyrics_index[word]["positions"].each do |position|
-        @game_session_song.guessed_splitted_lyrics[position-1] = "<span id='#{word}'>#{@game_session_song.game_song.song.splitted_lyrics[position-1]}</span>"
+        @game_session_song.guessed_splitted_lyrics[position-1] = "<span data-color-target='guessed' class='new animate__animated animate__swing'>#{@game_session_song.game_song.song.splitted_lyrics[position-1]}</span>"
       end
       @game_session_song.save!
       @guess.frequency = @game_session_song.guessed_lyrics_index[word]["count"]

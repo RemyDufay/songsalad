@@ -1,6 +1,6 @@
 <div id="show-game" data-controller="guess-chart">
   <div>
-    <div class="lyrics px-4">
+    <div class="lyrics px-4" data-controller="color" >
       <%= @game_session_song.guessed_splitted_lyrics.join.html_safe %>
     </div>
   </div>
@@ -39,3 +39,4 @@
   </div>
 
 </div>
+
