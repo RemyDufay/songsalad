@@ -1,22 +1,38 @@
-<div class="container container-victory d-flex text-center" style="flex-direction: column" >
-  <h1 class="mode-de-jeu">Bravo !</h1>
+    <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="confettis_controller.js"></script> %>
+<div class="container-victory">
 
-  <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid mb-3") %></div>
+  <div><%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid") %></div>
+
+  <div class="container d-flex flex-column text-center">
+    <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo") %></div>
+
+  <%# confettis %>
+        <div class="slot"></div>
+        <%# <button class="btn-confettis">🍰</button> %>
+    </div>
+  <%# confettis finito %>
 
   <% @game_session.game_session_songs.each do |song|%>
-    <div class="bubble" style="width: 60vw" >
-        <h3><b><%= song.game_song.song.title %></b></h3> <br>
+    <div class="bubble-victory" style="width: 60vw" >
+
+      <div class="d-flex justify-content-between">
+        <div><%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %></div>
+          <h3><b><%= song.game_song.song.title %></b></h3><br>
+        <div><%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %></div>
+      </div><br>
+
         <h4><%= song.game_song.song.author %></h4><br>
         (<%= Guess.where(game_session_song: song).count %> coups )
     </div>
   <% end %>
-
-  <div>
-    <%= link_to "Nouvelle partie", root_path, class: "btn d-block btn-primary btn-lg mb-5 mode-de-jeu" %>
-  </div>
-
-  <div data-controller="clipboard" data-clipboard-feedback-text-value="Copié dans le presse-papier !" data-clipboard-copied-value="J'ai trouvé la chanson du jour en <%= @guesses_count  %> coups ! 🥗 songsalad.com 🥗 ">
-    <button class="btn btn-primary mode-de-jeu" data-action="click->clipboard#copy">Partager mon résultat</button>
+  <div class="mode-de-jeu container text-center">
+    <div>
+      <%= link_to "Retour à l'accueil", root_path, class: "btn d-block btn-primary btn-lg mode-de-jeu btn-victory" %>
+    </div>
+    <div data-controller="clipboard" data-clipboard-feedback-text-value="Copié dans le presse-papier !" data-clipboard-copied-value="J'ai trouvé la chanson du jour en <%= @guesses_count  %> coups ! 🥗 songsalad.com 🥗 ">
+      <button class="btn btn-primary mode-de-jeu" data-action="click->clipboard#copy">Partager mon résultat</button>
+    </div>
   </div>
 
 
