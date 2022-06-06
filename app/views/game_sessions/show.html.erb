@@ -1,16 +1,27 @@
 <div id="show-game" data-controller="guess-chart submit-guess">
 
-<%= render 'game_sessions/lyrics', song: @game_session_song %>
+  <div class="lyrics-container">
 
-
-  <div class="propals">
-    <%= render 'game_sessions/guesses', guesses: @guesses_ordered_by_latest %>
-
-    <div class=" d-flex ">
-      <%= render 'game_sessions/guesses_count', guesses_count: @guesses_ordered_by_latest.count %>
-      <%= render 'guesses/form', game: @game, game_session: @game_session, game_session_song: @game_session_song, guess: @guess %>
+    <%= render 'game_sessions/lyrics', song: @game_session_song %>
     </div>
 
-  </div>
+
+      <div class="propals">
+        <%= render 'game_sessions/guesses', guesses: @guesses_ordered_by_latest %>
+
+        <div class=" d-flex ">
+          <%= render 'game_sessions/guesses_count', guesses_count: @guesses_ordered_by_latest.count %>
+
+
+        <%= render 'guesses/form', game: @game, game_session: @game_session, game_session_song: @game_session_song, guess: @guess %>
+
+        </div>
+
+    </div>
 
 </div>
+
+
+<script>
+  ScrollReveal().reveal('.word', { interval: 0.5, container: '.lyrics' } );
+</script>

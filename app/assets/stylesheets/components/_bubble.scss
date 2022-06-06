@@ -12,12 +12,23 @@
   margin-bottom: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  align-items: center;
 
 }
 
 .bubble-stat-green {
   background-color: $green;
-  padding: 50%;
+  border-radius: 10px;
+}
+
+.bubble-stat-blue {
+  background-color: $blue;
+  border-radius: 10px;
+}
+
+.bubble-stat-yellow {
+  background-color: $yellow;
+  border-radius: 10px;
 }
 
 .bubble-victory{

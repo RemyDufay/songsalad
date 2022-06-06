@@ -2,19 +2,19 @@
     <script src="confettis_controller.js"></script> %>
 <div class="container-victory">
 
-  <div><%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid") %></div>
+  <div><%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid animate__animated animate__bounceInDown") %></div>
 
   <div class="container d-flex flex-column text-center">
-    <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo") %></div>
+    <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo animate__animated animate__bounceInLeft") %></div>
 
   <%# confettis %>
-        <div class="slot"></div>
-        <%# <button class="btn-confettis">🍰</button> %>
-    </div>
+  <div class="slot"></div>
+      <%# <button class="btn-confettis">🍰</button> %>
+  </div>
   <%# confettis finito %>
 
   <% @game_session.game_session_songs.each do |song|%>
-    <div class="bubble-victory" style="width: 60vw" >
+    <div class="bubble-victory animate__animated animate__bounceInRight" style="width: 60vw" >
 
       <div class="d-flex justify-content-between">
         <div><%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %></div>
@@ -26,7 +26,7 @@
         (<%= Guess.where(game_session_song: song).count %> coups )
     </div>
   <% end %>
-  <div class="mode-de-jeu container text-center">
+  <div class="mode-de-jeu container text-center animate__animated animate__bounceInUp">
     <div>
       <%= link_to "Retour à l'accueil", root_path, class: "btn d-block btn-primary btn-lg mode-de-jeu btn-victory" %>
     </div>
