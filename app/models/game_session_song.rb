@@ -39,11 +39,9 @@ private
 def redact(word)
   redacted = ""
   word.each_char do |char|
-    (char =~ /[[:alpha:]]/) ? redacted += "█" : redacted += char
+    (char =~ /[[:alpha:]]/) ? redacted += "&#95;" : redacted += char
   end
   return redacted = "<span>#{redacted}</span>"
 end
-
-
 
 end

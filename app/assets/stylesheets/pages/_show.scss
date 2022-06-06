@@ -82,6 +82,7 @@
 
     span{
     color: rgba(0, 0, 0, 0.368);
+
     }
 
     .new {
@@ -113,6 +114,8 @@
     #show-game {
       display: flex;
       max-height: 95vh;
+      justify-content: space-between;
+
     }
 
     .show{
@@ -122,10 +125,11 @@
 
     .lyrics {
       max-height: 85vh;
-      margin: 0;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       max-width: 100%;
+      margin-left: 25%;
+      letter-spacing: 0.5rem;
     }
 
     .listprop {
@@ -140,7 +144,7 @@
 
     .propals {
       max-height: 40vh;
-      margin: 0;
+      margin-right: 5%;
       padding: 0;
       width: 40%;
       height: 6vh;
