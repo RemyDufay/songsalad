@@ -27,17 +27,21 @@ class GameSessionsController < ApplicationController
     @game = @game_session.game
     @game_songs = @game_session.game.game_songs
     @guess = Guess.new
+    @songs_count = @game_songs.count
+    @songs_done_count = GameSessionSong.where(game_session: @game_session, status: "done").count
 
+    if @songs_count == @songs_done_count
+      redirect_to victory_game_game_session_path(game_id: params[:game_id], id: params[:id]) and return
+    end
+    
     # Si c'est la premiere fois que le joueur joue, on crée les chansons de la session
     create_game_session_songs
 
     # Chargement de la variable @game_session_song qui contient la chanson en cours
     # Si plus de chanson en cours : écran de victoire final
     select_ongoing_song
-    if @game_session_song.nil?
-      redirect_to victory_game_game_session_path(game_id: params[:game_id], id: params[:id]) and return
-    end
     @title = @game_session_song.game_song.song.title.downcase.split(/\W/)
+
 
     # On stock les paroles censurées/trouvées dans une variable
     @lyricsrender = @game_session_song.guessed_splitted_lyrics
@@ -45,11 +49,6 @@ class GameSessionsController < ApplicationController
     @guesses_ordered_by_latest = @game_session_song.
       guesses.
       order(created_at: :desc)
-
-    # Vérification des conditions de victoire de la chanson et passage de la chanson en "done" si c'est le cas
-
-
-
 
   end
 

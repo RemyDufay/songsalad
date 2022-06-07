@@ -218,3 +218,28 @@
 .carousel-control-next-icon {
   background-image: url("right-arrow.png");
 }
+
+
+
+.carousel {
+  height: 40%;
+  max-height: 60vh;
+  max-width: 80vh;
+
+
+  .carousel-inner {
+    height: 100%;
+    max-height: 60vh;
+    max-width: 80vh;
+
+  }
+
+  .carousel-item {
+    height: 100%;
+    max-height: 60vh;
+    max-width: 80vh;
+
+  }
+
+
+}

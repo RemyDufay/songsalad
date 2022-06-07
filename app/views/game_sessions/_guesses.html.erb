@@ -1,3 +1,5 @@
+
+<% if @game_session_song.status != "done"  %>
 <div class="listprop d-flex p-1" data-guess-chart-target="content"  data-submit-guess-target="list">
   <div class="guess-list d-flex flex-grow-1" data-guess-chart-target="window">
     <%  guesses.each do |guess| %>
@@ -11,3 +13,4 @@
     <% end %>
   </div>
 </div>
+<% end  %>

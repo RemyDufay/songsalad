@@ -1,8 +1,25 @@
 class GuestsController < ApplicationController
   def reset
-    @guests = Guest.find(params[:id])
-    @guests.destroy
-
-    redirect_to stats_guest_path
+    session[:guest_id] = nil
+    redirect_to root_path
   end
+
+
+  def stats
+
+    @guest = Guest.find(params[:id])
+    @sessions = GameSession.where(guest_id:@guest)
+    @sessionscount = @sessions.count
+    @songsplayed = GameSessionSong.where(game_session_id: @sessions, status:"done" )
+    @songsplayedcount = @songsplayed.count
+    totalguesses = 0
+    @songsplayed.each do |song|
+      totalguesses += song.guesses.count
+    end
+    @averageguesses =  @songsplayedcount == 0 ? "-" : totalguesses /  @songsplayedcount
+  end
+
+
+
+
 end
