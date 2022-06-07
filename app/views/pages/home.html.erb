@@ -17,7 +17,7 @@
   <div class="small-btn-home animate__animated animate__bounceInLeft">
 
     <% if user_signed_in? %>
-      <%= link_to friendship_path(current_user), class: "btn btn-warning" do %>
+      <%= link_to friendships_path(current_user), class: "btn btn-warning" do %>
         <i class="fas fa-users"></i>
       <% end %>
     <% else %>
