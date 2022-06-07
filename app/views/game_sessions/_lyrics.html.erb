@@ -5,22 +5,25 @@
             <% if word == "\n" %>
               <%= "<br>".html_safe %>
             <% else %>
-              <%= "<span class='word old'>#{word}</span>".html_safe %>
+              <%= "<span class='old animate__animated  animate__flipInY animate__slow'>#{word}</span>".html_safe %>
             <% end %>
           <% end %>
 
         <% else %>
 
+          <% @game_session_song.guesses.empty? ? last_guess = "" : last_guess = @game_session_song.guesses.last.word  %>
           <%  @game_session_song.guessed_splitted_lyrics.each do |word|%>
             <% if word == "\n" %>
               <%= "<br>".html_safe %>
-            <% elsif !@game_session_song.guesses.empty? && word.downcase == @game_session_song.guesses.last.word  %>
+            <% elsif word.downcase == last_guess  %>
               <%= "<span  class='word new animate__animated animate__swing'>#{word}</span>".html_safe  %>
             <% elsif word =~ /[[A-zÀ-ú-œ]]+/ %>
-              <%= "<span class='word old'>#{word}</span>".html_safe  %>
+              <%= "<span class='word  old'>#{word}</span>".html_safe  %>
             <% else %>
-              <%= "<span class='word'>#{word}</span>".html_safe %>
+              <%= "<span class='word '>#{word}</span>".html_safe %>
             <% end %>
         <% end %>
+
       <% end %>
     </div>
+<script> ScrollReveal().reveal('.word', { interval: 0.5, container: '.lyrics' } ); </script>

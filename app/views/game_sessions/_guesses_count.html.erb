@@ -1,5 +1,7 @@
+<% if @game_session_song.status != "done"  %>
 <div class= "triescount d-flex align-items-center" data-submit-guess-target="count">
   <button class="btn btn-success btn-propal btn-show-prop" data-action="click->guess-chart#revealContent">
     <%= guesses_count %>
   </button>
 </div>
+<% end %>
