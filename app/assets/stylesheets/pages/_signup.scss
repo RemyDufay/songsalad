@@ -1,0 +1,31 @@
+.form-control{
+
+  border-radius: 15px;
+  justify-content: space-around;
+}
+
+.alert{
+
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+  width: auto;
+}
+
+.form-actions{
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.sign{
+
+  justify-content: flex-start;
+  z-index: -1;
+  margin-top: 6rem;
+}
+
+h2{
+
+  text-align: center;
+}

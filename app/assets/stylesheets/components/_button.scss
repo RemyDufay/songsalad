@@ -15,6 +15,17 @@
   height: 2rem;
 }
 
+.btn-second{
+
+  margin: 25px auto;
+  box-shadow: 3px 3px #CCCCCC;
+  display: flex;
+  place-content: center;
+  width: auto;
+  height: auto;
+  background-color: $blue;
+}
+
 @media (min-width: 800px) {
 
   .btn {
@@ -25,4 +36,14 @@
 .btn-propal {
   box-shadow: 0px 0px;
 }
+
+  .btn-second{
+    margin-top: 25px;
+    box-shadow: 3px 3px #CCCCCC;
+    display: grid;
+    place-content: center;
+    width: auto;
+    height: auto;
+    background-color: $blue;
+  }
 }
