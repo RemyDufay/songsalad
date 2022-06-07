@@ -1,0 +1,22 @@
+<div class="container-friendship">
+  <h1>Mes Amis</h1>
+
+  <div class="mb-5">leaderbord</div>
+  <% if @friends.any?  %>
+    <% @friends.each do |friend| %>
+      <%= friend.name %>
+    <% end  %>
+  <% else  %>
+    <p>Ajouter un ami 👇👇 </p>
+  <% end  %>
+
+  <div class="mb-5">
+    <%= simple_form_for @friendship, url: friendships_path, method: :post, html: { class: 'form-inline' } do |f| %>
+      <%= hidden_field_tag "friendship[user_id]", current_user.id %>
+      <%= f.input :friend_id, collection: @all_users %>
+      <%= f.submit "Ajouter un ami", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div>Demande d'amis 👇👇 </div>
+</div>

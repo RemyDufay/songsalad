@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    registrations: 'registrations'
-  }
+  devise_for :users
   root to: 'pages#home'
 
 
@@ -25,6 +23,13 @@ resources :guests, only: [] do
 
 end
 
+resources :friendships, only: [:create, :index] do
+  member do
+    patch :decline
+    patch :accept
+    patch :cancel
+  end
+end
 
   # get '/solo', to: 'game_sessions#solo'
   # get '/playlist', to: 'game_sessions#playlist'

@@ -16,9 +16,15 @@
   <%# small button %>
   <div class="small-btn-home animate__animated animate__bounceInLeft">
 
-    <%= link_to faq_path, class: "btn btn-warning" do %>
-      <i class="fas fa-users"></i>
-    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to friendship_path(current_user), class: "btn btn-warning" do %>
+        <i class="fas fa-users"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "btn btn-warning" do %>
+        <i class="fas fa-users"></i>
+      <% end %>
+    <%end %>
 
     <% if guest_present? %>
       <%= link_to stats_guest_path(current_guest), class: "btn btn-warning" do %>
