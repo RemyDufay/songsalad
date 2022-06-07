@@ -4,7 +4,7 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs animate__animated animate__bounceInDown">
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -24,14 +24,14 @@
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
-  <div class="form-actions btn btn-primary">
+  <div class="form-actions btn btn-primary animate__animated animate__bounceInUp">
     <%= f.button :submit, "Modifier" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous sûr?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
 </div>

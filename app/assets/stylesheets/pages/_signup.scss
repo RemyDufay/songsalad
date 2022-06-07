@@ -29,3 +29,13 @@ h2{
 
   text-align: center;
 }
+
+@media (min-width: 800px) {
+  .sign{
+
+    justify-content: flex-start;
+    z-index: -1;
+    margin-top: 0rem;
+
+  }
+}

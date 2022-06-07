@@ -5,7 +5,7 @@
     <%= f.error_notification %>
     <%= f.full_error :confirmation_token %>
 
-    <div class="form-inputs">
+    <div class="form-inputs animate__animated animate__bounceInDown">
       <%= f.input :email,
                   required: true,
                   autofocus: true,
@@ -13,7 +13,7 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions btn btn-primary">
+    <div class="form-actions btn btn-primary animate__animated animate__bounceInUp">
       <%= f.button :submit, "Renvoyer les instructions de confirmation" %>
     </div>
   <% end %>
