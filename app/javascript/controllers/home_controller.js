@@ -8,15 +8,11 @@ export default class extends Controller {
 
   out(event) {
     event.preventDefault();
-    console.log("stop !")
-    var self = this;
-    this.homeTarget.classList.add("animate__animated", "animate__backOutRight")
-    setTimeout(gotosession, 450)
+    this.homeTarget.classList.add("animate__animated", "animate__backOutLeft");
+    var path = event.target.action;
+    setTimeout(function(){
+      Rails.ajax({url: path, type: 'POST'});
+    }, 500);
   }
 
-}
-
-
-function gotosession() {
-  Rails.ajax({url: '/games/3/game_sessions',type: 'POST'});
 }

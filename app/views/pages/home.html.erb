@@ -1,5 +1,5 @@
 <%# warper %>
-<div class="container home" data-controller="home" data-home-target="home">
+<div class="container home" data-controller="home" data-home-target="home" home-path-value= "analytical_technician..._path">
 
 <%# Logo %>
 <div class="container text-center logo animate__animated animate__bounceInDown" >
@@ -12,7 +12,9 @@
   <%= simple_form_for([@solo, @session], html: { class: 'd-block', data: {action: "submit->home#out"} }) do |f| %>
     <%= f.button :submit, value: "CHANSON DU JOUR", class: 'btn d-block btn-primary btn-lg mb-4', style: "width: 100%"  %>
   <% end %>
-  <%= link_to "PLAYLIST DU JOUR (x3)", game_game_sessions_path(:game_id => @playlist), method: :post, class: "btn d-block btn-primary btn-lg mb-5", data: {action: "click->home#out"} %>
+  <%= simple_form_for([@playlist, @session], html: { class: 'd-block', data: {action: "submit->home#out"} }) do |f| %>
+    <%= f.button :submit, value: "CHANSON DU JOUR", class: 'btn d-block btn-primary btn-lg mb-4', style: "width: 100%"  %>
+  <% end %>
 </div>
 
 
