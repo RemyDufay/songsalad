@@ -11,9 +11,10 @@ flex-direction: column;
 justify-content: space-around ;
 height: 92vh;
 align-items: center;
+overflow-x: hidden;
 
   .logo {
-    padding-top: 10vh;
+    padding-top: 3vh;
   }
 
 
@@ -35,3 +36,10 @@ align-items: center;
   justify-content: space-around ;
   margin-bottom: 10px;
 }
+
+
+@media (min-width: 800px) {
+  .home {
+    height: 97vh;
+    }
+  }

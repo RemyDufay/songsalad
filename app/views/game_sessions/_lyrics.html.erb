@@ -5,7 +5,7 @@
             <% if word == "\n" %>
               <%= "<br>".html_safe %>
             <% else %>
-              <%= "<span class='word old'>#{word}</span>".html_safe %>
+              <%= "<span class='word load-hidden old'>#{word}</span>".html_safe %>
             <% end %>
           <% end %>
 
@@ -15,11 +15,11 @@
             <% if word == "\n" %>
               <%= "<br>".html_safe %>
             <% elsif !@game_session_song.guesses.empty? && word.downcase == @game_session_song.guesses.last.word  %>
-              <%= "<span  class='word new animate__animated animate__swing'>#{word}</span>".html_safe  %>
+              <%= "<span  class='word  load-hidden new animate__animated animate__swing'>#{word}</span>".html_safe  %>
             <% elsif word =~ /[[A-zÀ-ú-œ]]+/ %>
-              <%= "<span class='word old'>#{word}</span>".html_safe  %>
+              <%= "<span class='word load-hidden old'>#{word}</span>".html_safe  %>
             <% else %>
-              <%= "<span class='word'>#{word}</span>".html_safe %>
+              <%= "<span class='word load-hidden'>#{word}</span>".html_safe %>
             <% end %>
         <% end %>
       <% end %>
