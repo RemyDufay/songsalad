@@ -9,9 +9,12 @@
 <%# h6 & BUTTONS%>
 <div class="mode-de-jeu container text-center animate__animated animate__bounceInRight " >
   <h4 class="mt-3 mb-4 choix">Choisissez votre mode de jeu</h4>
-  <%= link_to "CHANSON DU JOUR", game_game_sessions_path(:game_id => @solo), method: :post, class: "btn d-block btn-primary btn-lg mb-4", data: {action: "click->home#out(#{game_game_sessions_path(:game_id => @solo)}"}  %>
+  <%= simple_form_for([@solo, @session], html: { class: 'd-block', data: {action: "submit->home#out"} }) do |f| %>
+    <%= f.button :submit, value: "CHANSON DU JOUR", class: 'btn d-block btn-primary btn-lg mb-4', style: "width: 100%"  %>
+  <% end %>
   <%= link_to "PLAYLIST DU JOUR (x3)", game_game_sessions_path(:game_id => @playlist), method: :post, class: "btn d-block btn-primary btn-lg mb-5", data: {action: "click->home#out"} %>
 </div>
+
 
   <%# small button %>
   <div class="small-btn-home animate__animated animate__bounceInLeft">

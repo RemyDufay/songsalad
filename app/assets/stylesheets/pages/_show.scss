@@ -136,43 +136,10 @@
 
   @media (min-width: 800px) {
     #show-game {
-      display: flex;
-      max-height: 95vh;
-      justify-content: space-between;
-
+      max-width: 40vw;
+      margin: auto;
+      max-height: 100%;
     }
 
-    .show{
-      gap: 0;
-      // max-height: 100vh;
-      }
 
-    .lyrics {
-      max-height: 85vh;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      max-width: 100%;
-      margin-left: 25%;
-      letter-spacing: 0.5rem;
-    }
-
-    .listprop {
-      margin: 0;
-      padding: 0;
-    }
-
-    .formulaire {
-      margin-top: 0px;
-      width: 100%;
-    }
-
-    .propals {
-      max-height: 40vh;
-      margin-right: 5%;
-      padding: 0;
-      width: 40%;
-      height: 6vh;
-      position: sticky;
-      bottom: 0;
-    }
   }
