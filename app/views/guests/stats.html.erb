@@ -8,31 +8,25 @@
       <%# Slide %>
       <div class="carousel-item active text-center bubble-stat-green" data-bs-interval="20000">
         <div class="w-100">
-          <div class="mt-3 choix stat-category">PARTIES</div>
-          <div class="mt-5 stat-number choix">32</div>
+          <div class="mt-4 choix stat-category">PARTIES</div>
+          <div class=" stat-number mt-5 choix"> <%= @sessionscount %> </div>
         </div>
       </div>
       <%# Slide %>
       <div class="carousel-item text-center bubble-stat-blue" data-bs-interval="20000">
         <div class="d-block w-100">
-          <div class="mt-3 choix stat-category">VICTOIRES</div>
-          <div class="mt-5 stat-number choix">9</div>
+          <div class="mt-4 choix stat-category">CHANSONS TROUVEES</div>
+          <div class=" stat-number mt-5 choix"><%= @songsplayedcount %></div>
         </div>
       </div>
       <%# Slide %>
       <div class="carousel-item text-center bubble-stat-yellow" data-bs-interval="20000">
         <div class="d-block w-100">
-          <div class="mt-3 choix stat-category">MEILLEURE SERIE</div>
-          <div class="mt-5 stat-number choix">2</div>
+          <div class="mt-4 choix stat-category">MOYENNE D'ESSAIS</div>
+          <div class=" stat-number mt-5 choix"><%= @averageguesses %></div>
         </div>
       </div>
       <%# Slide %>
-      <div class="carousel-item text-center bubble-stat-blue" data-bs-interval="20000">
-        <div class="d-block w-100">
-          <div class="mt-3 choix stat-category">MOYENNE D'ESSAI</div>
-          <div class="mt-5 stat-number choix">5</div>
-        </div>
-      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -45,7 +39,8 @@
   </div>
 
   <%# Logo %>
-  <div class="container text-center animate__animated animate__bounceInUp">
-    <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
+  <div class="delete-btn">
+    <%= link_to "Supprimer mes données", reset_guest_path(:guest_id => @current_guest), method: :delete, class: "btn d-block btn-primary btn-lg mb-4 mt-5" %>
   </div>
+
 </div>
