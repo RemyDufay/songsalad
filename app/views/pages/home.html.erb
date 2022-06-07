@@ -16,14 +16,18 @@
   <%# small button %>
   <div class="small-btn-home animate__animated animate__bounceInLeft">
 
-    <%= link_to rules_path, class: "btn btn-warning text-center" do %>
-      <i class="fas fa-book-open fa-1x"></i>
+    <%= link_to faq_path, class: "btn btn-warning" do %>
+      <i class="fas fa-users"></i>
     <% end %>
 
     <% if guest_present? %>
       <%= link_to stats_guest_path(current_guest), class: "btn btn-warning" do %>
         <i class="fas fa-chart-bar fa-1x"></i>
       <% end %>
+    <% end %>
+
+    <%= link_to rules_path, class: "btn btn-warning text-center" do %>
+      <i class="fas fa-book-open fa-1x"></i>
     <% end %>
 
     <%= link_to faq_path, class: "btn btn-warning" do %>
