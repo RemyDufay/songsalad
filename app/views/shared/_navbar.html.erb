@@ -3,4 +3,8 @@
     <%= link_to root_path, class: "logo-nvb d-flex justify-content-center align-item-center" do %>
       <%= image_tag "song salad title navbar.png" %>
     <% end %>
+
+     <% if @songs_count %>
+     <div> <%= @songs_done_count + 1%> / <%= @songs_count %> </div>
+     <% end  %>
 </div>

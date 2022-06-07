@@ -1,18 +1,15 @@
 
-
-
 <div class="lyrics px-4" data-insert-in-list-target="items" data-submit-guess-target="lyrics" >
       <% if @game_session_song.status == "done"  %>
           <% @game_session_song.game_song.song.splitted_lyrics.each do |word|%>
             <% if word == "\n" %>
               <%= "<br>".html_safe %>
             <% else %>
-              <%= "<span class='old animate__animated  animate__flipInY'>#{word}</span>".html_safe %>
+              <%= "<span class='old animate__animated  animate__flipInY animate__slow'>#{word}</span>".html_safe %>
             <% end %>
           <% end %>
 
         <% else %>
-
 
           <% @game_session_song.guesses.empty? ? last_guess = "" : last_guess = @game_session_song.guesses.last.word  %>
           <%  @game_session_song.guessed_splitted_lyrics.each do |word|%>

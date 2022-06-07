@@ -33,6 +33,26 @@
       border-top-left-radius: 5px;
     }
 
+    .btn-next {
+      width: 5rem;
+      height: 10vh;
+      border-radius: 20px;
+      justify-content: center;
+      align-items: center;
+      font-size: x-large;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      animation: mymove 1s infinite;
+      animation-direction: alternate;
+    }
+
+    @keyframes mymove {
+      from {background-color: #FFBA5A;}
+      to {background-color: #d85f3e}
+    }
+
+
     .btn-validate-prop {
       width: 5rem;
       height: 100%;
