@@ -9,6 +9,21 @@
 
 .logo-nvb img {
   width: 50%;
+  min-width: 200px;
   max-width: 400px;
   margin-top: 10px;
+
+}
+
+.buttons-nvb {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 40vw;
+  margin: auto;
+  justify-content: center;
+
+}
+
+#logout{
+  margin-top: 15px;
 }

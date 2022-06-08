@@ -13,9 +13,7 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions btn btn-primary animate__animated animate__bounceInUp">
-      <%= f.button :submit, "Renvoyer les instructions de confirmation" %>
-    </div>
+      <%= f.button :submit, "Renvoyer les instructions de confirmation", class:"form-actions btn btn-primary animate__animated animate__bounceInUp" %>
   <% end %>
 
   <%= render "devise/shared/links" %>
