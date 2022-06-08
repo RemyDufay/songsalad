@@ -1,10 +1,21 @@
 <div class="container-logo text-center animate__animated animate__slideInDown">
-<%# Logo return home %>
-    <%= link_to root_path, class: "logo-nvb d-flex justify-content-center align-item-center" do %>
-      <%= image_tag "song salad title navbar.png" %>
-    <% end %>
+  <div class="buttons-nvb">
 
-     <% if @songs_count %>
+    <div></div>
+    <div>
+      <%= link_to root_path, class: "logo-nvb d-flex justify-content-center align-item-center" do %>
+        <%= image_tag "song salad title navbar.png" %>
+      <% end %>
+    </div>
+    <div style="width: auto">
+      <% if action_name == "index" %>
+        <%= link_to destroy_user_session_path, class: 'btn btn-warning animate__animated animate__bounceInLeft', id: 'logout', method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+        <% end %>
+      <% end %>
+    </div>
+</div>
+     <% if @songs_count && @songs_count > 1 %>
      <div> <%= @songs_done_count + 1%> / <%= @songs_count %> </div>
      <% end  %>
 </div>
