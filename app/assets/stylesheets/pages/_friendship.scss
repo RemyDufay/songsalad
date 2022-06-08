@@ -8,7 +8,34 @@
   width: 100vw;
 }
 
-.logout{
+.leaderboard {
   display: flex;
-  margin-top: 1rem;
+  flex-direction: column;
+  width: 75%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 17vh;
+  .salad-user {
+    position: absolute;
+    left: 10%;
+  }
+}
+
+.friend-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
 }
