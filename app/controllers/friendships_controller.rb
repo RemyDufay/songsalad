@@ -3,7 +3,13 @@ class FriendshipsController < ApplicationController
   def index
     @friendship = Friendship.new
     @all_users = User.pluck(:name, :id)
-    @friends = current_user.friends
+    
+
+
+    @demands = Friendship.where(friend_id: current_user)
+    @pending = @demands.where(status: "pending")
+
+
   end
 
   def create
@@ -25,16 +31,16 @@ class FriendshipsController < ApplicationController
 
   def accept
     @friendship = Friendship.find(params[:id])
-    @friendship.status = "Acceptée"
+    @friendship.status = "accepted"
     @friendship.save
-    redirect_to friendship_path
+    redirect_to friendships_path
   end
 
   def decline
     @frienship = Friendship.find(params[:id])
-    @friendship.status = "Refusée"
+    @friendship.status = "declined"
     @friendship.save
-    redirect_to friendship_path
+    redirect_to friendships_path
   end
 
   private

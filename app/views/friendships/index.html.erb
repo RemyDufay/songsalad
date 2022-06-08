@@ -1,13 +1,19 @@
 <div class="container-friendship">
-  <h1>Mes Amis</h1>
+  <%= current_user.name %>
+  <h2>Mes Amis</h2>
 
-  <div class="mb-5">leaderbord</div>
-  <% if @friends.any?  %>
-    <% @friends.each do |friend| %>
-      <%= friend.name %>
+  <div class="mb-2">leaderbord</div>
+  <% if current_user.allfriends.any?  %>
+    <% current_user.allfriends.each do |friendship| %>
+      <% if friendship.friend.name == current_user.name %>
+      <%= friendship.user.name %>
+      <% else %>
+      <%= friendship.friend.name %>
+      <% end %>
     <% end  %>
   <% else  %>
     <p>Ajouter un ami 👇👇 </p>
+
   <% end  %>
 
   <div class="mb-5">
@@ -18,5 +24,13 @@
     <% end %>
   </div>
 
-  <div>Demande d'amis 👇👇 </div>
+  <div>Demande d'amis </div>
+<% @pending.each do |demand|%>
+  <%= demand.user.name  %>
+  <%= link_to "✔️", accept_friendship_path(demand), :method => 'patch' %>
+  <%= link_to "❌", cancel_friendship_path(demand), :method => 'patch' %>
+<% end  %>
+
+
+
 </div>
