@@ -1,6 +1,6 @@
 <div class="container-friendship">
-  <h1>Mes Amis</h1>
 
+  <h1>Mes Amis</h1>
   <div class="mb-5">leaderbord</div>
   <% if @friends.any?  %>
     <% @friends.each do |friend| %>
@@ -14,9 +14,13 @@
     <%= simple_form_for @friendship, url: friendships_path, method: :post, html: { class: 'form-inline' } do |f| %>
       <%= hidden_field_tag "friendship[user_id]", current_user.id %>
       <%= f.input :friend_id, collection: @all_users %>
-      <%= f.submit "Ajouter un ami", class: "btn btn-primary" %>
+      <%= f.submit "Ajouter un ami", class: "btn btn-primary animate__animated animate__bounceInLeft" %>
     <% end %>
+  <%= link_to destroy_user_session_path, class: 'logout btn btn-warning animate__animated animate__bounceInLeft', method: :delete do %>
+  <i class="fas fa-sign-out-alt"></i>
+  <% end %>
   </div>
 
   <div>Demande d'amis 👇👇 </div>
+
 </div>
