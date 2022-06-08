@@ -42,3 +42,41 @@
   justify-content: space-around ;
   align-items: center;
 }
+
+.bubble-leaderboard-yellow {
+  background-color: $yellow;
+  border-radius: 15px;
+  height: 2rem;
+  margin-bottom: 2%;
+  width: 90%;
+}
+
+.bubble-leaderboard-green {
+  background-color: $green;
+  border-radius: 15px;
+  height: 2rem;
+  margin-bottom: 2%;
+  width: 90%;
+}
+
+.bubble-friend-request {
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+  border: dashed $red;
+  // margin: auto;
+  border-radius: 5px;
+  justify-content: space-around ;
+  align-items: center;
+}
+
+.bubble-user-recap {
+  display: flex;
+  background-color: $green;
+  padding: 4%;
+  // margin-bottom: 4%;
+  border-radius: 20px;
+  justify-content: space-around ;
+  align-items: center;
+
+}
