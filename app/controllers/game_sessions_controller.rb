@@ -2,22 +2,39 @@ class GameSessionsController < ApplicationController
 
   def create
     game = Game.find(params[:game_id])
-    if guest_present?
+
+    if user_signed_in?
+      user = current_user
+    elsif guest_present?
       guest = current_guest
     else
       guest = Guest.create
       session[:guest_id] = guest.id
     end
 
-    if GameSession.find_by(guest: guest, game: game).nil?
-    game_session = GameSession.new
-    game_session.guest = guest
-    game_session.game = game
-    game_session.save!
+    if user
+      if GameSession.find_by(user: user, game: game).nil?
+        game_session = GameSession.new
+        game_session.user = user
+        game_session.game = game
+        game_session.save!
+      else
+        game_session = GameSession.find_by(guest: guest, game: game)
+      end
     else
-    game_session = GameSession.find_by(guest: guest, game: game)
+      if GameSession.find_by(guest: guest, game: game).nil?
+        game_session = GameSession.new
+        game_session.guest = guest
+        game_session.game = game
+        game_session.save!
+      else
+        game_session = GameSession.find_by(guest: guest, game: game)
+      end
     end
+
     redirect_to game_game_session_path( game_id: game.id, id: game_session.id )
+
+
   end
 
   def show
@@ -33,7 +50,7 @@ class GameSessionsController < ApplicationController
     if @songs_count == @songs_done_count
       redirect_to victory_game_game_session_path(game_id: params[:game_id], id: params[:id]) and return
     end
-    
+
     # Si c'est la premiere fois que le joueur joue, on crée les chansons de la session
     create_game_session_songs
 

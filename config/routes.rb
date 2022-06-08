@@ -37,7 +37,7 @@ end
   get '/faq', to: 'pages#faq'
   # get '/guest/:id/score', to: 'guests#score'
   get '/users', to: 'pages#users'
+  get '/users/stats', to: 'users#stats'
   get 'users/password', to: redirect("users/password/new")
 
 end
-  
