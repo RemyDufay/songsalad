@@ -132,7 +132,10 @@
     background-color: $green;
     margin-right: 0.5rem;
   }
-
+  .form-control-guess{
+    justify-content: space-around;
+    border: none;
+  }
 
   @media (min-width: 800px) {
     #show-game {
@@ -140,6 +143,5 @@
       margin: auto;
       max-height: 100%;
     }
-
-
+  
   }
