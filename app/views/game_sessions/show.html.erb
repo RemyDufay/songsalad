@@ -1,22 +1,19 @@
 <div id="show-game" data-controller="guess-chart submit-guess">
 
-  <div class="lyrics-container animate__animated animate__fadeIn">
-
-    <%= render 'game_sessions/lyrics', song: @game_session_song %>
+    <div class="lyrics-container animate__animated animate__fadeIn">
+      <%= render 'game_sessions/lyrics', song: @game_session_song %>
     </div>
 
-
-      <div class="propals">
+    <div class="propals">
         <%= render 'game_sessions/guesses', guesses: @guesses_ordered_by_latest %>
 
         <div class=" d-flex animate__animated animate__slideInUp ">
           <%= render 'game_sessions/guesses_count', guesses_count: @guesses_ordered_by_latest.count %>
-
-
-        <%= render 'guesses/form', game: @game, game_session: @game_session, game_session_song: @game_session_song, guess: @guess %>
-
+          <%= render 'guesses/form', game: @game, game_session: @game_session, game_session_song: @game_session_song, guess: @guess %>
         </div>
 
     </div>
 
 </div>
+
+
