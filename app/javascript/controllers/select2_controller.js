@@ -7,6 +7,6 @@ export default class extends Controller {
   static values = { options: Object }
 
   connect() {
-    $(this.element).select2();
+    $(this.element).select2(this.optionsValue);
   }
 }
