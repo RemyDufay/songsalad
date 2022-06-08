@@ -1,0 +1,116 @@
+.anmbtn{
+  margin-left: 7rem;
+  margin-top: 7rem;
+}
+@media (min-width: 800px) {
+  .anmbtn{
+    margin-left: 22.5rem;
+    margin-top: 1.5rem;
+  }
+  .custom {
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    transform: translateY(2px);
+  }
+  .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    background: rgb(168, 16, 67);
+  }
+  .front {
+    display: block;
+    position: relative;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    color: rgb(0, 0, 0);
+    background: $red;
+    transform: translateY(-4px);
+  }
+
+  .custom:hover .front {
+    transform: translateY(-6px);
+  }
+  .custom:hover .shadow {
+    transform: translateY(4px);
+  }
+  .custom:active .front {
+    transform: translateY(-2px);
+  }
+  .custom:active .shadow {
+    transform: translateY(1px);
+  }
+
+  .custom:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+.custom {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  transform: translateY(2px);
+}
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  background: rgb(168, 16, 67);
+}
+.front {
+  display: block;
+  position: relative;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: rgb(0, 0, 0);
+  background: $red;
+  transform: translateY(-4px);
+}
+
+.custom:hover .front {
+  transform: translateY(-6px);
+}
+.custom:hover .shadow {
+  transform: translateY(4px);
+}
+.custom:active .front {
+  transform: translateY(-2px);
+}
+.custom:active .shadow {
+  transform: translateY(1px);
+}
+
+.custom:focus:not(:focus-visible) {
+  outline: none;
+}
