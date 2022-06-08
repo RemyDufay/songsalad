@@ -1,4 +1,5 @@
 <div class="container-friendship">
+
   <%= current_user.name %>
   <h2>Mes Amis</h2>
 
@@ -10,6 +11,7 @@
       <% else %>
       <%= friendship.friend.name %>
       <% end %>
+
     <% end  %>
   <% else  %>
     <p>Ajouter un ami 👇👇 </p>
@@ -18,10 +20,15 @@
 
   <div class="w-50 mb-5">
     <%= simple_form_for @friendship, url: friendships_path, method: :post, html: { class: 'form-inline' } do |f| %>
+
       <%# <%= hidden_field_tag "friendship[user_id]", current_user.id %>
       <%= f.input :friend_id, collection: @all_users, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}} %>
       <%= f.submit "Ajouter un ami", class: "btn d-block btn-primary btn-lg w-100" %>
+
     <% end %>
+  <%= link_to destroy_user_session_path, class: 'logout btn btn-warning animate__animated animate__bounceInLeft', method: :delete do %>
+  <i class="fas fa-sign-out-alt"></i>
+  <% end %>
   </div>
 
   <div>Demande d'amis </div>
@@ -30,7 +37,5 @@
   <%= link_to "✔️", accept_friendship_path(demand), :method => 'patch' %>
   <%= link_to "❌", cancel_friendship_path(demand), :method => 'patch' %>
 <% end  %>
-
-
 
 </div>
