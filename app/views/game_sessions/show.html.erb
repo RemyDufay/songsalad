@@ -16,7 +16,3 @@
 
 </div>
 <script> ScrollReveal().reveal('.word', { interval: 0.05, container: '.lyrics' } ); </script>
-
-
-<%= @game_session_song.game_song.song.title.downcase.split(/\W/) %>
-<%= Guess.where(game_session_song: @game_session_song, word: @title).map{|x| x[:word]} %>
