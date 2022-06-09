@@ -1,39 +1,45 @@
-const containerSlot = document.querySelector(".slot");
-const btnConfettis = document.querySelector(".btn-confettis");
-const stars = ["✨", "✨", "✨", "✨"];
+import { Controller } from "@hotwired/stimulus";
 
-window.onload =(fiesta);
+export default class extends Controller {
+  static targets = ["slot"]
 
-function fiesta() {
+  connect() {
 
-  if(isTweening()) return;
-
-  for (let i = 0; i < 50; i++) {
-    const confetti = document.createElement("div");
-    confetti.innerText = stars[Math.floor(Math.random() * stars.length)];
-    containerSlot.appendChild(confetti);
+    this.stars = ["✨", "✨", "✨", "✨"];
+    this.fiesta()
   }
 
-  animateConfettis();
-}
+  fiesta() {
 
-function animateConfettis() {
+    if(this.isTweening()) return;
 
-  const TLCONF = gsap.timeline();
+    for (let i = 0; i < 50; i++) {
+      this.confetti = document.createElement("div");
+      this.confetti.innerText = this.stars[Math.floor(Math.random() * this.stars.length)];
+      this.slotTarget.appendChild(this.confetti);
+    }
 
-  TLCONF.to(".slot div", {
-    y: "random(-100,100)",
-    x: "random(-100,100)",
-    z: "random(0,1000)",
-    rotation: "random(-90,90)",
-    duration: 1,
-  })
+    this.animateConfettis();
+  }
+
+  animateConfettis() {
+
+    const TLCONF = gsap.timeline();
+
+    TLCONF.to(".slot div", {
+      y: "random(-100,100)",
+      x: "random(-100,100)",
+      z: "random(0,1000)",
+      rotation: "random(-90,90)",
+      duration: 1,
+    })
     .to(".slot div", { autoAlpha: 0, duration: 0.3 }, "-=0.2")
     .add(() => {
-      containerSlot.innerHTML = "";
+      this.slotTarget.innerHTML = "";
     });
-}
+  }
 
-function isTweening(){
-  return gsap.isTweening('.slot div');
+  isTweening() {
+    return gsap.isTweening('.slot div');
+  }
 }

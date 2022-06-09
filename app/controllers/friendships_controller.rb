@@ -3,13 +3,8 @@ class FriendshipsController < ApplicationController
   def index
     @friendship = Friendship.new
     @all_users = User.pluck(:name, :id)
-    
-
-
     @demands = Friendship.where(friend_id: current_user)
     @pending = @demands.where(status: "pending")
-
-
   end
 
   def create
