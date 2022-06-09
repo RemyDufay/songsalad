@@ -34,7 +34,7 @@ class User < ApplicationRecord
     songsplayed.each do |song|
       totalguesses += song.guesses.count
     end
-    averageguesses =  songsplayedcount == 0 ? "-" : totalguesses /  songsplayedcount
+    averageguesses =  songsplayedcount == 0 ? 999 : totalguesses /  songsplayedcount
 
 
   end
