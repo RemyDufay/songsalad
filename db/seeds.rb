@@ -15,10 +15,8 @@ GameSession.destroy_all
 GameSong.destroy_all
 Game.destroy_all
 Song.destroy_all
-
-
-
-
+Friendship.destroy_all
+User.destroy_all
 
 puts "Creation du joueur"
 @joueur = Guest.create!()
@@ -111,11 +109,11 @@ mousse =  File.read("app/assets/lyrics/petitbonhomme.txt")
 @petibonhommenmousse = Song.create!(lyrics: mousse, author: "Patrick Sebastien", title: "Le petit bonhomme en mousse", genre:'populaire', year: 1999)
 
 
-alumerlefeu =  File.read("app/assets/lyrics/allumerlefeu.txt")
-@allumerlefe = Song.create!(lyrics: alumerlefeu, author: "Johnny Hallyday", title: "Allumer le feu", genre:'rock', year: 1998)
+allumerlefeu =  File.read("app/assets/lyrics/allumerlefeu.txt")
+@allumerlefeu = Song.create!(lyrics: allumerlefeu, author: "Johnny Hallyday", title: "Allumer le feu", genre:'rock', year: 1998)
 
 tribudedana =  File.read("app/assets/lyrics/dana.txt")
-@latrubudedana = Song.create!(lyrics: tribudedana, author: "Manau", title: "la trubu de Dana", genre: 'folk', year: 1998)
+@latrubudedana = Song.create!(lyrics: tribudedana, author: "Manau", title: "la tribu de Dana", genre: 'folk', year: 1998)
 
 
 tomberlachemise =  File.read("app/assets/lyrics/chemise.txt")
@@ -126,7 +124,7 @@ hymne =  File.read("app/assets/lyrics/campagne.txt")
 @hymdenocampag = Song.create!(lyrics: hymne, author: "Tryo", title: "Hymne de nos campagnes", genre: 'folk', year:  1998)
 
 jtemenneauvent =  File.read("app/assets/lyrics/vent.txt")
-@vienjtemenauven = Song.create!(lyrics: jtemenneauvent, author: "Louise Attaque",title: "Allez viens j’t'emmène au vent", genre: 'folk', year: 1997)
+@jtemenauvent = Song.create!(lyrics: jtemenneauvent, author: "Louise Attaque",title: "J't'emmène au vent", genre: 'folk', year: 1997)
 
 hommepres =  File.read("app/assets/lyrics/hommepressé.txt")
 @hommepresse = Song.create!(lyrics: hommepres, author: "Noir Désir",title:"Homme Pressé", genre: 'rock', year: 1996)
@@ -141,9 +139,8 @@ foule =  File.read("app/assets/lyrics/foulesentimentale.txt")
 hissezhaut =  File.read("app/assets/lyrics/santiano.txt")
 @santiano = Song.create!(lyrics: hissezhaut, author: "Hugues Aufray",title: "Santiano", genre: 'folk', year: 1990)
 
-
 joe =  File.read("app/assets/lyrics/joeletaxi.txt")
-@joeletaxi = Song.create!(lyrics: joe, author: "Vanessa Paradis", title: "Joe le taxi", genre: 'varitété', year: 1988)
+@joeletaxi = Song.create!(lyrics: joe, author: "Vanessa Paradis", title: "Joe le taxi", genre: 'variété', year: 1988)
 
 encore =  File.read("app/assets/lyrics/encoreetencore.txt")
 @enecoreencore = Song.create!(lyrics: encore, author: "Francis Cabrel",title: "Encore et encore", genre: 'variété', year: 1985)
@@ -151,7 +148,6 @@ encore =  File.read("app/assets/lyrics/encoreetencore.txt")
 
 mistralgagnant =  File.read("app/assets/lyrics/lemistralgagnant.txt")
 @mistralgagnant = Song.create!(lyrics: mistralgagnant, author: "Renaud",title: "Mistral Gagnant", genre: 'chanson française', year: 1985)
-
 
 
 lessos =  File.read("app/assets/lyrics/sos.txt")
@@ -176,7 +172,7 @@ amourir =  File.read("app/assets/lyrics/jelaimeamourir.txt")
 @jelaimemourir = Song.create!(lyrics: amourir, author: "Francis Cabrel",title: "Je l'aime a mourir", genre: 'chanson française', year: 1979)
 
 alexandra =  File.read("app/assets/lyrics/alexandriealexandra.txt")
-@alexandrie= Song.create!(lyrics: alexandra, author: "Claude François",title: "Alexandrie  Alexandra", genre: 'pop', year: 1977)
+@alexandrie= Song.create!(lyrics: alexandra, author: "Claude François",title: "Alexandrie, Alexandra", genre: 'pop', year: 1977)
 
 lesud =  File.read("app/assets/lyrics/sud.txt")
 @sud = Song.create!(lyrics: lesud, author: "Léo Ferré",title: "Le sud", genre: 'folk', year: 1975)
@@ -219,10 +215,10 @@ puts "Creation du game mode"
 @playlist = Game.create!(name: "Playlist")
 
 puts "Creation de la game_song"
-@song1 = GameSong.create!(game: @solo, song: @javanaise)
-@song2 = GameSong.create!(game: @playlist, song: @quelqunmadit)
-@song3 = GameSong.create!(game: @playlist, song: @sentimentale)
-@song4 = GameSong.create!(game: @playlist, song: @sanfrancisco)
+@song1 = GameSong.create!(game: @solo, song: @philosophie)
+@song2 = GameSong.create!(game: @playlist, song: @connemara)
+@song3 = GameSong.create!(game: @playlist, song: @allumerlefeu)
+
 
 
 
