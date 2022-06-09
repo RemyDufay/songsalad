@@ -1,29 +1,55 @@
-
 <div class="container-victory" data-controller="confettis">
 
   <div><%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid animate__animated animate__bounceInDown") %></div>
 
   <div class="container d-flex flex-column text-center">
-    <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo animate__animated animate__bounceInLeft") %></div>
+    <div>
+      <%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo animate__animated animate__bounceInLeft") %>
+    </div>
+      <%# confettis %>
+      <div class="slot" data-confettis-target="slot">
+      </div>
+  </div> <!-- container -->
 
-  <%# confettis %>
-  <div class="slot" data-confettis-target="slot"></div>
+  <div id="carouselExampleInterval" class="carousel slide w-75 animate__animated animate__rubberBand" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <%# Slide %>
+      <% @game_session.game_session_songs.each_with_index do |song, index|%>
+        <div class="carousel-item text-center <%= "active" if index == 0 %> bubble-stat-green" data-bs-interval="20000">
+          <div class="w-100">
+            <div class="mt-4 choix stat-category">
+              <h1><b>
+                <%= song.game_song.song.title %>
+              </b></h1>
+            </div>
+            <div class=" mt-5 choix">
+              <h3>
+                <%= song.game_song.song.author %>
+              </h3>
+            </div>
+              (<%= Guess.where(game_session_song: song).count %> coups )
+          </div>
+        </div>
+      <% end %>
+
+
+    </div>
+      <%# button %>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
   </div>
 
 
-  <% @game_session.game_session_songs.each do |song|%>
-    <div class="bubble-victory animate__animated animate__bounceInRight" style="width: 85vw" >
 
-      <div class="d-flex justify-content-between">
-        <div><%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %></div>
-          <h3><b><%= song.game_song.song.title %></b></h3><br>
-        <div><%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %></div>
-      </div><br>
 
-        <h4><%= song.game_song.song.author %></h4><br>
-        (<%= Guess.where(game_session_song: song).count %> coups )
-    </div>
-  <% end %>
   <div class="mode-de-jeu container text-center animate__animated animate__bounceInUp">
     <div>
       <%= link_to "Retour à l'accueil", root_path, class: "btn d-block btn-primary btn-lg mode-de-jeu btn-victory" %>
@@ -34,7 +60,4 @@
   </div>
 
 
-</div>
-
-    <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="confettis_controller.js"></script> %>
+</div> <!-- contqiner victory -->

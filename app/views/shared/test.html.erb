@@ -1,0 +1,33 @@
+<div id="carouselExampleInterval" class="carousel slide w-75 animate__animated animate__rubberBand" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @game_session.game_session_songs.each_with_index do |song, index|%>
+        <div class="carousel-item text-center bubble-victory" style="width: 85vw" data-bs-interval="20000">
+          <div class="w-100">
+            <div class="d-flex justify-content-between">
+              <div>
+                <%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %>
+              </div>
+                <h3><b><%= song.game_song.song.title %></b></h3><br>
+              <div>
+                <%= image_tag("star-2.png", width: 13, height: 13, :class => "img-fluid") %>
+              </div>
+            </div> <!-- d flex -->
+            <br>
+            <h4><%= song.game_song.song.author %></h4><br>
+            (<%= Guess.where(game_session_song: song).count %> coups )
+          </div> <!-- cw 100-->
+        </div> <!-- carrousel item -->
+      <% end %>
+      <%# Arrow %>
+      <%# End Arrow %>
+    </div> <!-- carrousel inner -->
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> <!-- carrousel exaple interval-->
