@@ -3,12 +3,15 @@
 
 <%# Logo %>
 <div class="container text-center logo animate__animated animate__bounceInDown" >
-  <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid mb-1") %>
+    <%= image_tag("logo-smile.png", width: 270, height: 270, :class => "img-fluid") %>
+  <div>
+    <em><%= "'Bienvenue #{current_user.name.capitalize} !'" if user_signed_in? %></em>
+  </div>
 </div>
 
 <%# h6 & BUTTONS%>
 <div class="mode-de-jeu container text-center animate__animated animate__bounceInRight " >
-  <h4 class="mt-3 mb-4 choix">Choisissez votre mode de jeu</h4>
+  <h4 class="mt-3 mb-4 choix">Choisis ton mode de jeu</h4>
   <%= simple_form_for([@solo, @session], html: { class: 'd-block', data: {action: "submit->home#out"} }) do |f| %>
     <%= f.button :submit, value: "CHANSON DU JOUR", class: 'btn d-block btn-primary btn-lg mb-4', style: "width: 100%"  %>
   <% end %>
@@ -16,7 +19,6 @@
     <%= f.button :submit, value: "PLAYLIST DU JOUR (x3)", class: 'btn d-block btn-primary btn-lg mb-4', style: "width: 100%"  %>
   <% end %>
 </div>
-
 
   <%# small button %>
   <div class="small-btn-home animate__animated animate__bounceInLeft">
