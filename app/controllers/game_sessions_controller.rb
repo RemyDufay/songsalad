@@ -19,7 +19,7 @@ class GameSessionsController < ApplicationController
         game_session.game = game
         game_session.save!
       else
-        game_session = GameSession.find_by(guest: guest, game: game)
+        game_session = GameSession.find_by(user: user, game: game)
       end
     else
       if GameSession.find_by(guest: guest, game: game).nil?
