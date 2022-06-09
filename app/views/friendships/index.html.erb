@@ -74,4 +74,8 @@
     <% end  %>
   </div>
 
+  <%= link_to destroy_user_session_path, class: 'btn btn-warning animate__animated animate__bounceInLeft mt-5', id: 'logout', method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+
 </div>
