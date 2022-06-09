@@ -16,7 +16,7 @@
       <%# Slide %>
       <% @game_session.game_session_songs.each_with_index do |song, index|%>
         <div class="carousel-item text-center <%= "active" if index == 0 %> bubble-victory-green" data-bs-interval="20000">
-          <div class="w-100 mb-2">
+          <div class="w-100 mb-2" style="min-height: 9rem;">
             <div class="mt-4 choix stat-category">
               <h1><b>
                 <%= song.game_song.song.title %>

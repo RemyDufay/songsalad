@@ -39,11 +39,18 @@
     <br>
     </p>
   </div>
-  <div class="btnanim">
+  <div class="btnanim animate__animated animate__bounceInLeft">
+   <% if user_signed_in? %>
+      <%= link_to friendships_path(current_user), class: "custom shadow-n" do %>
+        <i class="front-n fas fa-users"></i>
+      <% end %>
+      <% else %>
       <%= link_to new_user_session_path, class: "custom shadow-n" do %>
         <i class="front-n fas fa-users"></i>
       <% end %>
+      <%end %>
     </div>
   </div>
+
 </div>
 </div>

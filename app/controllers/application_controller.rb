@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   helper_method :guest_present?, :current_guest
-  before_action :authenticate_user!, only: :faq
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def guest_present?
