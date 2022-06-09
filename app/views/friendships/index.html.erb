@@ -8,8 +8,8 @@
 
   <div class="leaderboard mb-5 mt-2">
     <div class="user-info">
-      <div class="choix">01</div>
       <div class="bubble-leaderboard-green d-flex justify-content-around align-items-center ">
+      <div class="choix">01</div>
         <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
         <span>
           <%= current_user.name %>
@@ -23,8 +23,8 @@
     <% if current_user.allfriends.any?  %>
       <% current_user.allfriends.each do |friendship| %>
       <div class="friend-info">
-        <div class="choix">01</div>
         <div class="bubble-leaderboard-yellow d-flex justify-content-around align-items-center">
+        <div class="choix">01</div>
           <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
           <span>
             <%= friendship.friend.name == current_user.name ? friendship.user.name : friendship.friend.name %>
