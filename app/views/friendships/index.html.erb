@@ -1,21 +1,24 @@
 <div class="container-friendship">
-<%= current_user.name  %>
-  <div class="bubble-user-recap w-75 mb-5">
+  <div class="bubble-user-recap w-75 mb-3 animate__animated animate__bounceInLeft">
     <h4 class="mode-de-jeu">MES (COM)POTES</h4>
   </div>
 
-  <h2>Classement</h2>
+  <h3 style= "margin-bottom: 0" class= "animate__animated animate__bounceInRight">Classement</h3>
+  <p class= "animate__animated animate__bounceInLeft">(par nombre moyen d'essais)</p>
 
-  <div class="leaderboard mb-5 mt-2">
-
+  <div class="leaderboard mb-4 mt-2 animate__animated animate__bounceInRight">
 
     <% if current_user.allfriends.any?  %>
-      <% current_user.leaderboard.sort_by(&:last).each do |friend| %>
+      <% current_user.leaderboard.sort_by(&:last).each_with_index do |friend, i| %>
       <% if friend[0] == current_user.name %>
         <div class="user-info">
-            <div class="choix">01</div>
-            <div class="bubble-leaderboard-green d-flex justify-content-around align-items-center ">
-              <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+          <div class="bubble-leaderboard-green d-flex justify-content-around align-items-center ">
+            <div class="choix"><%= i + 1 %></div>
+             <% if i != 0  %>
+                <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+              <% else %>
+                <%= image_tag("crown.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+              <% end %>
               <span>
                 <%= friend[0] %>
               </span>
@@ -26,9 +29,13 @@
           </div>
       <%else %>
       <div class="friend-info">
-        <div class="choix">01</div>
         <div class="bubble-leaderboard-yellow d-flex justify-content-around align-items-center">
-          <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+        <div class="choix"><%= i + 1 %></div>
+          <% if i != 0  %>
+           <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+          <% else %>
+            <%= image_tag("crown.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+          <% end %>
           <span>
             <%= friend[0] %>
           </span>
@@ -42,17 +49,17 @@
     <% end  %>
   </div>
 
-  <div class="w-75 mb-5">
+  <div class="w-75 mb-5 animate__animated animate__bounceInLeft">
     <%= simple_form_for @friendship, url: friendships_path, method: :post, html: { class: 'form-inline' } do |f| %>
       <%# <%= hidden_field_tag "friendship[user_id]", current_user.id %>
-      <%= f.input :friend_id, collection: @all_users, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}} %>
-      <%= f.submit "Ajouter un ami", class: "btn d-block btn-primary btn-lg w-100 mode-de-jeu" %>
+      <%= f.input :friend_id, label: 'Trouver un(e) ami(e)', collection: @all_users, input_html: {multiple: true, data: {controller: 'select2', select2_options_value: {tags: true}}} %>
+      <%= f.submit "Ajouter un(e) ami(e)", class: "btn d-block btn-primary btn-lg w-100 mode-de-jeu" %>
 
     <% end %>
   </div>
 
-  <div class="bubble-friend-request w-75">
-    <h6>Demande d'amis</h6>
+  <div class="bubble-friend-request w-75 animate__animated animate__bounceInRight ">
+    <h6>Mes demandes d'ami(e)s en attente</h6>
     <% @pending.each do |demand|%>
     <div class="bubble-leaderboard-yellow d-flex justify-content-around align-items-center">
       <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>

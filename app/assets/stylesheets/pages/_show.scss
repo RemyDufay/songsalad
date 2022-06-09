@@ -7,141 +7,141 @@
   flex-wrap: wrap;
   justify-content: center;
   // gap: 2vw;
-
-  }
-
-  html.sr .load-hidden {
-    visibility: hidden;
 }
 
-  // #colcol{
-  // padding-left: 5px;
-  // padding-top: 10px;
-  // }
+html.sr .load-hidden {
+  visibility: hidden;
+}
 
-  .propals{
-    max-height: 40vh;
+// #colcol{
+// padding-left: 5px;
+// padding-top: 10px;
+// }
+
+.propals{
+  max-height: 40vh;
+  border-top-left-radius: 5px;
+  position: sticky;
+  bottom: 0;
+  height: 6 rem;
+
+  .btn-show-prop {
+    width: 5rem;
+    height: 100%;
+    border-radius: 0;
     border-top-left-radius: 5px;
-    position: sticky;
-    bottom: 0;
-    height: 6 rem;
-
-    .btn-show-prop {
-      width: 5rem;
-      height: 100%;
-      border-radius: 0;
-      border-top-left-radius: 5px;
-    }
-
-    .btn-next {
-      width: 5rem;
-      height: 10vh;
-      border-radius: 20px;
-      justify-content: center;
-      align-items: center;
-      font-size: x-large;
-      margin-left: 20px;
-      margin-right: 20px;
-      margin-bottom: 20px;
-      animation: mymove 1s infinite;
-      animation-direction: alternate;
-    }
-
-    @keyframes mymove {
-      from {background-color: #FFBA5A;}
-      to {background-color: #d85f3e}
-    }
-
-
-    .btn-validate-prop {
-      width: 5rem;
-      height: 100%;
-      border-radius: 0;
-      border-top-right-radius: 5px;
-    }
   }
 
-  .listprop {
-    padding-top: 2%;
-    background-color: #FBEED7;
-    color: white;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 4px;
-    font-size: 1.2em;
-    // max-height: 25vh;
-    position: sticky;
-    bottom: 0;
-    max-height: 60px;
-  }
-
-  .guess-list {
-    flex-direction: column-reverse;
-    overflow: auto;
-    overflow-x: hidden;
-  }
-
-
-  .max-height-5 {
-    max-height: 5vh;
-  }
-  .max-height-25 {
-    max-height: 25vh;
-  }
-
-  .lyrics {
-    overflow: scroll;
-    overflow-x: hidden;
-    line-height: 35px;
-    font-size: 1.5em;
-    background-color: $beige;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    height: fit-content;
+  .btn-next {
+    width: 5rem;
+    height: 10vh;
     border-radius: 20px;
-    min-width: 30%;
-    max-width: 100%;
-    z-index: -1;
-
-
-    span {
-    color: rgba(0, 0, 0, 0.368);
-    }
-
-    .new {
-      transition: all 1s;
-      color: rgb(189, 57, 4);
-      font-weight: bolder;
-      display: inline-block;
-    }
-
-    .old {
-      color: rgb(0, 0, 0);
-      font-weight: bold;
-      display: inline-block;
-    }
-
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    animation: mymove 1s infinite;
+    animation-direction: alternate;
   }
 
-  .formulaire {
-    border-radius: 8px;
+  @keyframes mymove {
+    from {background-color: #FFBA5A;}
+    to {background-color: #d85f3e}
   }
 
-  .guess-count {
-    border-radius: 10px;
-    background-color: $green;
-    margin-right: 0.5rem;
+
+  .btn-validate-prop {
+    width: 5rem;
+    height: 100%;
+    border-radius: 0;
+    border-top-right-radius: 5px;
   }
-  .form-control-guess{
-    justify-content: space-around;
-    border: none;
+}
+
+.listprop {
+  padding-top: 2%;
+  background-color: #FBEED7;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 4px;
+  font-size: 1.2em;
+  // max-height: 25vh;
+  position: sticky;
+  bottom: 0;
+  max-height: 60px;
+}
+
+.guess-list {
+  flex-direction: column-reverse;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+
+.max-height-5 {
+  max-height: 5vh;
+}
+.max-height-25 {
+  max-height: 25vh;
+}
+
+.lyrics {
+  overflow: scroll;
+  overflow-x: hidden;
+  line-height: 35px;
+  font-size: 1.5em;
+  background-color: $beige;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  height: fit-content;
+  border-radius: 20px;
+  min-width: 30%;
+  max-width: 100%;
+  z-index: -1;
+
+
+  span {
+  color:black;
   }
 
-  @media (min-width: 800px) {
-    #show-game {
-      max-width: 40vw;
-      margin: auto;
-      max-height: 100%;
-    }
-  
+  .new {
+    transition: all 1s;
+    color: rgb(189, 57, 4);
+    font-weight: bolder;
+    display: inline-block;
   }
+
+  .old {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    display: inline-block;
+  }
+
+}
+
+.formulaire {
+  // border-radius: 8px;
+}
+
+.guess-count {
+  border-radius: 10px;
+  background-color: $green;
+  margin-right: 0.5rem;
+}
+
+
+@media (min-width: 800px) {
+  #show-game {
+    max-width: 40vw;
+    margin: auto;
+    max-height: 100%;
+  }
+
+}
+
+#show-game .form-play {
+  border-radius: 0;
+}
