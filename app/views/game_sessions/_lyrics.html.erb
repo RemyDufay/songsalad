@@ -1,5 +1,5 @@
 
-<div class="lyrics px-4  animate__animated animate__fadeIn animate__longer" data-insert-in-list-target="items" data-submit-guess-target="lyrics" >
+<div class="lyrics px-4  " data-insert-in-list-target="items" data-submit-guess-target="lyrics" >
       <% if @game_session_song.status == "done"  %>
           <% @game_session_song.game_song.song.splitted_lyrics.each do |word|%>
             <% if word == "\n" %>
