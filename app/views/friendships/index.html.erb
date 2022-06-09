@@ -1,5 +1,5 @@
 <div class="container-friendship">
-
+<%= current_user.name  %>
   <div class="bubble-user-recap w-75 mb-5">
     <h4 class="mode-de-jeu">MES (COM)POTES</h4>
   </div>
@@ -7,33 +7,37 @@
   <h2>Classement</h2>
 
   <div class="leaderboard mb-5 mt-2">
-    <div class="user-info">
-      <div class="choix">01</div>
-      <div class="bubble-leaderboard-green d-flex justify-content-around align-items-center ">
-        <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
-        <span>
-          <%= current_user.name %>
-        </span>
-        <span>
-          <%= current_user.id %>
-        </span>
-      </div>
-    </div>
+
 
     <% if current_user.allfriends.any?  %>
-      <% current_user.allfriends.each do |friendship| %>
+      <% current_user.leaderboard.sort_by(&:last).each do |friend| %>
+      <% if friend[0] == current_user.name %>
+        <div class="user-info">
+            <div class="choix">01</div>
+            <div class="bubble-leaderboard-green d-flex justify-content-around align-items-center ">
+              <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
+              <span>
+                <%= friend[0] %>
+              </span>
+              <span>
+                <%= friend[1] %>
+              </span>
+            </div>
+          </div>
+      <%else %>
       <div class="friend-info">
         <div class="choix">01</div>
         <div class="bubble-leaderboard-yellow d-flex justify-content-around align-items-center">
           <%= image_tag("salad-user.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
           <span>
-            <%= friendship.friend.name == current_user.name ? friendship.user.name : friendship.friend.name %>
+            <%= friend[0] %>
           </span>
           <span>
-            <%= friendship.user.id%>
+            <%= friend[1] %>
           </span>
         </div>
       </div>
+    <% end  %>
     <% end  %>
     <% end  %>
   </div>
