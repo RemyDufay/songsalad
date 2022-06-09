@@ -7,13 +7,14 @@
         <%= image_tag "song salad title navbar.png" %>
       <% end %>
     </div>
-    <div style="width: auto">
-      <% if action_name == "index" %>
-        <%= link_to destroy_user_session_path, class: 'btn btn-warning animate__animated animate__bounceInLeft', id: 'logout', method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>
-        <% end %>
-      <% end %>
-    </div>
+
+    <%# <div style="width: auto"> %>
+      <%# <% if action_name == "index" %>
+        <%# <%= link_to destroy_user_session_path, class: 'btn btn-warning animate__animated animate__bounceInLeft', id: 'logout', method: :delete do %>
+          <%# <i class="fas fa-sign-out-alt"></i> %>
+        <%# <% end %>
+      <%# <% end %>
+    <%# </div> %>
 </div>
      <% if @songs_count && @songs_count > 1 %>
      <div> <%= @songs_done_count + 1%> / <%= @songs_count %> </div>
