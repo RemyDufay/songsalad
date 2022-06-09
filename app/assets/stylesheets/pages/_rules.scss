@@ -5,6 +5,12 @@
   margin-bottom: 4%;
   border-radius: 15px;
 }
+
+.no-scroll {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 .regles {
   justify-content: flex-start;
   padding: 0 2rem;

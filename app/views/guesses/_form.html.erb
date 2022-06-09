@@ -5,9 +5,12 @@
   <%=link_to 'Chanson suivante ', game_game_session_path(game, game_session), class: 'btn btn-primary btn-next choix d-flex flex-grow-1', data: { submit_guess_target: "form"}  %>
 </div>
 <% else %>
-  <%= simple_form_for([game, game_session, game_session_song, guess ], html: { class: 'd-flex flex-grow-1'}, data: { submit_guess_target: "form", action: "submit->submit-guess#send" }) do |f| %>
-    <%= f.input_field :word, label: false, as: :string, class: "form-control-guess", data: {submit_guess_target: "input"}, autofocus: true, autocomplete: "off" %>
-    <%= f.button :submit, class: 'btn btn-primary btn-validate-prop', value: "Valider"  %>
-  <% end %>
+  <div class="flex-grow-1">
+    <%= simple_form_for([game, game_session, game_session_song, guess ], html: { class: 'd-flex flex-grow-1'}, data: { submit_guess_target: "form", action: "submit->submit-guess#send" }) do |f| %>
+      <%= f.input_field :word, label: false, as: :string, class: " form-play form-control", data: {submit_guess_target: "input"}, autofocus: true, autocomplete: "off" %>
+      <%= f.button :submit, class: 'btn btn-primary btn-validate-prop', value: "Valider"  %>
+    <% end %>
+  </div>
+
 
 <% end %>
