@@ -71,6 +71,9 @@ class GameSessionsController < ApplicationController
 
   def victory
     @game_session = GameSession.find(params[:id])
+    @game_songs = @game_session.game.game_songs
+    @songs_count = @game_songs.count
+    @songs_done_count = @songs_count
     @game_session_song = GameSessionSong.find_by(game_session: @game_session, game_song: @game_song)
     @guesses_count = @game_session.game_session_songs[0].guesses.count
   end

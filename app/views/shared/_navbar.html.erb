@@ -17,6 +17,8 @@
     <%# </div> %>
 </div>
      <% if @songs_count && @songs_count > 1 %>
-     <div> <%= @songs_done_count + 1%> / <%= @songs_count %> </div>
+      <div class="progress w-75" style="margin: auto; border-radius: 8px" >
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= ((@songs_done_count.to_f / @songs_count.to_f ) * 100).to_i %>%" aria-valuenow="<%= ((@songs_done_count.to_f / @songs_count.to_f ) * 100).to_i %>" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
      <% end  %>
 </div>
