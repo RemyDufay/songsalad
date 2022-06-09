@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
 
   def stats
-
     @user = current_user
     @sessions = GameSession.where(user_id:@user)
     @sessionscount = @sessions.count
