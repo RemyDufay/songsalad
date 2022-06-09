@@ -35,8 +35,8 @@ class FriendshipsController < ApplicationController
     redirect_to friendships_path
   end
 
-  def decline
-    @frienship = Friendship.find(params[:id])
+  def cancel
+    @friendship = Friendship.find(params[:id])
     @friendship.status = "declined"
     @friendship.save
     redirect_to friendships_path
