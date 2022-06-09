@@ -1,16 +1,14 @@
+<div class="container-victory" data-controller="confettis">
 
-<div class="container-victory">
-  <div>
-    <%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid animate__animated animate__bounceInDown") %>
-  </div>
+  <div><%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid animate__animated animate__bounceInDown") %></div>
 
   <div class="container d-flex flex-column text-center">
     <div>
       <%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo animate__animated animate__bounceInLeft") %>
     </div>
-    <%# confettis %>
-    <div class="slot">
-    </div>
+      <%# confettis %>
+      <div class="slot" data-confettis-target="slot">
+      </div>
   </div> <!-- container -->
 
   <div id="carouselExampleInterval" class="carousel slide w-75 animate__animated animate__rubberBand" data-bs-ride="carousel">
@@ -34,6 +32,7 @@
         </div>
       <% end %>
 
+
     </div>
       <%# button %>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -45,6 +44,10 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
+  </div>
+
+
 
 
   <div class="mode-de-jeu container text-center animate__animated animate__bounceInUp">
@@ -58,6 +61,3 @@
 
 
 </div> <!-- contqiner victory -->
-
-    <%# <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-    <script src="confettis_controller.js"></script> %>
