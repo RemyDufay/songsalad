@@ -1,5 +1,5 @@
 
-<div class="container-victory">
+<div class="container-victory" data-controller="confettis">
 
   <div><%= image_tag("bravo.png", width: 200, height: 200, :class => "img-fluid animate__animated animate__bounceInDown") %></div>
 
@@ -7,10 +7,9 @@
     <div><%= image_tag("victoire.png", width: 100, height: 100, :class => "img-fluid victoire-logo animate__animated animate__bounceInLeft") %></div>
 
   <%# confettis %>
-  <div class="slot"></div>
-      <%# <button class="btn-confettis">🍰</button> %>
+  <div class="slot" data-confettis-target="slot"></div>
   </div>
-  <%# confettis finito %>
+
 
   <% @game_session.game_session_songs.each do |song|%>
     <div class="bubble-victory animate__animated animate__bounceInRight" style="width: 85vw" >

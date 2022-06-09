@@ -16,6 +16,26 @@
 
 }
 
+.bubble-guess-good{
+  background-color: $yellow;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  align-items: center;
+
+}
+
+.bubble-guess-very-good{
+  background-color: $green;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  align-items: center;
+
+}
+
 .bubble-stat-green {
   background-color: $green;
   border-radius: 10px;
