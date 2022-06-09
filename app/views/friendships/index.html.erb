@@ -19,8 +19,8 @@
               <% else %>
                 <%= image_tag("crown.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
               <% end %>
-              <span>
-                <%= friend[0] %>
+              <span class="w-25">
+                  <%= friend[0] %>
               </span>
               <span>
                 <%= friend[1] == 999 ? "-" : friend[1] %>
@@ -36,7 +36,7 @@
           <% else %>
             <%= image_tag("crown.png", width: 15, height: 15, :class => "img-fluid mb-1 mt-1") %>
           <% end %>
-          <span>
+          <span class="w-25">
             <%= friend[0] %>
           </span>
           <span>
