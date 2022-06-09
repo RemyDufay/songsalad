@@ -1,2 +1,23 @@
-<h1>Errors#internal_server_error</h1>
-<p>Find me in app/views/errors/internal_server_error.html.erb</p>
+<div class="container-victory" >
+  <h1>⚰️ Définitivement cuite ⚰️</h1>
+
+  <div class="container text-center logo animate__animated animate__bounceInDown" >
+    <%= image_tag("erreur.png", width: 400, height: 400, :class => "img-fluid mb-1") %>
+  </div>
+
+  <audio id="myAudio">
+    <source src="funeral.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script>
+    var x = document.getElementById("myAudio");
+
+    function playAudio() {
+      x.play();
+    }
+  </script>
+
+  <div>
+    <button onclick="playAudio()" type="button" class= "btn d-block btn-primary btn-lg mb-4">GAME OVER !</button>
+  </div>
+</div>
