@@ -41,6 +41,13 @@
   border-radius: 10px;
 }
 
+.bubble-victory-green {
+  background-color: $green;
+  border-radius: 10px;
+  border-style: dotted;
+  border-color: $yellow;
+}
+
 .bubble-stat-blue {
   background-color: $blue;
   border-radius: 10px;
