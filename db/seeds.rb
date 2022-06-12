@@ -175,16 +175,16 @@ chantdessirenesl =  File.read("app/assets/lyrics/chantdessirenes.txt")
 
 
 
-puts "Archivage des playlist"
+# puts "Archivage des playlist"
 
-@oldsolo = Game.find_by(name: "Chanson du jour")
-@oldplaylist = Game.find_by(name: "Playlist")
+# @oldsolo = Game.find_by(name: "Chanson du jour")
+# @oldplaylist = Game.find_by(name: "Playlist")
 
-@oldsolo.name = "OldChanson"
-@oldplaylist.name = "OldPlaylist"
+# @oldsolo.name = "OldChanson"
+# @oldplaylist.name = "OldPlaylist"
 
-@oldsolo.save!
-@oldplaylist.save!
+# @oldsolo.save!
+# @oldplaylist.save!
 
 
 puts "Nouvelles playlists"
