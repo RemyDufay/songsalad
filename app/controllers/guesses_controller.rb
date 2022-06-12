@@ -6,7 +6,7 @@ class GuessesController < ApplicationController
     @game_session_song = GameSessionSong.find(params[:game_session_song_id])
     @game_session      = @game_session_song.game_session
     @game              = @game_session.game
-    @title = @game_session_song.game_song.song.title.downcase.split(/\W/)
+    @title = @game_session_song.game_song.song.title.downcase.gsub(/[[:punct:]]/, ' ').split(@regexp).reject(&:blank?)
 
     words = guess_params[:word].downcase.split(@regexp).reject(&:blank?)
 

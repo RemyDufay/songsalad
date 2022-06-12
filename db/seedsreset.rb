@@ -15,8 +15,11 @@ GameSession.destroy_all
 GameSong.destroy_all
 Game.destroy_all
 Song.destroy_all
+Friendship.destroy_all
+User.destroy_all
 
-
+puts "Creation du joueur"
+@joueur = Guest.create!()
 
 puts "Creation de la song"
 
@@ -173,30 +176,18 @@ chantdessirenesl =  File.read("app/assets/lyrics/chantdessirenes.txt")
 
 
 
-
-
-# puts "Archivage des playlist"
-
-# @oldsolo = Game.find_by(name: "Chanson du jour")
-# @oldplaylist = Game.find_by(name: "Playlist")
-
-# @oldsolo.name = "OldChanson"
-# @oldplaylist.name = "OldPlaylist"
-
-# @oldsolo.save!
-# @oldplaylist.save!
-
-
-puts "Nouvelles playlists"
-
+puts "Creation du game mode"
 @solo = Game.create!(name: "Chanson du jour")
 @playlist = Game.create!(name: "Playlist")
 
 puts "Creation de la game_song"
-GameSong.create!(game: @solo, song: Song.all.sample)
+@song1 = GameSong.create!(game: @solo, song: @jtemenauvent)
 
-GameSong.create!(game: @playlist, song: Song.all.sample)
-GameSong.create!(game: @playlist, song: Song.all.sample)
+Song.all.each do |song|
+
+GameSong.create!(game: @playlist, song: song)
+
+end
 
 
 puts "DONE"
