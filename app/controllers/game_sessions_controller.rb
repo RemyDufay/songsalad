@@ -57,7 +57,7 @@ class GameSessionsController < ApplicationController
     # Chargement de la variable @game_session_song qui contient la chanson en cours
     # Si plus de chanson en cours : écran de victoire final
     select_ongoing_song
-    @title = @game_session_song.game_song.song.title.downcase.split(/\W/)
+    @titletest = @game_session_song.game_song.song.title
 
 
     # On stock les paroles censurées/trouvées dans une variable
